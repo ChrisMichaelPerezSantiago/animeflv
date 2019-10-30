@@ -1,4 +1,4 @@
-# **:triangular_flag_on_post: ANIMEFLV** (version 1.0.0)
+# **:triangular_flag_on_post: ANIMEFLV** (version 1.0.1)
 
 ![node version](https://img.shields.io/badge/node->=10.16.x-brightgreen.svg)
 ![npm version](https://img.shields.io/badge/npm->=6.9.x-brightgreen.svg)
@@ -9,6 +9,8 @@
 > This API will give you access to the content of the animeflv page. And you can enjoy all the chapters with sub in Spanish.
 
 ---
+
+## *Please, do not download version v1.0.0 from npm, I had made the mistake of leaving the parameters in the functions with predefined values.* ️️️️❗️️️
 
 ## **:package: Main tools used**
 
