@@ -12,6 +12,9 @@
 
 ## *Please, do not download version v1.0.0 from npm, I had made the mistake of leaving the parameters in the functions with predefined values.* ️️️️❗️️️
 
+## :rocket: Custom Animeflv API Link
+[Animeflv API](https://animeflv.chrismichael.now.sh/api/v1/)
+
 ## **:package: Main tools used**
 
 - [x] axios
