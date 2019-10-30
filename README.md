@@ -10,6 +10,9 @@
 
 ---
 
+## :rocket: Custom Animeflv API Link
+[Animeflv API](https://animeflv.chrismichael.now.sh/api/v1/)
+
 ## **:package: Main tools used**
 
 - [x] axios
