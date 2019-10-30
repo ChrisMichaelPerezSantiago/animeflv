@@ -2,7 +2,7 @@ const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 const {BASE_URL , BROWSE_URL , ANIME_VIDEO_URL} = require('./urls');
 
-const animeByState = async(state = 1 , order = 'default' , page = 1) => {
+const animeByState = async(state , order , page ) => {
   const res = await fetch(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}`);
   const body = await res.text();
   const $ = cheerio.load(body);
@@ -31,7 +31,7 @@ const animeByState = async(state = 1 , order = 'default' , page = 1) => {
   return Promise.all(promises);
 };
 
-const tv = async(order = 'default' , page = 1) => {
+const tv = async(order , page) => {
   const res = await fetch(`${BROWSE_URL}type%5B%5D=tv&order=${order}&page=${page}`);
   const body = await res.text();
   const $ = cheerio.load(body);
@@ -60,7 +60,7 @@ const tv = async(order = 'default' , page = 1) => {
   return Promise.all(promises);
 };
 
-const ova = async(order = 'default' , page = 1) => {
+const ova = async(order , page ) => {
   const res = await fetch(`${BROWSE_URL}type%5B%5D=ova&order=${order}&page=${page}`);
   const body = await res.text();
   const $ = cheerio.load(body);
@@ -89,7 +89,7 @@ const ova = async(order = 'default' , page = 1) => {
   return Promise.all(promises);
 };
 
-const special = async(order = 'default' , page = 1) => {
+const special = async(order , page) => {
   const res = await fetch(`${BROWSE_URL}type%5B%5D=special&order=${order}&page=${page}`);
   const body = await res.text();
   const $ = cheerio.load(body);
@@ -118,7 +118,7 @@ const special = async(order = 'default' , page = 1) => {
   return Promise.all(promises);
 };
 
-const movies = async(order = 'default' , page = 1) => {
+const movies = async(order , page) => {
   const res = await fetch(`${BROWSE_URL}type%5B%5D=movie&order=${order}&page=${page}`);
   const body = await res.text();
   const $ = cheerio.load(body);
@@ -147,7 +147,7 @@ const movies = async(order = 'default' , page = 1) => {
   return Promise.all(promises);
 };
 
-const animeByGenres = async(genre = 'artes-marciales' , order = 'default' , page = 1) => {
+const animeByGenres = async(genre , order , page) => {
   const res = await fetch(`${BROWSE_URL}genre%5B%5D=${genre}&order=${order}&page=${page}`);
   const body = await res.text();
   const $ = cheerio.load(body);
