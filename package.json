@@ -1,6 +1,6 @@
 {
   "name": "animeflv",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This API will give you access to the content of the animeflv page. And you can enjoy all the chapters with sub in Spanish.",
   "main": "./src/api/api.js",
   "scripts": {
