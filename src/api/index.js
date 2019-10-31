@@ -16,7 +16,8 @@ router.get('/', (req, res) => {
         'Special': '/api/v1/Special/:sortBy/:page',
         'Ova': '/api/v1/Ova/:sortBy/:page',
         'TV': '/api/v1/TV/:sortBy/:page',
-        'AnimeByState': '/api/v1/AnimeByState/:state/:order/:page'
+        'AnimeByState': '/api/v1/AnimeByState/:state/:order/:page',
+        'Search': '/api/v1/Search/:query'
       }
     ]
   });
