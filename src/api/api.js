@@ -1,6 +1,36 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
-const {BASE_URL , BROWSE_URL , ANIME_VIDEO_URL} = require('./urls');
+const {BASE_URL , SEARCH_URL , BROWSE_URL , ANIME_VIDEO_URL} = require('./urls');
+
+
+const search = async(query) =>{
+  const res = await fetch(`${SEARCH_URL}${query}`);
+  const body = await res.text();
+  const $ = cheerio.load(body);
+  const promises = [];
+
+  $('div.Container ul.ListAnimes li article').each((index , element) =>{
+    const $element = $(element);
+    const id = $element.find('div.Description a.Button').attr('href');
+    const title = $element.find('a h3').text();
+    const poster = BASE_URL + $element.find('a div.Image figure img').attr('src')
+    const type = $element.find('div.Description p span.Type').text();
+    const synopsis = $element.find('div.Description p').text().trim();
+    const rating = $element.find('div.Description p span.Vts').text();
+    const debut = $element.find('a span.Estreno').text().toLowerCase();
+    promises.push(animeEpisodesHandler(id).then(extra => ({
+      title: title || null,
+      //id: id || null,
+      poster: poster || null,
+      synopsis: synopsis || null,
+      debut: debut || null,
+      type: type || null,
+      rating: rating || null,
+      episodes: extra || null
+    })))
+  })
+  return Promise.all(promises);
+};
 
 const animeByState = async(state , order , page ) => {
   const res = await fetch(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}`);
@@ -306,6 +336,7 @@ module.exports = {
   getAnimeServers,
   animeByGenres,
   animeByState,
+  search,
   movies,
   special,
   ova,
