@@ -1,4 +1,4 @@
-# **:triangular_flag_on_post: ANIMEFLV** (version 1.0.1)
+# **:triangular_flag_on_post: ANIMEFLV** (version 1.0.2)
 
 ![node version](https://img.shields.io/badge/node->=10.16.x-brightgreen.svg)
 ![npm version](https://img.shields.io/badge/npm->=6.9.x-brightgreen.svg)
@@ -162,6 +162,91 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
    allowfullscreen>
 </iframe>
 
+
+## search([query])
+```javascript
+// 20191030231015
+// http://localhost:5000/api/v1/Search/tokyo%20ghoul
+
+{
+  "search": [
+    {
+      "title": "Tokyo Ghoul: Jack",
+      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/2285.jpg",
+      "synopsis": "OVA 4.5En Tokyo Ghoul: Jack, seguimos un incidente relacionado con un Ghoul devorador de humanos en el Distrito 13 de Tokio. Para descubrir la verdad de lo ocurrido a su amigo, el estudiante de instituto Taishi Fura persigue al Ghoul conocido como Lantern acompañado del joven investigador Kisho Arima. La historia cuenta cómo Arima y Fura se ...",
+      "debut": null,
+      "type": "OVA",
+      "rating": "4.5",
+      "episodes": {
+        "1": {
+          "episode": 1,
+          "id": "37923/tokyo-ghoul-jack-1"
+        },
+        "nextEpisodeDate": null
+      }
+    },
+    {
+      "title": "Tokyo Ghoul",
+      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/1415.jpg",
+      "synopsis": "Anime 4.5Extraños asesinatos se están sucediendo uno tras otro en Tokyo. Debido a las pruebas encontradas en las escenas, la policía concluye que los ataques son obra de ghouls que se comen a las personas. Kaneki y Hide, dos compañeros de clase, llegan a la conclusión de que si nadie ha visto nunca a esos necrófagos...",
+      "debut": null,
+      "type": "Anime",
+      "rating": "4.5",
+      "episodes": {
+        "1": {
+          "episode": 1,
+          "id": "26103/tokyo-ghoul-1"
+        },
+        "2": {
+          "episode": 2,
+          "id": "26188/tokyo-ghoul-2"
+        },
+        "3": {
+          "episode": 3,
+          "id": "26278/tokyo-ghoul-3"
+        },
+        "4": {
+          "episode": 4,
+          "id": "26373/tokyo-ghoul-4"
+        },
+        "5": {
+          "episode": 5,
+          "id": "26431/tokyo-ghoul-5"
+        },
+        "6": {
+          "episode": 6,
+          "id": "26529/tokyo-ghoul-6"
+        },
+        "7": {
+          "episode": 7,
+          "id": "26689/tokyo-ghoul-7"
+        },
+        "8": {
+          "episode": 8,
+          "id": "27092/tokyo-ghoul-8"
+        },
+        "9": {
+          "episode": 9,
+          "id": "27741/tokyo-ghoul-9"
+        },
+        "10": {
+          "episode": 10,
+          "id": "28001/tokyo-ghoul-10"
+        },
+        "11": {
+          "episode": 11,
+          "id": "28459/tokyo-ghoul-11"
+        },
+        "12": {
+          "episode": 12,
+          "id": "28800/tokyo-ghoul-12"
+        },
+        "nextEpisodeDate": null
+      }
+    },
+  ]
+}
+```
 
 ## latestAnimeAdded()
 *It will show N data per page , Total page unknown.*
