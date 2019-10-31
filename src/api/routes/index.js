@@ -117,4 +117,16 @@ router.get('/AnimeByState/:state/:order/:page' , (req , res) =>{
     });
 });
 
+router.get('/Search/:query' , (req , res) =>{
+  let query = req.params.query;
+  api.search(query)
+    .then(search =>{
+      res.status(200).json({
+        search
+      });
+    }).catch((err) =>{
+      console.error(err);
+    });
+});
+
 module.exports = router;
