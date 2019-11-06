@@ -310,11 +310,6 @@ const animeEpisodesHandler = async(id) =>{
   return listByEps;
 };
 
-animeEpisodesHandler('/anime/5664/psychopass-3')
-  .then(doc =>{
-    console.log(doc)
-  })
-
 const getAnimeServers = async(id) =>{
   const res = await fetch(`${ANIME_VIDEO_URL}${id}`);
   const body = await res.text();
