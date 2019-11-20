@@ -2,6 +2,18 @@
 
 ![node version](https://img.shields.io/badge/node->=10.16.x-brightgreen.svg)
 ![npm version](https://img.shields.io/badge/npm->=6.9.x-brightgreen.svg)
+          <a href="https://github.com/ChrisMichaelPerezSantiago/animefly/graphs/commit-activity">
+            <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
+          </a>
+          <a href="https://github.com/ChrisMichaelPerezSantiago/animefly/blob/master/LICENSE">
+            <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
+          </a>
+          <img src="https://img.shields.io/badge/now.sh-deployed-brightgreen.svg" alt="">
+          <img src="https://badgen.net/badge/icon/now?icon=now&label" alt="">
+          <img src="https://img.shields.io/badge/animeflv-API-brightgreen.svg" alt="">
+          <img src="https://img.shields.io/github/stars/ChrisMichaelPerezSantiago/animeflv?style=social" alt="">
+         
+
 
  <a href="https://nodei.co/npm/animeflv/"><img src="https://nodei.co/npm/animeflv.png"></a>
 
