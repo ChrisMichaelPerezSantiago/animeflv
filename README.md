@@ -1,4 +1,4 @@
-# **:triangular_flag_on_post: ANIMEFLV** (version 1.0.2)
+# **:triangular_flag_on_post: ANIMEFLV** (version 1.0.3)
 
 ![node version](https://img.shields.io/badge/node->=10.16.x-brightgreen.svg)
 ![npm version](https://img.shields.io/badge/npm->=6.9.x-brightgreen.svg)
@@ -23,6 +23,10 @@
 ---
 
 ## *Please, do not download version v1.0.0 from npm, I had made the mistake of leaving the parameters in the functions with predefined values.* ️️️️❗️️️
+
+## :tada: Updates in version v1.0.3 :tada:
+- [x] *Indexing Pattern removed from episode property.*
+- [x] *The preview image property has been added for each episode.*
 
 ## :rocket: Custom Animeflv API Link
 [Animeflv API](https://animeflv.chrismichael.now.sh/api/v1/)
@@ -88,13 +92,16 @@ npm test
 *To verify the id of each episode, look at the episodes property:*
 
 ```json
-"episodes": {
-  "1": {
-    "episode": 1,
-    "id": "53099/psychopass-3-1"
+"episodes": [
+  {
+    "nextEpisodeDate": "2019-10-31"
   },
-  "nextEpisodeDate": "2019-10-31"
-}
+  {
+    "episode": 1,
+    "id": "53099/psychopass-3-1",
+    "imagePreview": "https://cdn.animeflv.net/screenshots/3225/1/th_3.jpg"
+  }
+]
 ```
 
 *You just have to pass the id of the episode*
@@ -189,13 +196,16 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
       "debut": null,
       "type": "OVA",
       "rating": "4.5",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "37923/tokyo-ghoul-jack-1"
+      "episodes": [
+        {
+          "nextEpisodeDate": null
         },
-        "nextEpisodeDate": null
-      }
+        {
+          "episode": 1,
+          "id": "37923/tokyo-ghoul-jack-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/2285/1/th_3.jpg"
+        }
+      ]
     },
     {
       "title": "Tokyo Ghoul",
@@ -204,57 +214,71 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
       "debut": null,
       "type": "Anime",
       "rating": "4.5",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "26103/tokyo-ghoul-1"
+      "episodes": [
+        {
+          "nextEpisodeDate": null
         },
-        "2": {
-          "episode": 2,
-          "id": "26188/tokyo-ghoul-2"
-        },
-        "3": {
-          "episode": 3,
-          "id": "26278/tokyo-ghoul-3"
-        },
-        "4": {
-          "episode": 4,
-          "id": "26373/tokyo-ghoul-4"
-        },
-        "5": {
-          "episode": 5,
-          "id": "26431/tokyo-ghoul-5"
-        },
-        "6": {
-          "episode": 6,
-          "id": "26529/tokyo-ghoul-6"
-        },
-        "7": {
-          "episode": 7,
-          "id": "26689/tokyo-ghoul-7"
-        },
-        "8": {
-          "episode": 8,
-          "id": "27092/tokyo-ghoul-8"
-        },
-        "9": {
-          "episode": 9,
-          "id": "27741/tokyo-ghoul-9"
-        },
-        "10": {
-          "episode": 10,
-          "id": "28001/tokyo-ghoul-10"
-        },
-        "11": {
-          "episode": 11,
-          "id": "28459/tokyo-ghoul-11"
-        },
-        "12": {
+        {
           "episode": 12,
-          "id": "28800/tokyo-ghoul-12"
+          "id": "28800/tokyo-ghoul-12",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
         },
-        "nextEpisodeDate": null
-      }
+        {
+          "episode": 11,
+          "id": "28459/tokyo-ghoul-11",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/11/th_3.jpg"
+        },
+        {
+          "episode": 10,
+          "id": "28001/tokyo-ghoul-10",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/10/th_3.jpg"
+        },
+        {
+          "episode": 9,
+          "id": "27741/tokyo-ghoul-9",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/9/th_3.jpg"
+        },
+        {
+          "episode": 8,
+          "id": "27092/tokyo-ghoul-8",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/8/th_3.jpg"
+        },
+        {
+          "episode": 7,
+          "id": "26689/tokyo-ghoul-7",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/7/th_3.jpg"
+        },
+        {
+          "episode": 6,
+          "id": "26529/tokyo-ghoul-6",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/6/th_3.jpg"
+        },
+        {
+          "episode": 5,
+          "id": "26431/tokyo-ghoul-5",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/5/th_3.jpg"
+        },
+        {
+          "episode": 4,
+          "id": "26373/tokyo-ghoul-4",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/4/th_3.jpg"
+        },
+        {
+          "episode": 3,
+          "id": "26278/tokyo-ghoul-3",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/3/th_3.jpg"
+        },
+        {
+          "episode": 2,
+          "id": "26188/tokyo-ghoul-2",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/2/th_3.jpg"
+        },
+        {
+          "episode": 1,
+          "id": "26103/tokyo-ghoul-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
@@ -270,42 +294,40 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 {
   "animes": [
     {
-      "title": "Psycho-Pass 3",
-      "poster": "https://animeflv.net/uploads/animes/covers/3225.jpg",
-      "synopsis": "Anime 4.8En un futuro próximo, es posible medir de forma instantánea el estado mental de una persona, la personalidad y la probabilidad de que dicha persona vaya a cometer delitos gracias a un escáner psico-somático que realiza un escaneo de las funciones del cerebro y demás funciones biológicas y quí...",
-      "debut": "estreno",
-      "type": "Anime",
+      "title": "Seishun Buta Yarou wa Yumemiru Shoujo no Yume wo Minai",
+      "poster": "https://animeflv.net/uploads/animes/covers/3230.jpg",
+      "synopsis": "Película 4.8En Fujisawa, donde los cielos son brillantes y los mares brillan, Sakuta Azusagawa está en su segundo año de secundaria. Sus días felices con su novia y estudiante de último año, Mai Sakurajima, se ven interrumpidos con la aparición de su primer enamoramiento, Shouko Makinohara. Por razones de...",
+      "debut": null,
+      "type": "Película",
       "rating": "4.8",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "53099/psychopass-3-1"
+      "episodes": [
+        {
+          "nextEpisodeDate": null
         },
-        "nextEpisodeDate": "2019-10-31"
-      }
+        {
+          "episode": 1,
+          "id": "53296/seishun-buta-yarou-wa-yumemiru-shoujo-no-yume-wo-minai-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3230/1/th_3.jpg"
+        }
+      ]
     },
     {
-      "title": "Chihayafuru 3",
-      "poster": "https://animeflv.net/uploads/animes/covers/3224.jpg",
-      "synopsis": "Anime 4.4Tercera temporada.",
+      "title": "Pokemon (2019)",
+      "poster": "https://animeflv.net/uploads/animes/covers/3229.jpg",
+      "synopsis": "Anime 4.5Nueva temporada de Pokémon, titulada como la serie original de 1997.",
       "debut": "estreno",
       "type": "Anime",
-      "rating": "4.4",
-      "episodes": {
-        "1": {
+      "rating": "4.5",
+      "episodes": [
+        {
+          "nextEpisodeDate": "2019-11-24"
+        },
+        {
           "episode": 1,
-          "id": "53082/chihayafuru-3-1"
-        },
-        "2": {
-          "episode": 2,
-          "id": "53135/chihayafuru-3-2"
-        },
-        "3": {
-          "episode": 3,
-          "id": "53136/chihayafuru-3-3"
-        },
-        "nextEpisodeDate": "2019-11-05"
-      }
+          "id": "53283/pokemon-2019-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3229/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
@@ -429,47 +451,53 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 
 {
   "animes": [
-    {
-      "title": "Psycho-Pass 3",
-      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3225.jpg",
-      "synopsis": "Anime 0.0En un futuro próximo, es posible medir de forma instantánea el estado mental de una persona, la personalidad y la probabilidad de que dicha persona vaya a cometer delitos gracias a un escáner psico-somático que realiza un escaneo de las funciones del cerebro y demás funciones biológicas y químicas del cuerpo, determinando el Psycho-Pass, un ...",
+  {
+      "title": "Azur Lane",
+      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3192.jpg",
+      "synopsis": "Anime 4.2Enemigos llamados Siren aparecieron repentinamente del mar. Para luchar contra ellos, se formó un grupo del ejército, Azur Lane. Tuvieron éxito en repeler el ataque de los Siren utilizando buques de guerra, demostrando los diferentes ideales de las personas que lo formaron. La historia trata sobre las chicas que luchan contra fuertes enemigos mi...",
       "debut": null,
       "type": "Anime",
-      "rating": "0.0",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "53099/psychopass-3-1"
+      "rating": "4.2",
+      "episodes": [
+        {
+          "nextEpisodeDate": "2019-11-28"
         },
-        "nextEpisodeDate": "2019-10-31"
-      }
-    },
-    {
-      "title": "Ginga Eiyuu Densetsu: Die Neue These - Seiran 1",
-      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3223.jpg",
-      "synopsis": "Película 0.0El estancamiento de 150 años entre las dos superpotencias interestelares, el Imperio Galáctico y la Alianza de Planetas Libres, llega a su fin cuando surge una nueva generación de líderes: el genio militar idealista Reinhard von Lohengramm, y el reservado historiador de la APL, Yang Wenli.\nMientras Reinhard sube a las filas del Imperio con l...",
-      "debut": null,
-      "type": "Película",
-      "rating": "0.0",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "53046/ginga-eiyuu-densetsu-die-neue-these-seiran-1-1"
+        {
+          "episode": 7,
+          "id": "53310/azur-lane-7",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3192/7/th_3.jpg"
         },
-        "2": {
-          "episode": 2,
-          "id": "53047/ginga-eiyuu-densetsu-die-neue-these-seiran-1-2"
+        {
+          "episode": 6,
+          "id": "53202/azur-lane-6",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3192/6/th_3.jpg"
         },
-        "3": {
-          "episode": 3,
-          "id": "53048/ginga-eiyuu-densetsu-die-neue-these-seiran-1-3"
+        {
+          "episode": 5,
+          "id": "53151/azur-lane-5",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3192/5/th_3.jpg"
         },
-        "4": {
+        {
           "episode": 4,
-          "id": "53049/ginga-eiyuu-densetsu-die-neue-these-seiran-1-4"
+          "id": "53096/azur-lane-4",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3192/4/th_3.jpg"
         },
-        "nextEpisodeDate": null
-      }
+        {
+          "episode": 3,
+          "id": "53043/azur-lane-3",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3192/3/th_3.jpg"
+        },
+        {
+          "episode": 2,
+          "id": "52992/azur-lane-2",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3192/2/th_3.jpg"
+        },
+        {
+          "episode": 1,
+          "id": "52945/azur-lane-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3192/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
@@ -509,13 +537,34 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
       "debut": null,
       "type": "Película",
       "rating": "4.9",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "52790/youjo-senki-movie-1"
+      "episodes": [
+        {
+          "nextEpisodeDate": null
         },
-        "nextEpisodeDate": null
-      }
+        {
+          "episode": 1,
+          "id": "52790/youjo-senki-movie-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3182/1/th_3.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Kimi no Suizou wo Tabetai",
+      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3063.jpg",
+      "synopsis": "Película 4.8Un protagonista anónimo encuentra un día un diario en un hospital que pertenece a su compañera de clase Sakura Yamauchi. En él descubre que la chica padece una enfermedad terminal en el páncreas y que le quedan pocos meses de vida. Sakura explica que el protagonista es la única persona ajena a su familia que conoce su condición y este le pro...",
+      "debut": null,
+      "type": "Película",
+      "rating": "4.8",
+      "episodes": [
+        {
+          "nextEpisodeDate": null
+        },
+        {
+          "episode": 1,
+          "id": "50979/kimi-no-suizou-wo-tabetai-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3063/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
@@ -548,32 +597,58 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 
 {
   "ova": [
-    {
+     {
       "title": "Gundam Build Divers Re:Rise",
       "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3212.jpg",
       "synopsis": "OVA 0.0Segunda temporada de Gundam Build Divers",
       "debut": null,
       "type": "OVA",
       "rating": "0.0",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "52989/gundam-build-divers-rerise-1"
+      "episodes": [
+        {
+          "nextEpisodeDate": "2019-11-28"
         },
-        "2": {
-          "episode": 2,
-          "id": "52990/gundam-build-divers-rerise-2"
+        {
+          "episode": 8,
+          "id": "53307/gundam-build-divers-rerise-8",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3212/8/th_3.jpg"
         },
-        "3": {
-          "episode": 3,
-          "id": "53040/gundam-build-divers-rerise-3"
+        {
+          "episode": 7,
+          "id": "53252/gundam-build-divers-rerise-7",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3212/7/th_3.jpg"
         },
-        "4": {
+        {
+          "episode": 6,
+          "id": "53199/gundam-build-divers-rerise-6",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3212/6/th_3.jpg"
+        },
+        {
+          "episode": 5,
+          "id": "53148/gundam-build-divers-rerise-5",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3212/5/th_3.jpg"
+        },
+        {
           "episode": 4,
-          "id": "53093/gundam-build-divers-rerise-4"
+          "id": "53093/gundam-build-divers-rerise-4",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3212/4/th_3.jpg"
         },
-        "nextEpisodeDate": "2019-10-31"
-      }
+        {
+          "episode": 3,
+          "id": "53040/gundam-build-divers-rerise-3",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3212/3/th_3.jpg"
+        },
+        {
+          "episode": 2,
+          "id": "52990/gundam-build-divers-rerise-2",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3212/2/th_3.jpg"
+        },
+        {
+          "episode": 1,
+          "id": "52989/gundam-build-divers-rerise-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3212/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
@@ -606,20 +681,23 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 
 {
   "special": [
-    {
-      "title": "Fate/Grand Order: Zettai Majuu Sensen Babylonia - Initium Iter",
-      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3181.jpg",
-      "synopsis": "Especial 4.6Año 2017. La última era en la que existió la magia. Los humanos crearon la sociedad, pero los Magos fueron quienes consiguieron alcanzar la verdad del mundo. La magia se compone de técnicas del pasado que la ciencia no puede explicar, mientras que la ciencia se compone de técnicas del futuro que la magia no puede alcanzar. Estudiosos e investi...",
+     {
+      "title": "Granblue Fantasy The Animation Especial",
+      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3227.jpg",
+      "synopsis": "Especial 0.0Especial de la serie",
       "debut": null,
       "type": "Especial",
-      "rating": "4.6",
-      "episodes": {
-        "0": {
-          "episode": 0,
-          "id": "52745/fategrand-order-zettai-majuu-sensen-babylonia-initium-iter-0"
+      "rating": "0.0",
+      "episodes": [
+        {
+          "nextEpisodeDate": null
         },
-        "nextEpisodeDate": null
-      }
+        {
+          "episode": 1,
+          "id": "53213/granblue-fantasy-the-animation-especial-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3227/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
@@ -654,19 +732,22 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 {
   "tv": [
     {
-      "title": "Psycho-Pass 3",
-      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3225.jpg",
-      "synopsis": "Anime 0.0En un futuro próximo, es posible medir de forma instantánea el estado mental de una persona, la personalidad y la probabilidad de que dicha persona vaya a cometer delitos gracias a un escáner psico-somático que realiza un escaneo de las funciones del cerebro y demás funciones biológicas y químicas del cuerpo, determinando el Psycho-Pass, un ...",
+      "title": "Pokemon (2019)",
+      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3229.jpg",
+      "synopsis": "Anime 0.0Nueva temporada de Pokémon, titulada como la serie original de 1997.",
       "debut": null,
       "type": "Anime",
       "rating": "0.0",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "53099/psychopass-3-1"
+      "episodes": [
+        {
+          "nextEpisodeDate": "2019-11-24"
         },
-        "nextEpisodeDate": "2019-10-31"
-      }
+        {
+          "episode": 1,
+          "id": "53283/pokemon-2019-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3229/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
@@ -709,20 +790,23 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 
 {
   "animes": [
-    {
-      "title": "Psycho-Pass 3",
-      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3225.jpg",
-      "synopsis": "Anime 0.0En un futuro próximo, es posible medir de forma instantánea el estado mental de una persona, la personalidad y la probabilidad de que dicha persona vaya a cometer delitos gracias a un escáner psico-somático que realiza un escaneo de las funciones del cerebro y demás funciones biológicas y químicas del cuerpo, determinando el Psycho-Pass, un ...",
+     {
+      "title": "Pokemon (2019)",
+      "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3229.jpg",
+      "synopsis": "Anime 0.0Nueva temporada de Pokémon, titulada como la serie original de 1997.",
       "debut": null,
       "type": "Anime",
       "rating": "0.0",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "53099/psychopass-3-1"
+      "episodes": [
+        {
+          "nextEpisodeDate": "2019-11-24"
         },
-        "nextEpisodeDate": "2019-10-31"
-      }
+        {
+          "episode": 1,
+          "id": "53283/pokemon-2019-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3229/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
@@ -736,64 +820,78 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 
 {
   "animes": [
-    {
+     {
       "title": "Try Knights",
       "poster": "https://animeflv.nethttps://animeflv.net/uploads/animes/covers/3180.jpg",
       "synopsis": "Anime 2.9Akira, el nuevo miembro del club de rugby, recibe el consejo de que no se acerque mucho a Riku, quien es un fanático del rugby pero lo abandonó porque no tenía el físico necesario para practirarlo. A pesar de ello, Akira se interesa por Riku y la pasión por el rugby de este regresa gradualmente. Al unir fuerzas, la pareja consigue practicar un...",
       "debut": null,
       "type": "Anime",
       "rating": "2.9",
-      "episodes": {
-        "1": {
-          "episode": 1,
-          "id": "52498/try-knights-1"
+      "episodes": [
+        {
+          "nextEpisodeDate": null
         },
-        "2": {
-          "episode": 2,
-          "id": "52546/try-knights-2"
-        },
-        "3": {
-          "episode": 3,
-          "id": "52591/try-knights-3"
-        },
-        "4": {
-          "episode": 4,
-          "id": "52637/try-knights-4"
-        },
-        "5": {
-          "episode": 5,
-          "id": "52687/try-knights-5"
-        },
-        "6": {
-          "episode": 6,
-          "id": "52734/try-knights-6"
-        },
-        "7": {
-          "episode": 7,
-          "id": "52780/try-knights-7"
-        },
-        "8": {
-          "episode": 8,
-          "id": "52826/try-knights-8"
-        },
-        "9": {
-          "episode": 9,
-          "id": "52902/try-knights-9"
-        },
-        "10": {
-          "episode": 10,
-          "id": "52929/try-knights-10"
-        },
-        "11": {
-          "episode": 11,
-          "id": "52977/try-knights-11"
-        },
-        "12": {
+        {
           "episode": 12,
-          "id": "53030/try-knights-12"
+          "id": "53030/try-knights-12",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/12/th_3.jpg"
         },
-        "nextEpisodeDate": null
-      }
+        {
+          "episode": 11,
+          "id": "52977/try-knights-11",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/11/th_3.jpg"
+        },
+        {
+          "episode": 10,
+          "id": "52929/try-knights-10",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/10/th_3.jpg"
+        },
+        {
+          "episode": 9,
+          "id": "52902/try-knights-9",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/9/th_3.jpg"
+        },
+        {
+          "episode": 8,
+          "id": "52826/try-knights-8",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/8/th_3.jpg"
+        },
+        {
+          "episode": 7,
+          "id": "52780/try-knights-7",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/7/th_3.jpg"
+        },
+        {
+          "episode": 6,
+          "id": "52734/try-knights-6",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/6/th_3.jpg"
+        },
+        {
+          "episode": 5,
+          "id": "52687/try-knights-5",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/5/th_3.jpg"
+        },
+        {
+          "episode": 4,
+          "id": "52637/try-knights-4",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/4/th_3.jpg"
+        },
+        {
+          "episode": 3,
+          "id": "52591/try-knights-3",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/3/th_3.jpg"
+        },
+        {
+          "episode": 2,
+          "id": "52546/try-knights-2",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/2/th_3.jpg"
+        },
+        {
+          "episode": 1,
+          "id": "52498/try-knights-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/3180/1/th_3.jpg"
+        }
+      ]
     },
   ]
 }
