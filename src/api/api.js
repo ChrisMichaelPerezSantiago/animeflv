@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
-const {BASE_URL , SEARCH_URL , BROWSE_URL , ANIME_VIDEO_URL} = require('./urls');
+const {BASE_URL , SEARCH_URL , BROWSE_URL , ANIME_VIDEO_URL , BASE_EPISODE_IMG_URL} = require('./urls');
 
 
 const search = async(query) =>{
@@ -280,6 +280,7 @@ const animeEpisodesHandler = async(id) =>{
         anime_eps_data.push(eps_data);
       }
     });
+    const AnimeThumbnailsId = anime_info_ids[0][0];
     const animeId = anime_info_ids[0][2];
     let nextEpisodeDate = anime_info_ids[0][3] || null
     const amimeTempList = [];
@@ -293,10 +294,12 @@ const animeEpisodesHandler = async(id) =>{
       let data = amimeTempList.map(x => x[k]);
       let episode = data[0];
       let id = data[1];
+      let imagePreview = `${BASE_EPISODE_IMG_URL}${AnimeThumbnailsId}/${episode}/th_3.jpg`
       let link = `${id}/${animeId}-${episode}`
       animeListEps.push({
         episode: episode,
-        id: link
+        id: link,
+        imagePreview
       })
     })
     //listByEps = animeListEps.reduce((id , episodes) =>{
