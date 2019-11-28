@@ -26,7 +26,8 @@ const search = async(query) =>{
       debut: debut || null,
       type: type || null,
       rating: rating || null,
-      episodes: extra || null
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
     })))
   })
   return Promise.all(promises);
@@ -55,7 +56,8 @@ const animeByState = async(state , order , page ) => {
       debut: debut || null,
       type: type || null,
       rating: rating || null,
-      episodes: extra || null
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
     })))
   })
   return Promise.all(promises);
@@ -84,7 +86,8 @@ const tv = async(order , page) => {
       debut: debut || null,
       type: type || null,
       rating: rating || null,
-      episodes: extra || null
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
     })))
   })
   return Promise.all(promises);
@@ -113,7 +116,8 @@ const ova = async(order , page ) => {
       debut: debut || null,
       type: type || null,
       rating: rating || null,
-      episodes: extra || null
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
     })))
   })
   return Promise.all(promises);
@@ -142,7 +146,8 @@ const special = async(order , page) => {
       debut: debut || null,
       type: type || null,
       rating: rating || null,
-      episodes: extra || null
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
     })))
   })
   return Promise.all(promises);
@@ -171,7 +176,8 @@ const movies = async(order , page) => {
       debut: debut || null,
       type: type || null,
       rating: rating || null,
-      episodes: extra || null
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
     })))
   })
   return Promise.all(promises);
@@ -200,7 +206,8 @@ const animeByGenres = async(genre , order , page) => {
       debut: debut || null,
       type: type || null,
       rating: rating || null,
-      episodes: extra || null
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
     })))
   })
   return Promise.all(promises);
@@ -250,7 +257,8 @@ const latestAnimeAdded = async() =>{
       debut: debut || null,
       type: type || null,
       rating: rating || null,
-      episodes: extra || null
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
     })))
   })
   return await Promise.all(promises);
@@ -263,7 +271,14 @@ const animeEpisodesHandler = async(id) =>{
   const scripts = $('script');
   const anime_info_ids = [];
   const anime_eps_data = [];
+  const genres = [];
   let listByEps;
+  
+  $('main.Main section.WdgtCn nav.Nvgnrs a').each((index , element) =>{
+    const $element = $(element);
+    const genre = $element.attr('href').split('=')[1] || null;
+    genres.push(genre);
+  });
 
   try{
     Array.from({length: scripts.length} , (v , k) =>{
@@ -310,7 +325,7 @@ const animeEpisodesHandler = async(id) =>{
   }catch(err){
     console.error(err)
   }
-  return listByEps;
+  return {listByEps , genres};
 };
 
 const getAnimeServers = async(id) =>{
