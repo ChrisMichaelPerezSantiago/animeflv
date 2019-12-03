@@ -13,7 +13,7 @@ const search = async(query) =>{
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = BASE_URL + $element.find('a div.Image figure img').attr('src')
+    const poster = $element.find('a div.Image figure img').attr('src')
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
