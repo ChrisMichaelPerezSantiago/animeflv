@@ -18,7 +18,7 @@
  <a href="https://nodei.co/npm/animeflv/"><img src="https://nodei.co/npm/animeflv.png"></a>
 
 
-> This API will give you access to the content of the animeflv page. And you can enjoy all the chapters with sub in Spanish.
+> Animeflv is a custom API that has the entire catalog of the animeflv.net website. You can enjoy all the content with subtitles in Spanish and the latest in the world of anime for free.
 
 ---
 
