@@ -1,11 +1,11 @@
 const cheerio = require('cheerio');
-const fetch = require('node-fetch');
+const cloudscraper = require('cloudscraper');
 const {BASE_URL , SEARCH_URL , BROWSE_URL , ANIME_VIDEO_URL , BASE_EPISODE_IMG_URL} = require('./urls');
 
 
 const search = async(query) =>{
-  const res = await fetch(`${SEARCH_URL}${query}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${SEARCH_URL}${query}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
 
@@ -13,7 +13,7 @@ const search = async(query) =>{
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = $element.find('a div.Image figure img').attr('src')
+    const poster = $element.find('a div.Image figure img').attr('src');
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -34,8 +34,8 @@ const search = async(query) =>{
 };
 
 const animeByState = async(state , order , page ) => {
-  const res = await fetch(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
 
@@ -64,8 +64,8 @@ const animeByState = async(state , order , page ) => {
 };
 
 const tv = async(order , page) => {
-  const res = await fetch(`${BROWSE_URL}type%5B%5D=tv&order=${order}&page=${page}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=tv&order=${order}&page=${page}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
 
@@ -94,8 +94,8 @@ const tv = async(order , page) => {
 };
 
 const ova = async(order , page ) => {
-  const res = await fetch(`${BROWSE_URL}type%5B%5D=ova&order=${order}&page=${page}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=ova&order=${order}&page=${page}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
 
@@ -124,8 +124,8 @@ const ova = async(order , page ) => {
 };
 
 const special = async(order , page) => {
-  const res = await fetch(`${BROWSE_URL}type%5B%5D=special&order=${order}&page=${page}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=special&order=${order}&page=${page}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
 
@@ -154,8 +154,8 @@ const special = async(order , page) => {
 };
 
 const movies = async(order , page) => {
-  const res = await fetch(`${BROWSE_URL}type%5B%5D=movie&order=${order}&page=${page}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=movie&order=${order}&page=${page}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
 
@@ -184,8 +184,8 @@ const movies = async(order , page) => {
 };
 
 const animeByGenres = async(genre , order , page) => {
-  const res = await fetch(`${BROWSE_URL}genre%5B%5D=${genre}&order=${order}&page=${page}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BROWSE_URL}genre%5B%5D=${genre}&order=${order}&page=${page}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
 
@@ -214,8 +214,8 @@ const animeByGenres = async(genre , order , page) => {
 };
 
 const latestEpisodesAdded = async() =>{
-  const res = await fetch(`${BASE_URL}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BASE_URL}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
   $('div.Container ul.ListEpisodios li').each((index , element) =>{
@@ -236,8 +236,8 @@ const latestEpisodesAdded = async() =>{
 };
 
 const latestAnimeAdded = async() =>{
-  const res = await fetch(`${BASE_URL}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BASE_URL}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
@@ -265,8 +265,8 @@ const latestAnimeAdded = async() =>{
 };
 
 const animeEpisodesHandler = async(id) =>{
-  const res = await fetch(`${BASE_URL}${id}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${BASE_URL}${id}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const scripts = $('script');
   const anime_info_ids = [];
@@ -329,8 +329,8 @@ const animeEpisodesHandler = async(id) =>{
 };
 
 const getAnimeServers = async(id) =>{
-  const res = await fetch(`${ANIME_VIDEO_URL}${id}`);
-  const body = await res.text();
+  const res = await cloudscraper.get(`${ANIME_VIDEO_URL}${id}`);
+  const body = await res;
   const $ = cheerio.load(body);
   const scripts = $('script');
   const servers = [];
