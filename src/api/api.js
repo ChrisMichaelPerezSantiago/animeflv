@@ -35,11 +35,6 @@ const search = async(query) =>{
   return Promise.all(promises);
 };
 
-search('pokemon')
-  .then(d =>{
-    console.log(d)
-  })
-
 const animeByState = async(state , order , page ) => {
   const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}`);
   const body = await res;
