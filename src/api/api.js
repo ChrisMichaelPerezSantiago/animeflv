@@ -13,7 +13,9 @@ const search = async(query) =>{
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = $element.find('a div.Image figure img').attr('src');
+    let poster = $element.find('a div.Image figure img').attr('src') ||
+                 $element.find('a div.Image figure img').attr('data-cfsrc');
+    
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -32,6 +34,11 @@ const search = async(query) =>{
   })
   return Promise.all(promises);
 };
+
+search('pokemon')
+  .then(d =>{
+    console.log(d)
+  })
 
 const animeByState = async(state , order , page ) => {
   const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}`);
