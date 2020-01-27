@@ -961,6 +961,24 @@ Feel free to open issues or submit pull-requests to help me improving my work.
 
 ---
 
+### **📚 Projects that use the API**
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://aruppi.github.io/">
+        <img src="https://avatars2.githubusercontent.com/u/38753425?s=200&v=4" width="75px;" alt="Jeluchu"/><br />
+          <sub>
+            <b>Aruppi</b>
+          </sub>
+      </a><br/>
+        <sub>Anime y Manga</sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+
 ### **:robot: Author**
 
 _*Chris Michael*_
