@@ -135,7 +135,6 @@ router.get('/AnimeCharacters/:title([^/]+/[^/]+[^/]+/[^/]+)' , (req , res) =>{
     .then(characters =>{
       res.status(200).json({
         characters,
-        title
       });
     }).catch((err) =>{
       console.error(err);
