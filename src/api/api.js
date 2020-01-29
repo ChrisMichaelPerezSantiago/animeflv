@@ -7,6 +7,29 @@ const {
 } = require('./urls');
 
 
+const getAnimeVideoPromo = async(title) =>{
+  const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
+  const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
+  const malId = matchAnime[0].mal_id;
+
+  if(typeof matchAnime[0].mal_id === 'undefined') return null;
+
+  const jikanCharactersURL = `https://api.jikan.moe/v3/anime/${malId}/videos`;
+  const data = await cloudscraper.get(jikanCharactersURL);
+  const body = JSON.parse(data).promo;
+  const promises = [];
+  
+  body.map(doc =>{
+    promises.push({
+      title: doc.title,
+      previewImage: doc.image_url,
+      videoURL: doc.video_url
+    });
+  });
+
+  return Promise.all(promises);
+};
+
 const getAnimeCharacters = async(title) =>{
   const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
   const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
@@ -405,6 +428,7 @@ const getAnimeServers = async(id) =>{
 module.exports = {
   latestAnimeAdded,
   latestEpisodesAdded,
+  getAnimeVideoPromo,
   getAnimeCharacters,
   getAnimeServers,
   animeByGenres,
