@@ -930,6 +930,56 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 }
 ```
 
+## getAnimeCharacters([title])
+**This function is not yet stable, it may present an error in trying to return some characters. For now it is functional, but not quite stable.❗❗**
+
+*To obtain the photo of the characters of each anime, the `title` property must be passed as a parameter.*
+
+
+
+```json
+// 20200129171904
+// http://localhost:5000/api/v1/AnimeCharacters/Tokyo%20Ghoul
+
+{
+  "characters": [
+    {
+      "character": {
+        "id": 87275,
+        "name": "Kaneki, Ken",
+        "image": "https://cdn.myanimelist.net/images/characters/9/251339.jpg?s=788e4d76ff697c9ee67b65b68b6e8157",
+        "role": "Main"
+      }
+    },
+    {
+      "character": {
+        "id": 87277,
+        "name": "Kirishima, Touka",
+        "image": "https://cdn.myanimelist.net/images/characters/16/234699.jpg?s=10ef474344779135236911013b0925fc",
+        "role": "Main"
+      }
+    },
+    {
+      "character": {
+        "id": 113779,
+        "name": "Abe, Maiko",
+        "image": "https://cdn.myanimelist.net/images/characters/16/259779.jpg?s=67ed4d2dfb07359d050eb3a0ec91ca8d",
+        "role": "Supporting"
+      }
+    },
+    {
+      "character": {
+        "id": 99671,
+        "name": "Amon, Koutarou",
+        "image": "https://cdn.myanimelist.net/images/characters/13/251453.jpg?s=cf7bdc7cb409357d69720b0aee488ff6",
+        "role": "Supporting"
+      }
+    },
+    // .......
+  ]
+}
+```
+
 ## **:handshake: Contributing**
 
 - Fork it!
