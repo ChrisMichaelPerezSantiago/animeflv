@@ -980,6 +980,31 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 }
 ```
 
+## getAnimeVideoPromo([title])
+**This function is not yet stable, it may present an error in trying to return some trailers. For now it is functional, but not quite stable.❗❗**
+
+*To get the list of trailers for each anime, you must use the `title` property and pass it to the function as a parameter.*
+
+```json
+// 20200129191334
+// http://localhost:5000/api/v1/AnimeTrailers/Tokyo%20Ghoul
+
+{
+  "trailers": [
+    {
+      "title": "PV Madman ver.",
+      "previewImage": "https://i.ytimg.com/vi/vGuQeQsoRgU/mqdefault.jpg",
+      "videoURL": "https://www.youtube.com/embed/vGuQeQsoRgU?enablejsapi=1&wmode=opaque&autoplay=1"
+    },
+    {
+      "title": "PV AnimeLab ver.",
+      "previewImage": "https://i.ytimg.com/vi/ETHpMMV8rJU/mqdefault.jpg",
+      "videoURL": "https://www.youtube.com/embed/ETHpMMV8rJU?enablejsapi=1&wmode=opaque&autoplay=1"
+    }
+  ]
+}
+```
+
 ## **:handshake: Contributing**
 
 - Fork it!
