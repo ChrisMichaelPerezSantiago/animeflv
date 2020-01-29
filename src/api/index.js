@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
         'TV': '/api/v1/TV/:sortBy/:page',
         'AnimeByState': '/api/v1/AnimeByState/:state/:order/:page',
         'Search': '/api/v1/Search/:query',
-        'AnimeCharacters': '/api/v1/AnimeCharacters/:title'
+        'AnimeCharacters': '/api/v1/AnimeCharacters/:title',
+        'AnimeTrailers': '/api/v1/AnimeTrailers/:title'
       }
     ]
   });
