@@ -129,7 +129,7 @@ router.get('/Search/:query' , (req , res) =>{
     });
 });
 
-router.get('/AnimeCharacters/:title([^/]+/[^/]+[^/]+/[^/]+)' , (req , res) =>{
+router.get('/AnimeCharacters/:title' , (req , res) =>{
   let title = req.params.title.toString();
   api.getAnimeCharacters(title)
     .then(characters =>{
