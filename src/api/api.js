@@ -1,7 +1,56 @@
 const cheerio = require('cheerio');
 const cloudscraper = require('cloudscraper');
-const {BASE_URL , SEARCH_URL , BROWSE_URL , ANIME_VIDEO_URL , BASE_EPISODE_IMG_URL} = require('./urls');
+const {
+  BASE_URL         , SEARCH_URL             , BROWSE_URL , 
+  ANIME_VIDEO_URL  , BASE_EPISODE_IMG_URL   , 
+  BASE_JIKA_URL    , BASE_MYANIME_LIST_URL
+} = require('./urls');
 
+
+const getAnimeCharacters = async(title) =>{
+  const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
+  const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
+  const malId = matchAnime[0].mal_id;
+
+  if(typeof matchAnime[0].mal_id === 'undefined') return null;
+
+  const jikanCharactersURL = `https://api.jikan.moe/v3/anime/${malId}/characters_staff`;
+  const data = await cloudscraper.get(jikanCharactersURL);
+  let body = JSON.parse(data).characters;
+
+  if(typeof body === 'undefined') return null;
+
+  const charactersId = body.map(doc =>{
+    return doc.mal_id
+  })
+  const charactersNames = body.map(doc => {
+    return doc.name;
+  });
+  const charactersImages = body.map(doc =>{
+    return doc.image_url
+  });
+  const charactersRoles = body.map(doc =>{
+    return doc.role
+  });
+
+  let characters = [];
+  Array.from({length: charactersNames.length} , (v , k) =>{
+    const id = charactersId[k];
+    let name = charactersNames[k];
+    let characterImg = charactersImages[k];
+    let role = charactersRoles[k];
+    characters.push({
+      character:{
+        id: id,
+        name: name,
+        image: characterImg,
+        role: role
+      }
+    });
+  });
+  
+  return Promise.all(characters);
+};
 
 const search = async(query) =>{
   const res = await cloudscraper.get(`${SEARCH_URL}${query}`);
@@ -9,7 +58,7 @@ const search = async(query) =>{
   const $ = cheerio.load(body);
   const promises = [];
 
-  $('div.Container ul.ListAnimes li article').each((index , element) =>{
+  $('div.Container ul.ListAnimes li article').each(async(index , element) =>{
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
@@ -29,11 +78,13 @@ const search = async(query) =>{
       type: type || null,
       rating: rating || null,
       genres: extra.genres || null,
-      episodes: extra.listByEps || null
+      episodes: extra.listByEps || null,
+      characters: characters || null
     })))
   })
   return Promise.all(promises);
 };
+
 
 const animeByState = async(state , order , page ) => {
   const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}`);
@@ -354,6 +405,7 @@ const getAnimeServers = async(id) =>{
 module.exports = {
   latestAnimeAdded,
   latestEpisodesAdded,
+  getAnimeCharacters,
   getAnimeServers,
   animeByGenres,
   animeByState,
@@ -361,5 +413,5 @@ module.exports = {
   movies,
   special,
   ova,
-  tv
+  tv,
 };
