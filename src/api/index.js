@@ -6,6 +6,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.json({
     message: 'animeflv API - 👋🌎🌍🌏',
+    author: 'Chris Michael',
     entries: [
       {
         'LatestAnimeAdded': '/api/v1/LatestAnimeAdded',
@@ -17,7 +18,8 @@ router.get('/', (req, res) => {
         'Ova': '/api/v1/Ova/:sortBy/:page',
         'TV': '/api/v1/TV/:sortBy/:page',
         'AnimeByState': '/api/v1/AnimeByState/:state/:order/:page',
-        'Search': '/api/v1/Search/:query'
+        'Search': '/api/v1/Search/:query',
+        'AnimeCharacters': '/api/v1/AnimeCharacters/:title'
       }
     ]
   });
