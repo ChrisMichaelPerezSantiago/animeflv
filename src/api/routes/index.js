@@ -141,4 +141,16 @@ router.get('/AnimeCharacters/:title' , (req , res) =>{
     });
 });
 
+router.get('/AnimeTrailers/:title' , (req , res) =>{
+  let title = req.params.title.toString();
+  api.getAnimeVideoPromo(title)
+    .then(trailers =>{
+      res.status(200).json({
+        trailers,
+      });
+    }).catch((err) =>{
+      console.error(err);
+    });
+});
+
 module.exports = router;
