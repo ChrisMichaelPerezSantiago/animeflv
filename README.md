@@ -11,7 +11,9 @@
           <img src="https://img.shields.io/badge/now.sh-deployed-brightgreen.svg" alt="">
           <img src="https://badgen.net/badge/icon/now?icon=now&label" alt="">
           <img src="https://img.shields.io/badge/animeflv-API-brightgreen.svg" alt="">
+          [![Build Status](https://travis-ci.com/ChrisMichaelPerezSantiago/animeflv.svg?branch=master)](https://travis-ci.com/ChrisMichaelPerezSantiago/animeflv)
           <img src="https://img.shields.io/github/stars/ChrisMichaelPerezSantiago/animeflv?style=social" alt="">
+          
          
 
 
