@@ -4,8 +4,6 @@ node_js:
 cache:
   directories:
     - node_modules
-install:
-  - travis_wait mvn install
 before_script:
   - npm install
 script: npm test
