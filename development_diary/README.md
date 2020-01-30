@@ -5,3 +5,6 @@
 
 ## ‎‍💻 *Technologies*
 > *[List of tools](./files/technologies.md)*
+
+## ⚙️ *External Sources*
+> *[List of external sources](./files/sources.md)*
