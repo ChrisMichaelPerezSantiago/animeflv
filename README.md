@@ -31,20 +31,11 @@
 ## :rocket: Custom Animeflv API Link
 [Animeflv API](https://animeflv.chrismichael.now.sh/api/v1/)
 
-## **:package: Main tools used**
 
-- [x] axios
-- [x] body-parser
-- [x] cheerio
-- [x] compose-middleware
-- [x] cors
-- [x] dotenv
-- [x] express
-- [x] helmet
-- [x] morgan
-- [x] node-fetch
+## 📚 **Development Diary**
+Describe the purpose of the project and give clues about what the code does. 
+For more information go to the following link [Diary Reference](./development_diary/README.md).
 
----
 
 ## **:wrench: Developer usage**
 
@@ -935,6 +926,14 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 
 *To obtain the photo of the characters of each anime, the `title` property must be passed as a parameter.*
 
+*If you use any API entry point you will see that the title property* 
+```JSON
+"title": "Tokyo Ghoul"
+``` 
+*for each anime will be available, you should take the value of the title and pass it to the next url.*
+  
+
+`https://animeflv.chrismichael.now.sh/api/v1/AnimeCharacters/${title}`
 
 
 ```json
@@ -984,6 +983,17 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 **This function is not yet stable, it may present an error in trying to return some trailers. For now it is functional, but not quite stable.❗❗**
 
 *To get the list of trailers for each anime, you must use the `title` property and pass it to the function as a parameter.*
+
+*If you use any API entry point you will see that the title property* 
+```JSON
+"title": "Tokyo Ghoul"
+``` 
+*for each anime will be available, you should take the value of the title and pass it to the next url.*
+  
+
+`https://animeflv.chrismichael.now.sh/api/v1/AnimeTrailers/${title}`
+
+
 
 ```json
 // 20200129191334
