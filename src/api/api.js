@@ -81,7 +81,7 @@ const search = async(query) =>{
   const $ = cheerio.load(body);
   const promises = [];
 
-  $('div.Container ul.ListAnimes li article').each(async(index , element) =>{
+  $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
