@@ -9,7 +9,7 @@
     "dev-api": "nodemon src/api/api",
     "lint": "eslint --fix src",
     "audit": "snyk test",
-    "test": "mocha --watch"
+    "test": "mocha"
   },
   "keywords": [
     "animeflv",
