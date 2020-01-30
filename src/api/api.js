@@ -102,7 +102,6 @@ const search = async(query) =>{
       rating: rating || null,
       genres: extra.genres || null,
       episodes: extra.listByEps || null,
-      characters: characters || null
     })))
   })
   return Promise.all(promises);
