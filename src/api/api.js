@@ -1,11 +1,37 @@
 const cheerio = require('cheerio');
 const cloudscraper = require('cloudscraper');
+const {MergeRecursive} = require('../utils/index');
 const {
   BASE_URL         , SEARCH_URL             , BROWSE_URL , 
   ANIME_VIDEO_URL  , BASE_EPISODE_IMG_URL   , 
   BASE_JIKA_URL    , BASE_MYANIME_LIST_URL
 } = require('./urls');
 
+
+
+const getAnimeChapterTitlesHelper = async(title) =>{
+  const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
+  const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
+  const malId = matchAnime[0].mal_id;
+
+  if(typeof matchAnime[0].mal_id === 'undefined') return null;
+
+  const jikanEpisodesURL = `https://api.jikan.moe/v3/anime/${malId}/episodes`;
+  const data = await cloudscraper.get(jikanEpisodesURL);
+  const body = JSON.parse(data).episodes;
+  const promises = [];
+
+  body.map(doc =>{
+    let date = doc.aired.substring(0 , doc.aired.lastIndexOf('T'));
+    promises.push({
+      episode: doc.episode_id,
+      title: doc.title,
+      date: date
+    });
+  });
+
+  return Promise.all(promises);
+};
 
 const getAnimeVideoPromo = async(title) =>{
   const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
@@ -349,6 +375,12 @@ const animeEpisodesHandler = async(id) =>{
   const genres = [];
   let listByEps;
   
+  let animeTitle = $('body div.Wrapper div.Body div div.Ficha.fchlt div.Container h2.Title').text();
+  //let chaptersTitles = await getAnimeChapterTitlesHelper(animeTitle)
+  //  .then(res =>{
+  //    return res;
+  //  })  
+
   $('main.Main section.WdgtCn nav.Nvgnrs a').each((index , element) =>{
     const $element = $(element);
     const genre = $element.attr('href').split('=')[1] || null;
@@ -392,16 +424,24 @@ const animeEpisodesHandler = async(id) =>{
         imagePreview
       })
     })
-    //listByEps = animeListEps.reduce((id , episodes) =>{
-    //  id[episodes.episode] = episodes;
-    //  return id;
-    //})
+
     listByEps = animeListEps;
+
+
+    //chaptersTitles = chaptersTitles.reverse();    
+    //listByEps = animeListEps;
+    //listByEps =  MergeRecursive(listByEps.slice(1) , chaptersTitles)
+    //listByEps.push({
+    //  nextEpisodeDate: nextEpisodeDate
+    //});
+    //console.log(listByEps);
+    
   }catch(err){
     console.error(err)
   }
   return {listByEps , genres};
 };
+
 
 const getAnimeServers = async(id) =>{
   const res = await cloudscraper.get(`${ANIME_VIDEO_URL}${id}`);
