@@ -1,6 +1,6 @@
 {
   "name": "animeflv",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Animeflv is a custom API that has the entire catalog of the animeflv.net website. You can enjoy all the content with subtitles in Spanish and the latest in the world of anime for free.",
   "main": "./src/api/api.js",
   "scripts": {
