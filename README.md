@@ -1,4 +1,4 @@
-# **:triangular_flag_on_post: ANIMEFLV** (version 1.0.3)
+# **:triangular_flag_on_post: ANIMEFLV** (version 1.0.4)
 
 ![node version](https://img.shields.io/badge/node->=10.16.x-brightgreen.svg)
 ![npm version](https://img.shields.io/badge/npm->=6.9.x-brightgreen.svg)
@@ -26,9 +26,13 @@
 
 ## *Please, do not download version v1.0.0 from npm, I had made the mistake of leaving the parameters in the functions with predefined values.* ️️️️❗️️️
 
-## :tada: Updates in version v1.0.3 :tada:
-- [x] *Indexing Pattern removed from episode property.*
-- [x] *The preview image property has been added for each episode.*
+## :tada: Updates in version v1.0.4 :tada:
+- [x] *Launch of new npm package animeflv version to v1.0.4.*
+- [x] *`getAnimeCharacters` function implemented to obtain data of the characters of each anime.*
+
+- [x] *`getAnimeVideoPromo` function implemented to get the video promo of each anime.*
+
+
 
 ## :rocket: Custom Animeflv API Link
 [Animeflv API](https://animeflv.chrismichael.now.sh/api/v1/)
