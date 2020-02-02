@@ -326,8 +326,8 @@ const latestEpisodesAdded = async() =>{
     const poster = BASE_URL + $element.find('a span.Image img').attr('src');
     const episode = parseInt($element.find('a span.Capi').text().match(/\d+/g) , 10);
     promises.push(getAnimeServers(id).then(servers => ({
+      id: id || null,
       title: title || null,
-      //id: id || null,
       poster: poster || null,
       episode: episode || null,
       servers: servers || null,
@@ -351,8 +351,8 @@ const latestAnimeAdded = async() =>{
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: title || null,
-      //id: id || null,
       poster: poster || null,
       synopsis: synopsis || null,
       debut: debut || null,
