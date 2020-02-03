@@ -8,7 +8,6 @@ const {
 } = require('./urls');
 
 
-
 const getAnimeChapterTitlesHelper = async(title) =>{
   const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
   const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
@@ -29,6 +28,32 @@ const getAnimeChapterTitlesHelper = async(title) =>{
       date: date
     });
   });
+
+  return Promise.all(promises);
+};
+
+
+const getAnimeInfo = async(id , title) =>{
+  let promises = [];
+  try{
+    promises.push(await animeEpisodesHandler(id).then(extra => ({
+      title: extra.animeExtraInfo[0].title || null,
+      poster: extra.animeExtraInfo[0].poster || null,
+      synopsis: extra.animeExtraInfo[0].synopsis || null,
+      rating: extra.animeExtraInfo[0].rating || null,
+      genres: extra.genres || null,
+      episodes: extra.listByEps || null
+    })));
+    promises.push(await getAnimeVideoPromo(title).then(promo =>({
+      promoList: promo || null
+    })))    
+
+    promises.push(await getAnimeCharacters(title).then(characters =>({
+      charactersList: characters || null
+    })));
+  }catch(err){
+    console.log(err)
+  }
 
   return Promise.all(promises);
 };
@@ -372,10 +397,21 @@ const animeEpisodesHandler = async(id) =>{
   const scripts = $('script');
   const anime_info_ids = [];
   const anime_eps_data = [];
+  const animeExtraInfo = [];
   const genres = [];
   let listByEps;
   
   let animeTitle = $('body div.Wrapper div.Body div div.Ficha.fchlt div.Container h2.Title').text();
+  let poster = `${BASE_URL}` + $('body div div div div div aside div.AnimeCover div.Image figure img').attr('src')
+  let synopsis = $('body div div div div div main section div.Description p').text().trim();
+  let rating = $('body div div div.Ficha.fchlt div.Container div.vtshr div.Votes span#votes_prmd').text();
+
+  animeExtraInfo.push({
+    title: animeTitle,
+    poster: poster,
+    synopsis: synopsis,
+    rating: rating
+  })
   //let chaptersTitles = await getAnimeChapterTitlesHelper(animeTitle)
   //  .then(res =>{
   //    return res;
@@ -439,9 +475,13 @@ const animeEpisodesHandler = async(id) =>{
   }catch(err){
     console.error(err)
   }
-  return {listByEps , genres};
+  return {listByEps , genres , animeExtraInfo};
 };
 
+//getAnimeInfo('/anime/5226/tokyo-ghoul' , 'Tokyo Ghoul')
+//  .then(doc =>{
+//    console.log(JSON.stringify(doc , null , 2));
+//})
 
 const getAnimeServers = async(id) =>{
   const res = await cloudscraper.get(`${ANIME_VIDEO_URL}${id}`);
@@ -477,4 +517,5 @@ module.exports = {
   special,
   ova,
   tv,
+  getAnimeInfo
 };
