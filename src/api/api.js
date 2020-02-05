@@ -138,7 +138,7 @@ const search = async(query) =>{
     const title = $element.find('a h3').text();
     let poster = $element.find('a div.Image figure img').attr('src') ||
                  $element.find('a div.Image figure img').attr('data-cfsrc');
-    
+    const banner = poster.replace('covers' , 'banners').trim();
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -147,6 +147,7 @@ const search = async(query) =>{
       title: title || null,
       //id: id || null,
       poster: poster || null,
+      banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
       type: type || null,
@@ -169,7 +170,8 @@ const animeByState = async(state , order , page ) => {
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = $element.find('a div.Image figure img').attr('src')
+    const poster = $element.find('a div.Image figure img').attr('src');
+    const banner = poster.replace('covers' , 'banners').trim();
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -178,6 +180,7 @@ const animeByState = async(state , order , page ) => {
       title: title || null,
       //id: id || null,
       poster: poster || null,
+      banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
       type: type || null,
@@ -199,7 +202,8 @@ const tv = async(order , page) => {
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = $element.find('a div.Image figure img').attr('src')
+    const poster = $element.find('a div.Image figure img').attr('src');
+    const banner = poster.replace('covers' , 'banners').trim();
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -208,6 +212,7 @@ const tv = async(order , page) => {
       title: title || null,
       //id: id || null,
       poster: poster || null,
+      banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
       type: type || null,
@@ -230,6 +235,7 @@ const ova = async(order , page ) => {
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
     const poster = $element.find('a div.Image.fa-play-circle-o figure img').attr('src');
+    const banner = poster.replace('covers' , 'banners').trim();
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -238,6 +244,7 @@ const ova = async(order , page ) => {
       title: title || null,
       //id: id || null,
       poster: poster || null,
+      banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
       type: type || null,
@@ -259,7 +266,8 @@ const special = async(order , page) => {
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = $element.find('a div.Image figure img').attr('src')
+    const poster = $element.find('a div.Image figure img').attr('src');
+    const banner = poster.replace('covers' , 'banners').trim();
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -268,6 +276,7 @@ const special = async(order , page) => {
       title: title || null,
       //id: id || null,
       poster: poster || null,
+      banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
       type: type || null,
@@ -289,7 +298,8 @@ const movies = async(order , page) => {
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = $element.find('a div.Image figure img').attr('src')
+    const poster = $element.find('a div.Image figure img').attr('src');
+    const banner = poster.replace('covers' , 'banners').trim();
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -298,6 +308,7 @@ const movies = async(order , page) => {
       title: title || null,
       //id: id || null,
       poster: poster || null,
+      banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
       type: type || null,
@@ -319,7 +330,8 @@ const animeByGenres = async(genre , order , page) => {
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = $element.find('a div.Image figure img').attr('src')
+    const poster = $element.find('a div.Image figure img').attr('src');
+    const banner = poster.replace('covers' , 'banners').trim();
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -328,6 +340,7 @@ const animeByGenres = async(genre , order , page) => {
       title: title || null,
       //id: id || null,
       poster: poster || null,
+      banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
       type: type || null,
@@ -370,7 +383,8 @@ const latestAnimeAdded = async() =>{
     const $element = $(element);
     const id = $element.find('div.Description a.Button').attr('href');
     const title = $element.find('a h3').text();
-    const poster = BASE_URL + $element.find('a div.Image figure img').attr('src')
+    const poster = BASE_URL + $element.find('a div.Image figure img').attr('src');
+    const banner = poster.replace('covers' , 'banners').trim();
     const type = $element.find('div.Description p span.Type').text();
     const synopsis = $element.find('div.Description p').text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
@@ -379,6 +393,7 @@ const latestAnimeAdded = async() =>{
       //id: id || null,
       title: title || null,
       poster: poster || null,
+      banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut.toString() || null,
       type: type || null,
@@ -406,7 +421,15 @@ const animeEpisodesHandler = async(id) =>{
   let synopsis = $('body div div div div div main section div.Description p').text().trim();
   let rating = $('body div div div.Ficha.fchlt div.Container div.vtshr div.Votes span#votes_prmd').text();
   const debut = $('body div.Wrapper div.Body div div.Container div.BX.Row.BFluid.Sp20 aside.SidebarA.BFixed p.AnmStts').text();
-
+  //const JSONBanner = JSON.stringify($('body div.Wrapper div.Body div.Ficha.fchlt').html())
+  //  .split('div')[1];
+  //let bannerId = "";
+  //let banner = "";
+  //if(JSONBanner){
+  //  bannerID = JSONBanner.split('(')[1].split('.jpg')[0]
+  //  banner = `${BASE_URL}${bannerID}.jpg`
+  //}
+  
   animeExtraInfo.push({
     title: animeTitle,
     poster: poster,
