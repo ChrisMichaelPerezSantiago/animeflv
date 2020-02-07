@@ -55,6 +55,7 @@
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "helmet": "^3.15.0",
+    "image-to-base64": "^2.0.1",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
     "request": "^2.88.0"
