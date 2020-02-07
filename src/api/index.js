@@ -20,7 +20,8 @@ router.get('/', (req, res) => {
         'AnimeByState': '/api/v1/AnimeByState/:state/:order/:page',
         'Search': '/api/v1/Search/:query',
         'AnimeCharacters': '/api/v1/AnimeCharacters/:title',
-        'AnimeTrailers': '/api/v1/AnimeTrailers/:title'
+        'AnimeTrailers': '/api/v1/AnimeTrailers/:title',
+        'GetAnimeInfo': '/api/v1/GetAnimeInfo/:id/title'
       }
     ]
   });
