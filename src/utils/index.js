@@ -1,3 +1,5 @@
+const imageToBase64 = require("image-to-base64")
+
 const MergeRecursive = (obj1 , obj2) => {
   for(var p in obj2) {
     try{
@@ -15,6 +17,15 @@ const MergeRecursive = (obj1 , obj2) => {
   return obj1;
 }
 
+const imgToBase64 = async(url) =>{
+  const promises = [];
+  await imageToBase64(url).then(res =>{
+    promises.push(res)
+  })
+  return Promise.all(promises);
+};
+
 module.exports = {
-  MergeRecursive
+  MergeRecursive,
+  imgToBase64
 }
