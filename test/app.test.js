@@ -149,4 +149,14 @@ describe('> entries ...' , () =>{
       })
       ok();
   });
+  it('GET Method /api/v1/GetAnimeInfo/:[id]/:[title]' , ok =>{
+    chai
+      .request(app)
+      .get('/api/v1/GetAnimeInfo/anime/5226/tokyo-ghoul/Tokyo Ghoul')
+      .end((err, res) =>{
+        expect(res).to.have.status(200);
+        expect(res.body.trailers).to.be.an('array');
+      })
+      ok();
+  });
 });
