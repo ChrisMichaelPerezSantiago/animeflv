@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
         'Search': '/api/v1/Search/:query',
         'AnimeCharacters': '/api/v1/AnimeCharacters/:title',
         'AnimeTrailers': '/api/v1/AnimeTrailers/:title',
-        'GetAnimeInfo': '/api/v1/GetAnimeInfo/:id/title'
+        'GetAnimeInfo': '/api/v1/GetAnimeInfo/:id/:title'
       }
     ]
   });
