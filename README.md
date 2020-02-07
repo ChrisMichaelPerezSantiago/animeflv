@@ -1031,6 +1031,207 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 }
 ```
 
+## getAnimeInfo([id] , [title])
+**This function is not yet stable, it may present an error in trying to return some anime information. For now it is functional, but not quite stable.❗❗**
+
+*To get the anime info of a particula anime, you must use the `id` and the `title` property and pass it to the function as a parameter.*
+
+*For example:* 
+```JSON
+"id": "anime/5226/tokyo-ghoul"
+"title": "Tokyo Ghoul"
+``` 
+
+*You can also use the URL of the api*
+`https://animeflv.chrismichael.now.sh/api/v1/GetAnimeInfo/${id}/${title}`
+
+```json
+// 20200207123040
+// http://localhost:5000/api/v1/GetAnimeInfo/anime/5226/tokyo-ghoul/Tokyo%20Ghoul
+
+{
+  "info": [
+    {
+      "id": "anime/5226/tokyo-ghoul",
+      "title": "Tokyo Ghoul",
+      "poster": "https://animeflv.netundefined",
+      "banner": "https://animeflv.netundefined",
+      "synopsis": "Extraños asesinatos se están sucediendo uno tras otro en Tokyo. Debido a las pruebas encontradas en las escenas, la policía concluye que los ataques son obra de ghouls que se comen a las personas. Kaneki y Hide, dos compañeros de clase, llegan a la conclusión de que si nadie ha visto nunca a esos necrófagos es porque toman la apariencia de seres humanos para ocultarse.\nPoco sabían entonces de que su teoría sería más cierta de lo que pensaban cuando Kaneki es herido de gravedad por un monstruo y comienza a atraerle cada vez más la carne humana…",
+      "debut": "Finalizado",
+      "type": "Anime",
+      "rating": "4.5",
+      "genres": [
+        "accion",
+        "drama",
+        "misterio",
+        "psicologico",
+        "seinen",
+        "sobrenatural",
+        "terror"
+      ],
+      "episodes": [
+        {
+          "nextEpisodeDate": null
+        },
+        {
+          "episode": 12,
+          "id": "28800/tokyo-ghoul-12",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
+        },
+        {
+          "episode": 11,
+          "id": "28459/tokyo-ghoul-11",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/11/th_3.jpg"
+        },
+        {
+          "episode": 10,
+          "id": "28001/tokyo-ghoul-10",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/10/th_3.jpg"
+        },
+        {
+          "episode": 9,
+          "id": "27741/tokyo-ghoul-9",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/9/th_3.jpg"
+        },
+        {
+          "episode": 8,
+          "id": "27092/tokyo-ghoul-8",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/8/th_3.jpg"
+        },
+        {
+          "episode": 7,
+          "id": "26689/tokyo-ghoul-7",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/7/th_3.jpg"
+        },
+        {
+          "episode": 6,
+          "id": "26529/tokyo-ghoul-6",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/6/th_3.jpg"
+        },
+        {
+          "episode": 5,
+          "id": "26431/tokyo-ghoul-5",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/5/th_3.jpg"
+        },
+        {
+          "episode": 4,
+          "id": "26373/tokyo-ghoul-4",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/4/th_3.jpg"
+        },
+        {
+          "episode": 3,
+          "id": "26278/tokyo-ghoul-3",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/3/th_3.jpg"
+        },
+        {
+          "episode": 2,
+          "id": "26188/tokyo-ghoul-2",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/2/th_3.jpg"
+        },
+        {
+          "episode": 1,
+          "id": "26103/tokyo-ghoul-1",
+          "imagePreview": "https://cdn.animeflv.net/screenshots/1415/1/th_3.jpg"
+        }
+      ]
+    },
+    {
+      "promoList": [
+        {
+          "title": "PV Madman ver.",
+          "previewImage": "https://i.ytimg.com/vi/vGuQeQsoRgU/mqdefault.jpg",
+          "videoURL": "https://www.youtube.com/embed/vGuQeQsoRgU?enablejsapi=1&wmode=opaque&autoplay=1"
+        },
+        {
+          "title": "PV AnimeLab ver.",
+          "previewImage": "https://i.ytimg.com/vi/ETHpMMV8rJU/mqdefault.jpg",
+          "videoURL": "https://www.youtube.com/embed/ETHpMMV8rJU?enablejsapi=1&wmode=opaque&autoplay=1"
+        }
+      ]
+    },
+    {
+      "charactersList": [
+        {
+          "character": {
+            "id": 87275,
+            "name": "Kaneki, Ken",
+            "image": "https://cdn.myanimelist.net/images/characters/9/251339.jpg?s=788e4d76ff697c9ee67b65b68b6e8157",
+            "role": "Main"
+          }
+        },
+        {
+          "character": {
+            "id": 87277,
+            "name": "Kirishima, Touka",
+            "image": "https://cdn.myanimelist.net/images/characters/16/234699.jpg?s=10ef474344779135236911013b0925fc",
+            "role": "Main"
+          }
+        },
+        {
+          "character": {
+            "id": 113779,
+            "name": "Abe, Maiko",
+            "image": "https://cdn.myanimelist.net/images/characters/16/259779.jpg?s=67ed4d2dfb07359d050eb3a0ec91ca8d",
+            "role": "Supporting"
+          }
+        },
+        {
+          "character": {
+            "id": 99671,
+            "name": "Amon, Koutarou",
+            "image": "https://cdn.myanimelist.net/images/characters/13/251453.jpg?s=cf7bdc7cb409357d69720b0aee488ff6",
+            "role": "Supporting"
+          }
+        },
+        {
+          "character": {
+            "id": 111767,
+            "name": "Arima, Kishou ",
+            "image": "https://cdn.myanimelist.net/images/characters/5/257935.jpg?s=774409608456392dcaca31f53234bb53",
+            "role": "Supporting"
+          }
+        },
+        {
+          "character": {
+            "id": 112687,
+            "name": "Banjou, Kazuichi",
+            "image": "https://cdn.myanimelist.net/images/characters/8/258499.jpg?s=f4c8bd78f37677f38a47a8e28b8e7056",
+            "role": "Supporting"
+          }
+        },
+        {
+          "character": {
+            "id": 110241,
+            "name": "Enji, Koma",
+            "image": "https://cdn.myanimelist.net/images/characters/15/257941.jpg?s=f6702db6de1a2f2829577a566d3e43ce",
+            "role": "Supporting"
+          }
+        },
+        {
+          "character": {
+            "id": 112997,
+            "name": "Eto",
+            "image": "https://cdn.myanimelist.net/images/characters/10/276501.jpg?s=6bd3d1eda8082217b36d0e2ff2d8775f",
+            "role": "Supporting"
+          }
+        },
+        {
+          "character": {
+            "id": 110247,
+            "name": "Fueguchi, Asaki",
+            "image": "https://cdn.myanimelist.net/images/characters/2/256013.jpg?s=b0bc1ac1d05a2c8951a95cc1229cb4a3",
+            "role": "Supporting"
+          }
+        },
+        // .......
+      ]
+    }
+  ]
+}
+```
+
+
+
 ## **:handshake: Contributing**
 
 - Fork it!
