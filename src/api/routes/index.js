@@ -153,4 +153,17 @@ router.get('/AnimeTrailers/:title' , (req , res) =>{
     });
 });
 
+router.get('/GetAnimeInfo/:id*/:title' , (req , res) =>{
+  let id = `anime${req.params[0]}`;
+  let title = req.params.title;
+  api.getAnimeInfo(id , title)
+    .then(info =>{
+      res.status(200).json({
+        info
+      });
+    }).catch((err) =>{
+      console.log(err);
+    });
+});
+
 module.exports = router;
