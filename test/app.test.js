@@ -155,7 +155,7 @@ describe('> entries ...' , () =>{
       .get('/api/v1/GetAnimeInfo/anime/5226/tokyo-ghoul/Tokyo Ghoul')
       .end((err, res) =>{
         expect(res).to.have.status(200);
-        expect(res.body.trailers).to.be.an('array');
+        expect(res.body.info).to.be.an('array');
       })
       ok();
   });
