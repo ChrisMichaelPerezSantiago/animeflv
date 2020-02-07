@@ -37,16 +37,20 @@ const getAnimeInfo = async(id , title) =>{
   let promises = [];
   try{
     promises.push(await animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: extra.animeExtraInfo[0].title || null,
       poster: extra.animeExtraInfo[0].poster || null,
+      banner: extra.animeExtraInfo[0].banner || null,
       synopsis: extra.animeExtraInfo[0].synopsis || null,
+      debut: extra.animeExtraInfo[0].debut || null,
+      type: extra.animeExtraInfo[0].type || null,
       rating: extra.animeExtraInfo[0].rating || null,
       genres: extra.genres || null,
       episodes: extra.listByEps || null
     })));
     promises.push(await getAnimeVideoPromo(title).then(promo =>({
       promoList: promo || null
-    })))    
+    })));    
 
     promises.push(await getAnimeCharacters(title).then(characters =>({
       charactersList: characters || null
@@ -134,7 +138,7 @@ const search = async(query) =>{
 
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.Description a.Button').attr('href');
+    const id = $element.find('div.Description a.Button').attr('href').slice(1);
     const title = $element.find('a h3').text();
     let poster = $element.find('a div.Image figure img').attr('src') ||
                  $element.find('a div.Image figure img').attr('data-cfsrc');
@@ -144,6 +148,7 @@ const search = async(query) =>{
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: title || null,
       //id: id || null,
       poster: poster || null,
@@ -168,7 +173,7 @@ const animeByState = async(state , order , page ) => {
 
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.Description a.Button').attr('href');
+    const id = $element.find('div.Description a.Button').attr('href').slice(1);
     const title = $element.find('a h3').text();
     const poster = $element.find('a div.Image figure img').attr('src');
     const banner = poster.replace('covers' , 'banners').trim();
@@ -177,6 +182,7 @@ const animeByState = async(state , order , page ) => {
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: title || null,
       //id: id || null,
       poster: poster || null,
@@ -200,7 +206,7 @@ const tv = async(order , page) => {
 
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.Description a.Button').attr('href');
+    const id = $element.find('div.Description a.Button').attr('href').slice(1);
     const title = $element.find('a h3').text();
     const poster = $element.find('a div.Image figure img').attr('src');
     const banner = poster.replace('covers' , 'banners').trim();
@@ -209,6 +215,7 @@ const tv = async(order , page) => {
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: title || null,
       //id: id || null,
       poster: poster || null,
@@ -232,7 +239,7 @@ const ova = async(order , page ) => {
 
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.Description a.Button').attr('href');
+    const id = $element.find('div.Description a.Button').attr('href').slice(1);
     const title = $element.find('a h3').text();
     const poster = $element.find('a div.Image.fa-play-circle-o figure img').attr('src');
     const banner = poster.replace('covers' , 'banners').trim();
@@ -241,6 +248,7 @@ const ova = async(order , page ) => {
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: title || null,
       //id: id || null,
       poster: poster || null,
@@ -264,7 +272,7 @@ const special = async(order , page) => {
 
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.Description a.Button').attr('href');
+    const id = $element.find('div.Description a.Button').attr('href').slice(1);
     const title = $element.find('a h3').text();
     const poster = $element.find('a div.Image figure img').attr('src');
     const banner = poster.replace('covers' , 'banners').trim();
@@ -273,6 +281,7 @@ const special = async(order , page) => {
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: title || null,
       //id: id || null,
       poster: poster || null,
@@ -296,7 +305,7 @@ const movies = async(order , page) => {
 
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.Description a.Button').attr('href');
+    const id = $element.find('div.Description a.Button').attr('href').slice(1);
     const title = $element.find('a h3').text();
     const poster = $element.find('a div.Image figure img').attr('src');
     const banner = poster.replace('covers' , 'banners').trim();
@@ -305,6 +314,7 @@ const movies = async(order , page) => {
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: title || null,
       //id: id || null,
       poster: poster || null,
@@ -328,7 +338,7 @@ const animeByGenres = async(genre , order , page) => {
 
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.Description a.Button').attr('href');
+    const id = $element.find('div.Description a.Button').attr('href').slice(1);
     const title = $element.find('a h3').text();
     const poster = $element.find('a div.Image figure img').attr('src');
     const banner = poster.replace('covers' , 'banners').trim();
@@ -337,6 +347,7 @@ const animeByGenres = async(genre , order , page) => {
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
+      id: id || null,
       title: title || null,
       //id: id || null,
       poster: poster || null,
@@ -364,7 +375,7 @@ const latestEpisodesAdded = async() =>{
     const poster = BASE_URL + $element.find('a span.Image img').attr('src');
     const episode = parseInt($element.find('a span.Capi').text().match(/\d+/g) , 10);
     promises.push(getAnimeServers(id).then(servers => ({
-      //id: id || null,
+      id: id || null,
       title: title || null,
       poster: poster || null,
       episode: episode || null,
@@ -381,7 +392,7 @@ const latestAnimeAdded = async() =>{
   const promises = [];
   $('div.Container ul.ListAnimes li article').each((index , element) =>{
     const $element = $(element);
-    const id = $element.find('div.Description a.Button').attr('href');
+    const id = $element.find('div.Description a.Button').attr('href').slice(1);
     const title = $element.find('a h3').text();
     const poster = BASE_URL + $element.find('a div.Image figure img').attr('src');
     const banner = poster.replace('covers' , 'banners').trim();
@@ -390,7 +401,7 @@ const latestAnimeAdded = async() =>{
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
     promises.push(animeEpisodesHandler(id).then(extra => ({
-      //id: id || null,
+      id: id || null,
       title: title || null,
       poster: poster || null,
       banner: banner || null,
@@ -406,7 +417,7 @@ const latestAnimeAdded = async() =>{
 };
 
 const animeEpisodesHandler = async(id) =>{
-  const res = await cloudscraper.get(`${BASE_URL}${id}`);
+  const res = await cloudscraper.get(`${BASE_URL}/${id}`);
   const body = await res;
   const $ = cheerio.load(body);
   const scripts = $('script');
@@ -418,9 +429,11 @@ const animeEpisodesHandler = async(id) =>{
   
   let animeTitle = $('body div.Wrapper div.Body div div.Ficha.fchlt div.Container h2.Title').text();
   let poster = `${BASE_URL}` + $('body div div div div div aside div.AnimeCover div.Image figure img').attr('src')
+  const banner = poster.replace('covers' , 'banners').trim();
   let synopsis = $('body div div div div div main section div.Description p').text().trim();
   let rating = $('body div div div.Ficha.fchlt div.Container div.vtshr div.Votes span#votes_prmd').text();
   const debut = $('body div.Wrapper div.Body div div.Container div.BX.Row.BFluid.Sp20 aside.SidebarA.BFixed p.AnmStts').text();
+  const type = $('body div.Wrapper div.Body div div.Ficha.fchlt div.Container span.Type').text()
   //const JSONBanner = JSON.stringify($('body div.Wrapper div.Body div.Ficha.fchlt').html())
   //  .split('div')[1];
   //let bannerId = "";
@@ -433,9 +446,11 @@ const animeEpisodesHandler = async(id) =>{
   animeExtraInfo.push({
     title: animeTitle,
     poster: poster,
+    banner: banner,
     synopsis: synopsis,
     rating: rating,
-    debut: debut
+    debut: debut,
+    type: type,
   })
   //let chaptersTitles = await getAnimeChapterTitlesHelper(animeTitle)
   //  .then(res =>{
@@ -503,7 +518,7 @@ const animeEpisodesHandler = async(id) =>{
   return {listByEps , genres , animeExtraInfo};
 };
 
-//getAnimeInfo('/anime/5226/tokyo-ghoul' , 'Tokyo Ghoul')
+//getAnimeInfo('anime/5226/tokyo-ghoul' , 'Tokyo Ghoul')
 //  .then(doc =>{
 //    console.log(JSON.stringify(doc , null , 2));
 //})
