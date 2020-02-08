@@ -166,4 +166,16 @@ router.get('/GetAnimeInfo/:id*/:title' , (req , res) =>{
     });
 });
 
+router.get('/DownloadLinksByEpsId/:epsId([^/]+/[^/]+)' , (req , res) =>{
+  let epsId = req.params.epsId;
+  api.downloadLinksByEpsId(epsId)
+    .then(downloads =>{
+      res.status(200).json({
+        downloads
+      });
+    }).catch((err) =>{
+      console.log(err);
+    });
+});
+
 module.exports = router;
