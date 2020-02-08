@@ -25,7 +25,18 @@ const imgToBase64 = async(url) =>{
   return Promise.all(promises);
 };
 
+const urlify = async(text) =>{
+  const urls = [];
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  text.replace(urlRegex , (url) =>{
+    urls.push(url)
+  });
+  return Promise.all(urls);
+};
+
+
 module.exports = {
   MergeRecursive,
-  imgToBase64
+  imgToBase64,
+  urlify
 }
