@@ -9,6 +9,53 @@ const {
 } = require('./urls');
 
 
+const animeExtraInfo = async(title) =>{
+  const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
+  const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
+  const malId = matchAnime[0].mal_id;
+
+  if(typeof matchAnime[0].mal_id === 'undefined') return null;
+
+  const animeDetails = `https://api.jikan.moe/v3/anime/${malId}`;
+  const data = await cloudscraper.get(animeDetails);
+  const body = Array(JSON.parse(data));
+  const promises = [];
+  
+  body.map(doc =>{
+    promises.push({
+      titleJapanese: doc.title_japanese,
+      source: doc.source,
+      totalEpisodes: doc.episodes,
+      status: doc.status,
+      aired:{
+        from: doc.aired.from,
+        to: doc.aired.to,
+        string: doc.aired.string  
+      },
+      duration: doc.duration,
+      rank: doc.rank,
+      popularity: doc.popularity,
+      members: doc.members,
+      favorites: doc.favorites,
+      premiered: doc.premiered,
+      broadcast: doc.broadcast,
+      producers:{
+        names: doc.producers.map(x => x.name)
+      },
+      licensors:{
+        names: doc.licensors.map(x => x.name)
+      },
+      studios:{
+        names: doc.studios.map(x => x.name)
+      },
+      openingThemes: doc.opening_themes,
+      endingThemes: doc.ending_themes
+    });
+  });
+  return Promise.all(promises);
+};
+
+
 const downloadLinksByEpsId = async(id) =>{
   const res = await cloudscraper.get(`${ANIME_VIDEO_URL}${id}`);
   const body = await res;
@@ -81,6 +128,11 @@ const getAnimeInfo = async(id , title) =>{
       genres: extra.genres || null,
       episodes: extra.listByEps || null
     })));
+
+    promises.push(await animeExtraInfo(title).then(info =>({
+      moreInfo: info || null
+    })));    
+
     promises.push(await getAnimeVideoPromo(title).then(promo =>({
       promoList: promo || null
     })));    
