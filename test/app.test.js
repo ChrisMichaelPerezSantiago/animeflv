@@ -159,4 +159,14 @@ describe('> entries ...' , () =>{
       })
       ok();
   });
+  it('GET Method /api/v1/DownloadLinksByEpsId/:[epsId]' , ok =>{
+    chai
+      .request(app)
+      .get('/api/v1/DownloadLinksByEpsId/28800/tokyo-ghoul-12')
+      .end((err, res) =>{
+        expect(res).to.have.status(200);
+        expect(res.body.downloads).to.be.an('array');
+      })
+      ok();
+  });
 });
