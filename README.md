@@ -1230,6 +1230,55 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 }
 ```
 
+## downloadLinksByEpsId([epsId])
+*In order to access the links where you can download the chapters of each anime you must refer to the `id` of each episode, you will find it in the` episodes` property e.g. :*
+
+```json
+  "episodes":[
+    {
+      "episode": 12,
+      "id": "28800/tokyo-ghoul-12",
+      "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
+    }
+  ],
+```
+
+*Then you pass the `id` value as an argument of the function.*
+
+```javascript
+const id = "28800/tokyo-ghoul-12"
+const links = downloadLinksByEpsId(id).then(res =>{
+  // ...
+})
+```
+
+*Or you can choose to use the URL path of the api e.g. :* 
+
+`https://animeflv.chrismichael.now.sh/api/v1/DownloadLinksByEpsId/${id}`
+
+
+```json
+// 20200207225145
+// http://localhost:5000/api/v1/DownloadLinksByEpsId/28800/tokyo-ghoul-12
+
+{
+  "downloads": [
+    {
+      "server": "MEGA",
+      "url": "http://ouo.io/s/y0d65LCP?s=https%3A%2F%2Fmega.nz%2F%23%2155InSaxI%215JTxVNA29LCFNr7c1Fxg0PUBQPVQyXBo4aVF3e06jN0"
+    },
+    {
+      "server": "Zippyshare",
+      "url": "http://ouo.io/s/y0d65LCP?s=https%3A%2F%2Fwww61.zippyshare.com%2Fv%2F4KKPr5XK%2Ffile.html"
+    },
+    {
+      "server": "Openload",
+      "url": "http://ouo.io/s/y0d65LCP?s=https%3A%2F%2Fopenload.co%2Ff%2FsPXbBXnFikU%2F"
+    }
+  ]
+}
+```
+
 
 
 ## **:handshake: Contributing**
