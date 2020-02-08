@@ -1,12 +1,45 @@
 const cheerio = require('cheerio');
+const cheerioTableparser = require('cheerio-tableparser');
 const cloudscraper = require('cloudscraper');
-const {MergeRecursive} = require('../utils/index');
+const {MergeRecursive , urlify} = require('../utils/index');
 const {
   BASE_URL         , SEARCH_URL             , BROWSE_URL , 
   ANIME_VIDEO_URL  , BASE_EPISODE_IMG_URL   , 
   BASE_JIKA_URL    , BASE_MYANIME_LIST_URL
 } = require('./urls');
 
+
+const downloadLinksByEpsId = async(id) =>{
+  const res = await cloudscraper.get(`${ANIME_VIDEO_URL}${id}`);
+  const body = await res;
+  const $ = cheerio.load(body);
+  cheerioTableparser($);
+  let tempServerNames = $('table.RTbl').parsetable(true , true , true)[0];
+  let serverNames = tempServerNames.filter(x => x !== 'SERVIDOR');
+  let urls = [];
+  
+  try{
+    const table = $('table.RTbl').html();
+    const data = await urlify(table).then(res => { return res; });
+    const tempUrls = [];  
+    data.map(baseUrl =>{
+      let url = baseUrl.split('"')[0]; 
+      tempUrls.push(url)
+    });
+  
+  Array.from({length: tempUrls.length} , (v , k) =>{
+    urls.push({
+      server: serverNames[k],
+      url: tempUrls[k],
+    });
+  });
+
+  }catch(err){
+    console.log(err);
+  }
+
+  return Promise.all(urls);
+};
 
 const getAnimeChapterTitlesHelper = async(title) =>{
   const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
@@ -557,5 +590,6 @@ module.exports = {
   special,
   ova,
   tv,
-  getAnimeInfo
+  getAnimeInfo,
+  downloadLinksByEpsId
 };
