@@ -1136,6 +1136,52 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
       ]
     },
     {
+      "moreInfo": [
+        {
+          "titleJapanese": "東京喰種-トーキョーグール-",
+          "source": "Manga",
+          "totalEpisodes": 12,
+          "status": "Finished Airing",
+          "aired": {
+            "from": "2014-07-04T00:00:00+00:00",
+            "to": "2014-09-19T00:00:00+00:00",
+            "string": "Jul 4, 2014 to Sep 19, 2014"
+          },
+          "duration": "24 min per ep",
+          "rank": 686,
+          "popularity": 6,
+          "members": 1372625,
+          "favorites": 35697,
+          "premiered": "Summer 2014",
+          "broadcast": "Fridays at 00:00 (JST)",
+          "producers": {
+            "names": [
+              "Marvelous AQL",
+              "TC Entertainment",
+              "Shueisha"
+            ]
+          },
+          "licensors": {
+            "names": [
+              "Funimation"
+            ]
+          },
+          "studios": {
+            "names": [
+              "Studio Pierrot"
+            ]
+          },
+          "openingThemes": [
+            "\"unravel\" by TK from Ling Tosite Sigure (eps 2-11)"
+          ],
+          "endingThemes": [
+            "\"unravel\" by TK from Ling Tosite Sigure (eps 1, 12)",
+            "\"Seijatachi (聖者たち)\" by People In The Box (eps 2-11)"
+          ]
+        }
+      ]
+    },
+    {
       "promoList": [
         {
           "title": "PV Madman ver.",
