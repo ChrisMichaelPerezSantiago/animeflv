@@ -37,6 +37,11 @@
 ## :rocket: Custom Animeflv API Link
 [Animeflv API](https://animeflv.chrismichael.now.sh/api/v1/)
 
+## <img src="https://img.icons8.com/color/48/000000/graphql.png"> **Animeflv GraphQL**
+For those developers who want to choose to use the API by consulting with GraphQL I leave an alternative
+
+[animeflv-gql](https://github.com/ChrisMichaelPerezSantiago/animeflv-gql)
+
 
 ## 📚 **Development Diary**
 Describe the purpose of the project and give clues about what the code does. 
@@ -1333,4 +1338,4 @@ _*Chris Michael*_
 
 ---
 
-Copyright © 2019 [Chris Michael](http://personal-porfolio.chrismichael.now.sh).
+Copyright © 2020 [Chris Michael](http://personal-porfolio.chrismichael.now.sh).
