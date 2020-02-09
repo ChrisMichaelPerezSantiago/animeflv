@@ -1054,8 +1054,8 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
     {
       "id": "anime/5226/tokyo-ghoul",
       "title": "Tokyo Ghoul",
-      "poster": "https://animeflv.netundefined",
-      "banner": "https://animeflv.netundefined",
+      "poster": "https://animeflv.net/uploads/animes/covers/1415.jpg",
+      "banner": "https://animeflv.net/uploads/animes/banners/1415.jpg",
       "synopsis": "Extraños asesinatos se están sucediendo uno tras otro en Tokyo. Debido a las pruebas encontradas en las escenas, la policía concluye que los ataques son obra de ghouls que se comen a las personas. Kaneki y Hide, dos compañeros de clase, llegan a la conclusión de que si nadie ha visto nunca a esos necrófagos es porque toman la apariencia de seres humanos para ocultarse.\nPoco sabían entonces de que su teoría sería más cierta de lo que pensaban cuando Kaneki es herido de gravedad por un monstruo y comienza a atraerle cada vez más la carne humana…",
       "debut": "Finalizado",
       "type": "Anime",
@@ -1133,9 +1133,7 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
           "id": "26103/tokyo-ghoul-1",
           "imagePreview": "https://cdn.animeflv.net/screenshots/1415/1/th_3.jpg"
         }
-      ]
-    },
-    {
+      ],
       "moreInfo": [
         {
           "titleJapanese": "東京喰種-トーキョーグール-",
@@ -1150,7 +1148,7 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
           "duration": "24 min per ep",
           "rank": 686,
           "popularity": 6,
-          "members": 1372625,
+          "members": 1373048,
           "favorites": 35697,
           "premiered": "Summer 2014",
           "broadcast": "Fridays at 00:00 (JST)",
@@ -1179,9 +1177,7 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
             "\"Seijatachi (聖者たち)\" by People In The Box (eps 2-11)"
           ]
         }
-      ]
-    },
-    {
+      ],
       "promoList": [
         {
           "title": "PV Madman ver.",
@@ -1193,9 +1189,7 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
           "previewImage": "https://i.ytimg.com/vi/ETHpMMV8rJU/mqdefault.jpg",
           "videoURL": "https://www.youtube.com/embed/ETHpMMV8rJU?enablejsapi=1&wmode=opaque&autoplay=1"
         }
-      ]
-    },
-    {
+      ],
       "charactersList": [
         {
           "character": {
@@ -1237,56 +1231,10 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
             "role": "Supporting"
           }
         },
-        {
-          "character": {
-            "id": 112687,
-            "name": "Banjou, Kazuichi",
-            "image": "https://cdn.myanimelist.net/images/characters/8/258499.jpg?s=f4c8bd78f37677f38a47a8e28b8e7056",
-            "role": "Supporting"
-          }
-        },
-        {
-          "character": {
-            "id": 110241,
-            "name": "Enji, Koma",
-            "image": "https://cdn.myanimelist.net/images/characters/15/257941.jpg?s=f6702db6de1a2f2829577a566d3e43ce",
-            "role": "Supporting"
-          }
-        },
-        {
-          "character": {
-            "id": 112997,
-            "name": "Eto",
-            "image": "https://cdn.myanimelist.net/images/characters/10/276501.jpg?s=6bd3d1eda8082217b36d0e2ff2d8775f",
-            "role": "Supporting"
-          }
-        },
-        {
-          "character": {
-            "id": 110247,
-            "name": "Fueguchi, Asaki",
-            "image": "https://cdn.myanimelist.net/images/characters/2/256013.jpg?s=b0bc1ac1d05a2c8951a95cc1229cb4a3",
-            "role": "Supporting"
-          }
-        },
-        // .......
       ]
     }
   ]
 }
-```
-
-## downloadLinksByEpsId([epsId])
-*In order to access the links where you can download the chapters of each anime you must refer to the `id` of each episode, you will find it in the` episodes` property e.g. :*
-
-```json
-  "episodes":[
-    {
-      "episode": 12,
-      "id": "28800/tokyo-ghoul-12",
-      "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
-    }
-  ],
 ```
 
 *Then you pass the `id` value as an argument of the function.*
