@@ -116,7 +116,7 @@ const getAnimeChapterTitlesHelper = async(title) =>{
 const getAnimeInfo = async(id , title) =>{
   let promises = [];
   try{
-    promises.push(await animeEpisodesHandler(id).then(extra => ({
+    promises.push(await animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: extra.animeExtraInfo[0].title || null,
       poster: extra.animeExtraInfo[0].poster || null,
@@ -126,20 +126,18 @@ const getAnimeInfo = async(id , title) =>{
       type: extra.animeExtraInfo[0].type || null,
       rating: extra.animeExtraInfo[0].rating || null,
       genres: extra.genres || null,
-      episodes: extra.listByEps || null
+      episodes: extra.listByEps || null,
+      moreInfo: await animeExtraInfo(title).then(info =>{
+        return info || null
+      }),
+      promoList: await getAnimeVideoPromo(title).then(promo =>{
+        return promo || null
+      }),
+      charactersList: await getAnimeCharacters(title).then(characters =>{
+        return characters || null
+      })
     })));
-
-    promises.push(await animeExtraInfo(title).then(info =>({
-      moreInfo: info || null
-    })));    
-
-    promises.push(await getAnimeVideoPromo(title).then(promo =>({
-      promoList: promo || null
-    })));    
-
-    promises.push(await getAnimeCharacters(title).then(characters =>({
-      charactersList: characters || null
-    })));
+    
   }catch(err){
     console.log(err)
   }
