@@ -1241,11 +1241,30 @@ getAnimeServers('53099/psychopass-3-1').then(doc => { console.log(doc) });
 }
 ```
 
-*Then you pass the `id` value as an argument of the function.*
+## downloadLinksByEpsId([epsId])
+*Function to obtain list of download links of a chapter of a particular anime.*
+*For this you will have to use the `id` of each chapter, you will find it in the` episodes` property*
+
+*Example:*
+
+```json
+ "episodes": [
+    {
+      "nextEpisodeDate": null
+    },
+    {
+      "episode": 12,
+      "id": "28800/tokyo-ghoul-12",
+      "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
+    },
+ ]
+```
+
+*Then you pass the `episode` value as an argument of the function.*
 
 ```javascript
-const id = "28800/tokyo-ghoul-12"
-const links = downloadLinksByEpsId(id).then(res =>{
+const epsId = "28800/tokyo-ghoul-12"
+const links = downloadLinksByEpsId(epsId).then(res =>{
   // ...
 })
 ```
