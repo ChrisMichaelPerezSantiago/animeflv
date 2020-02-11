@@ -24,6 +24,9 @@
 
 ---
 
+<img 
+  src="./assets/img/logo.png" width="100%" alt="">
+
 ## *Please, do not download version v1.0.0 from npm, I had made the mistake of leaving the parameters in the functions with predefined values.* ️️️️❗️️️
 
 ## :tada: Updates in version v1.0.5 :tada:
