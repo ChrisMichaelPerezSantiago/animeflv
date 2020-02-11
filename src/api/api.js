@@ -1,7 +1,8 @@
 const cheerio = require('cheerio');
 const cheerioTableparser = require('cheerio-tableparser');
 const cloudscraper = require('cloudscraper');
-const {MergeRecursive , urlify} = require('../utils/index');
+const decodeURL = require('urldecode')
+const {MergeRecursive , urlify , decodeZippyURL} = require('../utils/index');
 const {
   BASE_URL         , SEARCH_URL             , BROWSE_URL , 
   ANIME_VIDEO_URL  , BASE_EPISODE_IMG_URL   , 
@@ -74,12 +75,29 @@ const downloadLinksByEpsId = async(id) =>{
       tempUrls.push(url)
     });
   
-  Array.from({length: tempUrls.length} , (v , k) =>{
-    urls.push({
-      server: serverNames[k],
-      url: tempUrls[k],
+    const urlDecoded = [];
+    tempUrls.map(url =>{
+      let urlFixed = decodeURL(url).toString().split('?s=')[1]
+      urlDecoded.push(urlFixed)
     });
-  });
+
+    Array.from({length: tempUrls.length} , (v , k) =>{
+      urls.push({
+        server: serverNames[k],
+        url: urlDecoded[k],
+      });
+    });
+
+    const zippyshareURL = urls.filter(doc => doc.server == 'Zippyshare')[0].url || null;
+    const zippyMP4 = await decodeZippyURL(zippyshareURL);
+
+    for(var key in urls){
+      if(urls.hasOwnProperty(key)){
+        if(urls[key].server == 'Zippyshare'){
+          urls[key].url = zippyMP4
+        }
+      }
+   }
 
   }catch(err){
     console.log(err);
