@@ -1,4 +1,5 @@
-const imageToBase64 = require("image-to-base64")
+const imageToBase64 = require("image-to-base64");
+const zsExtract = require("zs-extract")
 
 const MergeRecursive = (obj1 , obj2) => {
   for(var p in obj2) {
@@ -34,9 +35,15 @@ const urlify = async(text) =>{
   return Promise.all(urls);
 };
 
+const decodeZippyURL = async(url) =>{
+  const mp4 = await zsExtract.extract(url);
+  return mp4.download;
+}
+
 
 module.exports = {
   MergeRecursive,
   imgToBase64,
-  urlify
+  urlify,
+  decodeZippyURL
 }
