@@ -59,7 +59,10 @@
     "image-to-base64": "^2.0.1",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
-    "request": "^2.88.0"
+    "npm": "^6.13.7",
+    "request": "^2.88.0",
+    "urldecode": "^1.0.1",
+    "zs-extract": "^1.0.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
