@@ -44,6 +44,9 @@
     "type": "git",
     "url": "https://github.com/ChrisMichaelPerezSantiago/animeflv.git"
   },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
+  },
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",
