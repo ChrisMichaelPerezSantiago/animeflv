@@ -2,7 +2,7 @@ const cheerio = require('cheerio');
 const cheerioTableparser = require('cheerio-tableparser');
 const cloudscraper = require('cloudscraper');
 const decodeURL = require('urldecode')
-const {MergeRecursive , urlify , decodeZippyURL} = require('../utils/index');
+const {MergeRecursive , urlify , decodeZippyURL , imageUrlToBase64} = require('../utils/index');
 const {
   BASE_URL         , SEARCH_URL             , BROWSE_URL , 
   ANIME_VIDEO_URL  , BASE_EPISODE_IMG_URL   , 
@@ -137,7 +137,7 @@ const getAnimeInfo = async(id , title) =>{
     promises.push(await animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: extra.animeExtraInfo[0].title || null,
-      poster: extra.animeExtraInfo[0].poster || null,
+      poster: await imageUrlToBase64(extra.animeExtraInfo[0].poster) || null,
       banner: extra.animeExtraInfo[0].banner || null,
       synopsis: extra.animeExtraInfo[0].synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
@@ -248,11 +248,11 @@ const search = async(query) =>{
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
-    promises.push(animeEpisodesHandler(id).then(extra => ({
+    promises.push(animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: title || null,
       //id: id || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
@@ -282,11 +282,11 @@ const animeByState = async(state , order , page ) => {
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
-    promises.push(animeEpisodesHandler(id).then(extra => ({
+    promises.push(animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: title || null,
       //id: id || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
@@ -315,11 +315,11 @@ const tv = async(order , page) => {
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
-    promises.push(animeEpisodesHandler(id).then(extra => ({
+    promises.push(animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: title || null,
       //id: id || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
@@ -348,11 +348,11 @@ const ova = async(order , page ) => {
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
-    promises.push(animeEpisodesHandler(id).then(extra => ({
+    promises.push(animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: title || null,
       //id: id || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
@@ -381,11 +381,11 @@ const special = async(order , page) => {
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
-    promises.push(animeEpisodesHandler(id).then(extra => ({
+    promises.push(animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: title || null,
       //id: id || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
@@ -414,11 +414,11 @@ const movies = async(order , page) => {
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
-    promises.push(animeEpisodesHandler(id).then(extra => ({
+    promises.push(animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: title || null,
       //id: id || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
@@ -447,11 +447,11 @@ const animeByGenres = async(genre , order , page) => {
     const synopsis = $element.find('div.Description p').eq(1).text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
-    promises.push(animeEpisodesHandler(id).then(extra => ({
+    promises.push(animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: title || null,
       //id: id || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut || null,
@@ -475,10 +475,10 @@ const latestEpisodesAdded = async() =>{
     const title = $element.find('a strong.Title').text();
     const poster = BASE_URL + $element.find('a span.Image img').attr('src');
     const episode = parseInt($element.find('a span.Capi').text().match(/\d+/g) , 10);
-    promises.push(getAnimeServers(id).then(servers => ({
+    promises.push(getAnimeServers(id).then(async servers => ({
       id: id || null,
       title: title || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       episode: episode || null,
       servers: servers || null,
     })))
@@ -501,10 +501,10 @@ const latestAnimeAdded = async() =>{
     const synopsis = $element.find('div.Description p').text().trim();
     const rating = $element.find('div.Description p span.Vts').text();
     const debut = $element.find('a span.Estreno').text().toLowerCase();
-    promises.push(animeEpisodesHandler(id).then(extra => ({
+    promises.push(animeEpisodesHandler(id).then(async extra => ({
       id: id || null,
       title: title || null,
-      poster: poster || null,
+      poster: await imageUrlToBase64(poster) || null,
       banner: banner || null,
       synopsis: synopsis || null,
       debut: extra.animeExtraInfo[0].debut.toString() || null,
