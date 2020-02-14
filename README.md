@@ -98,6 +98,16 @@ npm test
 
 
 ## API Documentation
+
+### 📣Read this please | To load poster (image)!📣
+*The `poster` url has been encoded, so that in our app it will not show us the `Hotlink Protection` error.*
+
+*To load the images you must configure the data URI scheme as follows*
+
+```html
+<img src="data:image/png; base64, ....">
+```
+
 ### 📣Read this please | To get the videos!📣
 ## getAnimeServers([id])
 
