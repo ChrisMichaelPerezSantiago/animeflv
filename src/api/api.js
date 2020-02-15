@@ -589,7 +589,7 @@ const animeEpisodesHandler = async(id) =>{
       amimeTempList.push(episode , episodeId);
     }
     const animeListEps = [{nextEpisodeDate: nextEpisodeDate}];
-    Array.from({length: amimeTempList[1].length} , (v , k) =>{
+    Array.from({length: amimeTempList[1].length} , async(v , k) =>{
       let data = amimeTempList.map(x => x[k]);
       let episode = data[0];
       let id = data[1];
@@ -598,7 +598,7 @@ const animeEpisodesHandler = async(id) =>{
       animeListEps.push({
         episode: episode,
         id: link,
-        imagePreview
+        imagePreview: await imageUrlToBase64(imagePreview)
       })
     })
 
