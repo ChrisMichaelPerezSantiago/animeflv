@@ -45,7 +45,7 @@
     "url": "https://github.com/ChrisMichaelPerezSantiago/animeflv.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   },
   "license": "MIT",
   "dependencies": {
@@ -68,6 +68,7 @@
     "zs-extract": "^1.0.6"
   },
   "devDependencies": {
+    "apidoc": "^0.20.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "eslint": "^5.12.0",
