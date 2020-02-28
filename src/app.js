@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1', api);
+app.use('/api/v1/docs' , express.static('./docs'));
 
 app.use(middlewares);
 
