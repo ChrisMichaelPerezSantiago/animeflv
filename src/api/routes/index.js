@@ -367,6 +367,52 @@ router.get('/GetAnimeInfo/:id*/:title' , (req , res) =>{
     });
 });
 
+/**
+ *  @api {get} /DownloadLinksByEpsId/:id Get Download URls list of the anime chapter.
+ *  @apiVersion 1.0.5
+ *  @apiName GetDownloadLinksByEpsId
+ *  @apiGroup DownloadLinksByEpsId
+ * 
+ *  @apiSuccess {String} server     Server name
+ *  @apiSuccess {String} url        Download URL
+ * 
+ *  @apiParam {String} id Episode id
+ * 
+ *  @apiParamExample {json} You will find the `id` of each chapter in the `episodes` property
+ *  {
+ *    "episodes": [
+ *       {
+ *         "nextEpisodeDate": null
+ *       },
+ *       {
+ *         "episode": 12,
+ *         "id": "28800/tokyo-ghoul-12",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
+ *       },
+ *        //......
+ *     ]
+ *  }
+ * 
+ *  @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *  {
+ *   "downloads": [
+ *     {
+ *       "server": "MEGA",
+ *       "url": "https://mega.nz/#!55InSaxI!5JTxVNA29LCFNr7c1Fxg0PUBQPVQyXBo4aVF3e06jN0"
+ *     },
+ *     {
+ *       "server": "Zippyshare",
+ *       "url": "https://www61.zippyshare.com/d/4KKPr5XK/38775/1415_12.mp4"
+ *     },
+ *     {
+ *       "server": "Openload",
+ *       "url": "https://openload.co/f/sPXbBXnFikU/"
+ *     }
+ *   ]
+ *  }
+ */
+
 router.get('/DownloadLinksByEpsId/:epsId([^/]+/[^/]+)' , (req , res) =>{
   let epsId = req.params.epsId;
   api.downloadLinksByEpsId(epsId)
