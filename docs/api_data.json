@@ -29,6 +29,63 @@
   },
   {
     "type": "get",
+    "url": "/DownloadLinksByEpsId/:id",
+    "title": "Get Download URls list of the anime chapter.",
+    "version": "1.0.5",
+    "name": "GetDownloadLinksByEpsId",
+    "group": "DownloadLinksByEpsId",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "server",
+            "description": "<p>Server name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "url",
+            "description": "<p>Download URL</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"downloads\": [\n   {\n     \"server\": \"MEGA\",\n     \"url\": \"https://mega.nz/#!55InSaxI!5JTxVNA29LCFNr7c1Fxg0PUBQPVQyXBo4aVF3e06jN0\"\n   },\n   {\n     \"server\": \"Zippyshare\",\n     \"url\": \"https://www61.zippyshare.com/d/4KKPr5XK/38775/1415_12.mp4\"\n   },\n   {\n     \"server\": \"Openload\",\n     \"url\": \"https://openload.co/f/sPXbBXnFikU/\"\n   }\n ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Episode id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "You will find the `id` of each chapter in the `episodes` property",
+          "content": "{\n  \"episodes\": [\n     {\n       \"nextEpisodeDate\": null\n     },\n     {\n       \"episode\": 12,\n       \"id\": \"28800/tokyo-ghoul-12\",\n       \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg\"\n     },\n      //......\n   ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "DownloadLinksByEpsId"
+  },
+  {
+    "type": "get",
     "url": "/GetAnimeServers/:id",
     "title": "Get list of all servers available for the anime episode.",
     "version": "1.0.5",
