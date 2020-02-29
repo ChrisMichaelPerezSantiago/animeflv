@@ -238,6 +238,96 @@ router.get('/GetAnimeServers/:id([^/]+/[^/]+)' , (req , res) =>{
     });
 });
 
+/**
+ *  @api {get} /Genres/:genre/:sortBy/:page Get list of Anime by genres
+ *  @apiVersion 1.0.5
+ *  @apiName GetGenres
+ *  @apiGroup Genres
+ * 
+ *  @apiSuccess {String} id           Anime id
+ *  @apiSuccess {String} title        Anime title
+ *  @apiSuccess {String} poster       Poster (img) on base64
+ *  @apiSuccess {String} banner       Background image
+ *  @apiSuccess {String} synopsis     Summary information about the story
+ *  @apiSuccess {String} debut        Current status of the anime
+ *  @apiSuccess {String} type         Type of content
+ *  @apiSuccess {String} rating       Overall rating
+ *  @apiSuccess {Object[]} genres     Genres to which he belongs
+ *  @apiSuccess {Object[]} episodes   List of current episodes
+ *  @apiSuccess {String} episodes.nextEpisodeDate Date of the next TV broadcast
+ *  @apiSuccess {Number} episodes.episode         Episode number
+ *  @apiSuccess {String} episodes.id              Episode id
+ *  @apiSuccess {String} episodes.imagePreview    EpisodeDate image preview
+ * 
+ *  @apiParam {String="accion","artes-marciales","aventura","carreras","ciencia-ficcion","comedia","demencia","demonios","deportes","drama","ecchi","escolares","espacial","fantasia","harem","historico","infantil","josei","juegos","magia","mecha","militar","misterio","musica","parodia","psicologico","recuentos-de-la-vida","romance","samurai","seinen","shoujo","shounen","sobrenatural","superpoderes","suspenso","terror","vampiros","yaoi","yuri"} genre 
+ *  @apiParam {String="default","updated","added","rating","title"} sortBy
+ *  @apiParam {Number} page Total page unknown
+ *
+ * 
+ *  @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ * {
+ * "animes": [
+ *     {
+ *       "id": "anime/5713/dorohedoro",
+ *       "title": "Dorohedoro",
+ *       "poster": "/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx72wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCAFyAQQDA",
+ *       "banner": "https://animeflv.net/uploads/animes/banners/3274.jpg",
+ *       "synopsis": "La trama se centra en Caiman, un chico que no recuerda quien era después de haber sido transformado por un hechicero. Esta transformación le dejó con la cabeza de un reptil y un deseo de descubrir la verdad sobre quién es realmente.",
+ *      "debut": "En emision",
+ *      "type": "Anime",
+ *      "rating": "0.0",
+ *      "genres": [
+ *        "accion",
+ *        "comedia",
+ *        "fantasia",
+ *        "seinen",
+ *        "terror"
+ *      ],
+ *      "episodes": [
+ *        {
+ *          "nextEpisodeDate": "2020-01-17"
+ *        },
+ *        {
+ *          "episode": 7,
+ *          "id": "53992/dorohedoro-7",
+ *          "imagePreview": "https://cdn.animeflv.net/screenshots/3274/7/th_3.jpg"
+ *        },
+ *        {
+ *          "episode": 6,
+ *          "id": "53958/dorohedoro-6",
+ *          "imagePreview": "https://cdn.animeflv.net/screenshots/3274/6/th_3.jpg"
+ *        },
+ *        {
+ *          "episode": 5,
+ *          "id": "53895/dorohedoro-5",
+ *          "imagePreview": "https://cdn.animeflv.net/screenshots/3274/5/th_3.jpg"
+ *        },
+ *        {
+ *          "episode": 4,
+ *          "id": "53854/dorohedoro-4",
+ *          "imagePreview": "https://cdn.animeflv.net/screenshots/3274/4/th_3.jpg"
+ *        },
+ *        {
+ *          "episode": 3,
+ *          "id": "53789/dorohedoro-3",
+ *          "imagePreview": "https://cdn.animeflv.net/screenshots/3274/3/th_3.jpg"
+ *        },
+ *        {
+ *          "episode": 2,
+ *          "id": "53755/dorohedoro-2",
+ *          "imagePreview": "https://cdn.animeflv.net/screenshots/3274/2/th_3.jpg"
+ *        },
+ *        {
+ *          "episode": 1,
+ *          "id": "53705/dorohedoro-1",
+ *          "imagePreview": "https://cdn.animeflv.net/screenshots/3274/1/th_3.jpg"
+ *        }
+ *      ]
+ *    },
+ * 
+ */
+
 router.get('/Genres/:genre/:order/:page' , (req , res) =>{
   let genre = req.params.genre;
   let order = req.params.order;
@@ -252,6 +342,63 @@ router.get('/Genres/:genre/:order/:page' , (req , res) =>{
     });
 });
 
+
+/**
+ *  @api {get} /Movies/:sortBy/:page Get list of Movies
+ *  @apiVersion 1.0.5
+ *  @apiName GetMovies
+ *  @apiGroup Movies
+ * 
+ *  @apiSuccess {String} id           Anime id
+ *  @apiSuccess {String} title        Anime title
+ *  @apiSuccess {String} poster       Poster (img) on base64
+ *  @apiSuccess {String} banner       Background image
+ *  @apiSuccess {String} synopsis     Summary information about the story
+ *  @apiSuccess {String} debut        Current status of the anime
+ *  @apiSuccess {String} type         Type of content
+ *  @apiSuccess {String} rating       Overall rating
+ *  @apiSuccess {Object[]} genres     Genres to which he belongs
+ *  @apiSuccess {Object[]} episodes   List of current episodes
+ *  @apiSuccess {String} episodes.nextEpisodeDate Date of the next TV broadcast
+ *  @apiSuccess {Number} episodes.episode         Episode number
+ *  @apiSuccess {String} episodes.id              Episode id
+ *  @apiSuccess {String} episodes.imagePreview    EpisodeDate image preview
+ * 
+ * 
+ *  @apiParam {String="default","updated","added","rating","title"} sortBy
+ *  @apiParam {Number} page Total page unknown
+ *
+ *  @apiSuccessExample {json} Success-Response:
+ *  {
+ *   "movies": [
+ *     {
+ *       "id": "anime/5698/kyochuu-rettou-movie",
+ *       "title": "Kyochuu Rettou Movie",
+ *       "poster": "UklGRqiGAABXRUJQVlA4IJyGAADQTgGdASoEAXIBPk0ei0QioaEXu/cYKATEoA0I5qWd9Yu5r4n+V/c72VOQe2731+C/Wv+F97XXL2H5bfR3/Q+7P5b/8T9pPfL+sP",
+ *       "banner": "https://animeflv.net/uploads/animes/banners/3259.jpg",
+ *       "synopsis": "Después de un accidente de avión durante un viaje escolar, Oribe Mutsumi y sus compañeros de clase quedaron varados en una isla aparentemente desierta. Mutsumi encontró a los otros sobrevivientes y usó sus conocimientos para ayudarlos. Estos esperan a ser rescatados al menos en tres días, lo que no parece ser mucho tiempo. Sin embargo, Mutsu...",
+ *       "debut": "Finalizado",
+ *       "type": "Película",
+ *       "rating": "4.4",
+ *       "genres": [
+ *         "terror"
+ *       ],
+ *       "episodes": [
+ *         {
+ *           "nextEpisodeDate": null
+ *         },
+ *         {
+ *           "episode": 1,
+ *           "id": "53644/kyochuu-rettou-movie-1",
+ *           "imagePreview": "https://cdn.animeflv.net/screenshots/3259/1/th_3.jpg"
+ *         }
+ *       ]
+ *     },
+ *      // .....
+ *    ]
+ *  }
+ */
+
 router.get('/Movies/:order/:page' , (req , res) =>{
   let order = req.params.order;
   let page = req.params.page;
@@ -264,6 +411,66 @@ router.get('/Movies/:order/:page' , (req , res) =>{
       console.error(err);
     });
 });
+
+
+/**
+ *  @api {get} /Special/:sortBy/:page Get list of Special Anime
+ *  @apiVersion 1.0.5
+ *  @apiName GetSpecial
+ *  @apiGroup Special
+ * 
+ *  @apiSuccess {String} id           Anime id
+ *  @apiSuccess {String} title        Anime title
+ *  @apiSuccess {String} poster       Poster (img) on base64
+ *  @apiSuccess {String} banner       Background image
+ *  @apiSuccess {String} synopsis     Summary information about the story
+ *  @apiSuccess {String} debut        Current status of the anime
+ *  @apiSuccess {String} type         Type of content
+ *  @apiSuccess {String} rating       Overall rating
+ *  @apiSuccess {Object[]} genres     Genres to which he belongs
+ *  @apiSuccess {Object[]} episodes   List of current episodes
+ *  @apiSuccess {String} episodes.nextEpisodeDate Date of the next TV broadcast
+ *  @apiSuccess {Number} episodes.episode         Episode number
+ *  @apiSuccess {String} episodes.id              Episode id
+ *  @apiSuccess {String} episodes.imagePreview    EpisodeDate image preview
+ * 
+ * 
+ *  @apiParam {String="default","updated","added","rating","title"} sortBy
+ *  @apiParam {Number} page Total page unknown
+ *
+ *  @apiSuccessExample {json} Success-Response:
+ *
+ * {
+ *     "special": [
+ *       {
+ *         "id": "anime/5620/fategrand-order-zettai-majuu-sensen-babylonia-initium-iter",
+ *         "title": "Fate/Grand Order: Zettai Majuu Sensen Babylonia - Initium Iter",
+ *         "poster": "UklGRgZNAABXRUJQVlA4IPpMAACQ+ACdASoEAXIBPlEijkUjoiEpKFYL4SAKCWNuDsiTKrm8nGcqJ8frlx/82zZ+r/S/7b8ie0rvk6/8yvoz/ufdV8vP+n68/",
+ *         "banner": "https://animeflv.net/uploads/animes/banners/3181.jpg",
+ *         "synopsis": "Año 2017. La última era en la que existió la magia. Los humanos crearon la sociedad, pero los Magos fueron quienes consiguieron alcanzar la verdad del mundo. La magia se compone de técnicas del pasado que la ciencia no puede explicar, mientras que la ciencia se compone de técnicas del futuro que la magia no puede alcanzar. Estudiosos e investi...",
+ *         "debut": "Finalizado",
+ *         "type": "Especial",
+ *         "rating": "4.6",
+ *         "genres": [
+ *           "accion",
+ *           "fantasia",
+ *           "magia",
+ *           "sobrenatural"
+ *         ],
+ *         "episodes": [
+ *           {
+ *             "nextEpisodeDate": null
+ *           },
+ *           {
+ *             "episode": 0,
+ *             "id": "52745/fategrand-order-zettai-majuu-sensen-babylonia-initium-iter-0",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3181/0/th_3.jpg"
+ *           }
+ *         ]
+ *       },
+ *       //.....
+ *     ]
+ */
 
 router.get('/Special/:order/:page' , (req , res) =>{
   let order = req.params.order;
@@ -278,6 +485,68 @@ router.get('/Special/:order/:page' , (req , res) =>{
     });
 });
 
+/**
+ *  @api {get} /Ova/:sortBy/:page Get list of Ovas
+ *  @apiVersion 1.0.5
+ *  @apiName GetOva
+ *  @apiGroup Ova
+ * 
+ *  @apiSuccess {String} id           Anime id
+ *  @apiSuccess {String} title        Anime title
+ *  @apiSuccess {String} poster       Poster (img) on base64
+ *  @apiSuccess {String} banner       Background image
+ *  @apiSuccess {String} synopsis     Summary information about the story
+ *  @apiSuccess {String} debut        Current status of the anime
+ *  @apiSuccess {String} type         Type of content
+ *  @apiSuccess {String} rating       Overall rating
+ *  @apiSuccess {Object[]} genres     Genres to which he belongs
+ *  @apiSuccess {Object[]} episodes   List of current episodes
+ *  @apiSuccess {String} episodes.nextEpisodeDate Date of the next TV broadcast
+ *  @apiSuccess {Number} episodes.episode         Episode number
+ *  @apiSuccess {String} episodes.id              Episode id
+ *  @apiSuccess {String} episodes.imagePreview    EpisodeDate image preview
+ * 
+ * 
+ *  @apiParam {String="default","updated","added","rating","title"} sortBy
+ *  @apiParam {Number} page Total page unknown
+ *
+ *  @apiSuccessExample {json} Success-Response:
+ *
+ * {
+ *   "ova": [
+ *     {
+ *       "id": "anime/5714/tsugumomo-ova",
+ *       "title": "Tsugumomo OVA",
+ *       "poster": "UklGRo5iAABXRUJQVlA4IIJiAACQIgGdASoEAXIBPlEgjUSjoiEVmhbwOAUEo+8dvx0ytgVT4Bkq/ADQ0D74YWh9bvFdFnyL4SfWvxPDq2h50b2f/",
+ *       "banner": "https://animeflv.net/uploads/animes/banners/3275.jpg",
+ *       "synopsis": "Kazuya Kagami nunca va a ningún lado sin su preciada “Sakura Obi” que su madre le regaló. Un día, una hermosa chica vestida con un kimono llamada Kiriha aparece ante él. Naturalmente, ella comienza a vivir en su habitación. ¿Naturalmente? ¡Esto solo es el inicio de la embarazosa y confusa (y por supuesto feliz) nueva vida de Kazuya!",
+ *      "debut": "Finalizado",
+ *      "type": "OVA",
+ *      "rating": "5.0",
+ *      "genres": [
+ *        "accion",
+ *        "comedia",
+ *        "ecchi",
+ *        "escolares",
+ *        "seinen",
+ *        "sobrenatural"
+ *      ],
+ *      "episodes": [
+ *        {
+ *          "nextEpisodeDate": null
+ *        },
+ *        {
+ *          "episode": 1,
+ *          "id": "53753/tsugumomo-ova-1",
+ *          "imagePreview": "https://cdn.animeflv.net/screenshots/3275/1/th_3.jpg"
+ *        }
+ *      ]
+ *    },
+ *    //.....
+ *  ]
+ *}
+ */
+
 router.get('/Ova/:order/:page' , (req , res) =>{
   let order = req.params.order;
   let page = req.params.page;
@@ -291,6 +560,96 @@ router.get('/Ova/:order/:page' , (req , res) =>{
     });
 });
 
+
+/**
+ *  @api {get} /TV/:sortBy/:page Get list of Anime in tv
+ *  @apiVersion 1.0.5
+ *  @apiName GetTV
+ *  @apiGroup TV
+ * 
+ *  @apiSuccess {String} id           Anime id
+ *  @apiSuccess {String} title        Anime title
+ *  @apiSuccess {String} poster       Poster (img) on base64
+ *  @apiSuccess {String} banner       Background image
+ *  @apiSuccess {String} synopsis     Summary information about the story
+ *  @apiSuccess {String} debut        Current status of the anime
+ *  @apiSuccess {String} type         Type of content
+ *  @apiSuccess {String} rating       Overall rating
+ *  @apiSuccess {Object[]} genres     Genres to which he belongs
+ *  @apiSuccess {Object[]} episodes   List of current episodes
+ *  @apiSuccess {String} episodes.nextEpisodeDate Date of the next TV broadcast
+ *  @apiSuccess {Number} episodes.episode         Episode number
+ *  @apiSuccess {String} episodes.id              Episode id
+ *  @apiSuccess {String} episodes.imagePreview    EpisodeDate image preview
+ * 
+ * 
+ *  @apiParam {String="default","updated","added","rating","title"} sortBy
+ *  @apiParam {Number} page Total page unknown
+ *
+ *  @apiSuccessExample {json} Success-Response:
+ *
+ *   {
+ *     "tv": [
+ *       {
+ *         "id": "anime/5712/isekai-quartet-2nd-season",
+ *         "title": "Isekai Quartet 2nd Season",
+ *         "poster": "/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/",
+ *         "banner": "https://animeflv.net/uploads/animes/banners/3273.jpg",
+ *         "synopsis": "Segunda tempo de Isekai Quartet",
+ *         "debut": "En emision",
+ *         "type": "Anime",
+ *         "rating": "0.0",
+ *         "genres": [
+ *           "comedia",
+ *           "fantasia",
+ *           "parodia"
+ *         ],
+ *         "episodes": [
+ *           {
+ *             "nextEpisodeDate": "2020-03-03"
+ *           },
+ *           {
+ *             "episode": 7,
+ *             "id": "54002/isekai-quartet-2nd-season-7",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/7/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 6,
+ *             "id": "53951/isekai-quartet-2nd-season-6",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/6/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 5,
+ *             "id": "53899/isekai-quartet-2nd-season-5",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/5/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 4,
+ *             "id": "53845/isekai-quartet-2nd-season-4",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/4/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 3,
+ *             "id": "53798/isekai-quartet-2nd-season-3",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/3/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 2,
+ *             "id": "53742/isekai-quartet-2nd-season-2",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/2/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 1,
+ *             "id": "53682/isekai-quartet-2nd-season-1",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/1/th_3.jpg"
+ *           }
+ *         ]
+ *       },
+ *       //.....
+ *     ]
+ *   }
+ */
+
 router.get('/TV/:order/:page' , (req , res) =>{
   let order = req.params.order;
   let page = req.params.page;
@@ -303,6 +662,98 @@ router.get('/TV/:order/:page' , (req , res) =>{
       console.error(err);
     });
 });
+
+/**
+ *  @api {get} /AnimeByState/:state/:sortBy/:page Get list of Anime in tv
+ *  @apiVersion 1.0.5
+ *  @apiName GetAnimeByState
+ *  @apiGroup AnimeByState
+ * 
+ *  @apiSuccess {String} id           Anime id
+ *  @apiSuccess {String} title        Anime title
+ *  @apiSuccess {String} poster       Poster (img) on base64
+ *  @apiSuccess {String} banner       Background image
+ *  @apiSuccess {String} synopsis     Summary information about the story
+ *  @apiSuccess {String} debut        Current status of the anime
+ *  @apiSuccess {String} type         Type of content
+ *  @apiSuccess {String} rating       Overall rating
+ *  @apiSuccess {Object[]} genres     Genres to which he belongs
+ *  @apiSuccess {Object[]} episodes   List of current episodes
+ *  @apiSuccess {String} episodes.nextEpisodeDate Date of the next TV broadcast
+ *  @apiSuccess {Number} episodes.episode         Episode number
+ *  @apiSuccess {String} episodes.id              Episode id
+ *  @apiSuccess {String} episodes.imagePreview    EpisodeDate image preview
+ * 
+ *  
+ *  @apiParam {Number=1,2,3} state
+ *  @apiParam {String="default","updated","added","rating","title"} sortBy
+ *  @apiParam {Number} page Total page unknown
+ * 
+ *  @apiDescription {state = 1} In Emission | {state = 2} Finalized | {state = 3} Coming Soon	
+ *
+ *  @apiSuccessExample {json} Success-Response:
+ *
+ *   {
+ *     "animes": [
+ *       {
+ *         "id": "anime/5712/isekai-quartet-2nd-season",
+ *         "title": "Isekai Quartet 2nd Season",
+ *         "poster": "/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/",
+ *         "banner": "https://animeflv.net/uploads/animes/banners/3273.jpg",
+ *         "synopsis": "Segunda tempo de Isekai Quartet",
+ *         "debut": "En emision",
+ *         "type": "Anime",
+ *         "rating": "0.0",
+ *         "genres": [
+ *           "comedia",
+ *           "fantasia",
+ *           "parodia"
+ *         ],
+ *         "episodes": [
+ *           {
+ *             "nextEpisodeDate": "2020-03-03"
+ *           },
+ *           {
+ *             "episode": 7,
+ *             "id": "54002/isekai-quartet-2nd-season-7",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/7/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 6,
+ *             "id": "53951/isekai-quartet-2nd-season-6",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/6/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 5,
+ *             "id": "53899/isekai-quartet-2nd-season-5",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/5/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 4,
+ *             "id": "53845/isekai-quartet-2nd-season-4",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/4/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 3,
+ *             "id": "53798/isekai-quartet-2nd-season-3",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/3/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 2,
+ *             "id": "53742/isekai-quartet-2nd-season-2",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/2/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 1,
+ *             "id": "53682/isekai-quartet-2nd-season-1",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/3273/1/th_3.jpg"
+ *           }
+ *         ]
+ *       },
+ *       //.....
+ *     ]
+ *   }
+ */
 
 router.get('/AnimeByState/:state/:order/:page' , (req , res) =>{
   let state = req.params.state;
@@ -318,6 +769,151 @@ router.get('/AnimeByState/:state/:order/:page' , (req , res) =>{
     });
 });
 
+/**
+ *  @api {get} /Search/:query Get anime list by doing a search
+ *  @apiVersion 1.0.5
+ *  @apiName Search
+ *  @apiGroup Search
+ * 
+ *  @apiSuccess {String} id           Anime id
+ *  @apiSuccess {String} title        Anime title
+ *  @apiSuccess {String} poster       Poster (img) on base64
+ *  @apiSuccess {String} banner       Background image
+ *  @apiSuccess {String} synopsis     Summary information about the story
+ *  @apiSuccess {String} debut        Current status of the anime
+ *  @apiSuccess {String} type         Type of content
+ *  @apiSuccess {String} rating       Overall rating
+ *  @apiSuccess {Object[]} genres     Genres to which he belongs
+ *  @apiSuccess {Object[]} episodes   List of current episodes
+ *  @apiSuccess {String} episodes.nextEpisodeDate Date of the next TV broadcast
+ *  @apiSuccess {Number} episodes.episode         Episode number
+ *  @apiSuccess {String} episodes.id              Episode id
+ *  @apiSuccess {String} episodes.imagePreview    EpisodeDate image preview
+ * 
+ *  
+ *  @apiParam {String} query Anime title
+ *
+ *  @apiSuccessExample {json} Success-Response:
+ *
+ *{
+ * "search": [
+ *   {
+ *     "id": "anime/5227/tokyo-ghoul-jack",
+ *     "title": "Tokyo Ghoul: Jack",
+ *     "poster": "UklGRphjAABXRUJQVlA4IIxjAABQIwGdASoEAXIBPlEgjUSjoiEVKX7oOAUEsRPwimXsFebXP77/w/Ne477kfaf4D9ee0Hrq7V8uXor/0f5v8rfmV/t/Wj/Sv9h/5fcZ",
+ *     "banner": "https://animeflv.net/uploads/animes/banners/2285.jpg",
+ *     "synopsis": "En Tokyo Ghoul: Jack, seguimos un incidente relacionado con un Ghoul devorador de humanos en el Distrito 13 de Tokio. Para descubrir la verdad de lo ocurrido a su amigo, el estudiante de instituto Taishi Fura persigue al Ghoul conocido como Lantern acompañado del joven investigador Kisho Arima. La historia cuenta cómo Arima y Fura se ...",
+ *     "debut": "Finalizado",
+ *     "type": "OVA",
+ *     "rating": "4.5",
+ *     "genres": [
+ *       "accion",
+ *       "drama",
+ *       "escolares",
+ *       "seinen",
+ *       "sobrenatural",
+ *       "terror"
+ *     ],
+ *     "episodes": [
+ *       {
+ *         "nextEpisodeDate": null
+ *       },
+ *       {
+ *         "episode": 1,
+ *         "id": "37923/tokyo-ghoul-jack-1",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/2285/1/th_3.jpg"
+ *       }
+ *     ]
+ *   },
+ *   {
+ *     "id": "anime/5226/tokyo-ghoul",
+ *     "title": "Tokyo Ghoul",
+ *     "poster": "UklGRlxiAABXRUJQVlA4IFBiAABwOgGdASoEAXIBPlEgjUSjoiErLPQtoWAKCWIAyBfoz0ff/ml7OXH/cH7o+8frT2t9xXZvl/dFf97/Gf5j9vflj/zP/J7Yv1p/6/cQ",
+ *     "banner": "https://animeflv.net/uploads/animes/banners/1415.jpg",
+ *     "synopsis": "Extraños asesinatos se están sucediendo uno tras otro en Tokyo. Debido a las pruebas encontradas en las escenas, la policía concluye que los ataques son obra de ghouls que se comen a las personas. Kaneki y Hide, dos compañeros de clase, llegan a la conclusión de que si nadie ha visto nunca a esos necrófagos...",
+ *     "debut": "Finalizado",
+ *     "type": "Anime",
+ *     "rating": "4.5",
+ *     "genres": [
+ *       "accion",
+ *       "drama",
+ *       "misterio",
+ *       "psicologico",
+ *       "seinen",
+ *       "sobrenatural",
+ *       "terror"
+ *     ],
+ *     "episodes": [
+ *       {
+ *         "nextEpisodeDate": null
+ *       },
+ *       {
+ *         "episode": 12,
+ *         "id": "28800/tokyo-ghoul-12",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 11,
+ *         "id": "28459/tokyo-ghoul-11",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/11/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 10,
+ *         "id": "28001/tokyo-ghoul-10",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/10/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 9,
+ *         "id": "27741/tokyo-ghoul-9",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/9/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 8,
+ *         "id": "27092/tokyo-ghoul-8",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/8/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 7,
+ *         "id": "26689/tokyo-ghoul-7",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/7/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 6,
+ *         "id": "26529/tokyo-ghoul-6",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/6/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 5,
+ *         "id": "26431/tokyo-ghoul-5",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/5/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 4,
+ *         "id": "26373/tokyo-ghoul-4",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/4/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 3,
+ *         "id": "26278/tokyo-ghoul-3",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/3/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 2,
+ *         "id": "26188/tokyo-ghoul-2",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/2/th_3.jpg"
+ *       },
+ *       {
+ *         "episode": 1,
+ *         "id": "26103/tokyo-ghoul-1",
+ *         "imagePreview": "https://cdn.animeflv.net/screenshots/1415/1/th_3.jpg"
+ *       }
+ *     ]
+ *   },
+ *    //.....
+ *  ]
+ * }
+ */
+
 router.get('/Search/:query' , (req , res) =>{
   let query = req.params.query;
   api.search(query)
@@ -329,6 +925,89 @@ router.get('/Search/:query' , (req , res) =>{
       console.error(err);
     });
 });
+
+
+/**
+ *  @api {get} /AnimeCharacters/:title Get list of characters from a particular anime
+ *  @apiVersion 1.0.5
+ *  @apiName GetAnimeCharacters
+ *  @apiGroup AnimeCharacters
+ * 
+ *  @apiSuccess {String[]} characters     List of Characters
+ *  @apiSuccess {String} characters.id    Character id
+ *  @apiSuccess {String} characters.name  Character name 
+ *  @apiSuccess {String} characters.role  Character specific role
+ * 
+ *  @apiParam {String} title Anime title
+ * 
+ *  @apiParamExample {json} You should use the `title` property of the anime.
+ *  {
+ *    "title": "Tokyo Ghoul",
+ *  }
+ * 
+ *  @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *   {
+ *     "characters": [
+ *       {
+ *         "character": {
+ *           "id": 87275,
+ *           "name": "Kaneki, Ken",
+ *           "image": "https://cdn.myanimelist.net/images/characters/9/251339.jpg?s=788e4d76ff697c9ee67b65b68b6e8157",
+ *           "role": "Main"
+ *         }
+ *       },
+ *       {
+ *         "character": {
+ *           "id": 87277,
+ *           "name": "Kirishima, Touka",
+ *           "image": "https://cdn.myanimelist.net/images/characters/16/234699.jpg?s=10ef474344779135236911013b0925fc",
+ *           "role": "Main"
+ *         }
+ *       },
+ *       {
+ *         "character": {
+ *           "id": 113779,
+ *           "name": "Abe, Maiko",
+ *           "image": "https://cdn.myanimelist.net/images/characters/16/259779.jpg?s=67ed4d2dfb07359d050eb3a0ec91ca8d",
+ *           "role": "Supporting"
+ *         }
+ *       },
+ *       {
+ *         "character": {
+ *           "id": 99671,
+ *           "name": "Amon, Koutarou",
+ *           "image": "https://cdn.myanimelist.net/images/characters/13/251453.jpg?s=cf7bdc7cb409357d69720b0aee488ff6",
+ *           "role": "Supporting"
+ *         }
+ *       },
+ *       {
+ *         "character": {
+ *           "id": 111767,
+ *           "name": "Arima, Kishou ",
+ *           "image": "https://cdn.myanimelist.net/images/characters/5/257935.jpg?s=774409608456392dcaca31f53234bb53",
+ *           "role": "Supporting"
+ *         }
+ *       },
+ *       {
+ *         "character": {
+ *           "id": 112687,
+ *           "name": "Banjou, Kazuichi",
+ *           "image": "https://cdn.myanimelist.net/images/characters/8/258499.jpg?s=f4c8bd78f37677f38a47a8e28b8e7056",
+ *           "role": "Supporting"
+ *         }
+ *       },
+ *       {
+ *         "character": {
+ *           "id": 110241,
+ *           "name": "Enji, Koma",
+ *           "image": "https://cdn.myanimelist.net/images/characters/15/257941.jpg?s=f6702db6de1a2f2829577a566d3e43ce",
+ *           "role": "Supporting"
+ *         }
+ *       },
+ *     ]
+ *   }
+ */
 
 router.get('/AnimeCharacters/:title' , (req , res) =>{
   let title = req.params.title.toString();
@@ -342,6 +1021,43 @@ router.get('/AnimeCharacters/:title' , (req , res) =>{
     });
 });
 
+
+/**
+ *  @api {get} /AnimeTrailers/:title Get ist of promotional videos
+ *  @apiVersion 1.0.5
+ *  @apiName GetAnimeTrailers
+ *  @apiGroup AnimeTrailers
+ * 
+ *  @apiSuccess {String[]} trailers             List of promo
+ *  @apiSuccess {String} trailers.title         Promo title
+ *  @apiSuccess {String} trailers.previewImage  Preview image  
+ *  @apiSuccess {String} trailers.videoURL      Promotional video from youtube.
+ * 
+ *  @apiParam {String} title Anime title
+ * 
+ *  @apiParamExample {json} You should use the `title` property of the anime.
+ *  {
+ *    "title": "Tokyo Ghoul",
+ *  }
+ * 
+ *  @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *   {
+ *     "trailers": [
+ *       {
+ *         "title": "PV Madman ver.",
+ *         "previewImage": "https://i.ytimg.com/vi/vGuQeQsoRgU/mqdefault.jpg",
+ *         "videoURL": "https://www.youtube.com/embed/vGuQeQsoRgU?enablejsapi=1&wmode=opaque&autoplay=1"
+ *       },
+ *       {
+ *         "title": "PV AnimeLab ver.",
+ *         "previewImage": "https://i.ytimg.com/vi/ETHpMMV8rJU/mqdefault.jpg",
+ *         "videoURL": "https://www.youtube.com/embed/ETHpMMV8rJU?enablejsapi=1&wmode=opaque&autoplay=1"
+ *       }
+ *     ]
+ *   }
+ */
+
 router.get('/AnimeTrailers/:title' , (req , res) =>{
   let title = req.params.title.toString();
   api.getAnimeVideoPromo(title)
@@ -353,6 +1069,264 @@ router.get('/AnimeTrailers/:title' , (req , res) =>{
       console.error(err);
     });
 });
+
+
+/**
+ *  @api {get} /GetAnimeInfo/:id/:title Get list of promotional videos
+ *  @apiVersion 1.0.5
+ *  @apiName GetAnimeInfo
+ *  @apiGroup GetAnimeInfo
+ * 
+*   @apiSuccess {String} id           Anime id
+ *  @apiSuccess {String} title        Anime title
+ *  @apiSuccess {String} poster       Poster (img) on base64
+ *  @apiSuccess {String} banner       Background image
+ *  @apiSuccess {String} synopsis     Summary information about the story
+ *  @apiSuccess {String} debut        Current status of the anime
+ *  @apiSuccess {String} type         Type of content
+ *  @apiSuccess {String} rating       Overall rating
+ *  @apiSuccess {Object[]} genres     Genres to which he belongs
+ *  @apiSuccess {Object[]} episodes   List of current episodes
+ *  @apiSuccess {String} episodes.nextEpisodeDate Date of the next TV broadcast
+ *  @apiSuccess {Number} episodes.episode         Episode number
+ *  @apiSuccess {String} episodes.id              Episode id
+ *  @apiSuccess {String} episodes.imagePreview    EpisodeDate image preview
+ *  @apiSuccess {Object[]} moreInfo               Extra Information
+ *  @apiSuccess {String} moreInfo.titleJapanese   Alternative title in Japanese
+ *  @apiSuccess {String} moreInfo.source          anime source
+ *  @apiSuccess {Number} moreInfo.totalEpisodes   Total anime episodes
+ *  @apiSuccess {String} moreInfo.status          Current Transmission Status
+ *  @apiSuccess {String[]} moreInfo.aired         Start and end date of the anime
+ *  @apiSuccess {Number} moreInfo.duration        Average duration by episodes
+ *  @apiSuccess {Number} moreInfo.rank            Actual ranking position
+ *  @apiSuccess {Number} moreInfo.popularity      Popularity value
+ *  @apiSuccess {Number} moreInfo.members         Number of Members who support the anime
+ *  @apiSuccess {String} moreInfo.premiered       Release date
+ *  @apiSuccess {String} moreInfo.broadcast       Broadcast day
+ *  @apiSuccess {String[]} moreInfo.producers     Anime Propuctures
+ *  @apiSuccess {String[]} moreInfo.licensors     Anime licensors
+ *  @apiSuccess {String[]} moreInfo.studios       Anime studios
+ *  @apiSuccess {String[]} moreInfo.openingThemes title of the beginning anime song 
+ *  @apiSuccess {String[]} moreInfo.endingThemes  song title at the end of the anime
+ *  @apiSuccess {String[]} moreInfo.promoList     List of promotional videos
+ *  @apiSuccess {String[]} moreInfo.charactersList characters List
+ * 
+ *  @apiParam {String} id Anime id
+ *  @apiParam {String} title Anime title
+ * 
+ *  @apiParamExample {json} You should use the `title` and the 'id' property of the anime.
+ *  {
+ *    "id": "anime/5226/tokyo-ghoul",
+ *    "title": "Tokyo Ghoul"
+ *  }
+ * 
+ *  @apiSuccessExample {json} Success-Response:
+ *  HTTP/1.1 200 OK
+ *
+ *   {
+ *     "info": [
+ *       {
+ *         "id": "anime/5226/tokyo-ghoul",
+ *         "title": "Tokyo Ghoul",
+ *         "poster": "UklGRlxiAABXRUJQVlA4IFBiAABwOgGdASoEAXIBPlEgjUSjoiErLPQtoWAKCWIAyBfoz0ff/ml7OXH/cH7o+8frT2t9xXZvl/",
+ *         "banner": "https://animeflv.net/uploads/animes/banners/1415.jpg",
+ *         "synopsis": "Extraños asesinatos se están sucediendo uno tras otro en Tokyo. Debido a las pruebas encontradas en las escenas, la policía concluye que los ataques son obra de ghouls que se comen a las personas. Kaneki y Hide, dos compañeros de clase, llegan a la conclusión de que si nadie ha visto nunca a esos necrófagos es porque toman la apariencia de seres humanos para ocultarse.\nPoco sabían entonces de que su teoría sería más cierta de lo que pensaban cuando Kaneki es herido de gravedad por un monstruo y comienza a atraerle cada vez más la carne humana…",
+ *         "debut": "Finalizado",
+ *         "type": "Anime",
+ *         "rating": "4.5",
+ *         "genres": [
+ *           "accion",
+ *           "drama",
+ *           "misterio",
+ *           "psicologico",
+ *           "seinen",
+ *           "sobrenatural",
+ *           "terror"
+ *         ],
+ *         "episodes": [
+ *           {
+ *             "nextEpisodeDate": null
+ *           },
+ *           {
+ *             "episode": 12,
+ *             "id": "28800/tokyo-ghoul-12",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 11,
+ *             "id": "28459/tokyo-ghoul-11",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/11/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 10,
+ *             "id": "28001/tokyo-ghoul-10",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/10/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 9,
+ *             "id": "27741/tokyo-ghoul-9",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/9/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 8,
+ *             "id": "27092/tokyo-ghoul-8",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/8/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 7,
+ *             "id": "26689/tokyo-ghoul-7",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/7/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 6,
+ *             "id": "26529/tokyo-ghoul-6",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/6/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 5,
+ *             "id": "26431/tokyo-ghoul-5",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/5/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 4,
+ *             "id": "26373/tokyo-ghoul-4",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/4/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 3,
+ *             "id": "26278/tokyo-ghoul-3",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/3/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 2,
+ *             "id": "26188/tokyo-ghoul-2",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/2/th_3.jpg"
+ *           },
+ *           {
+ *             "episode": 1,
+ *             "id": "26103/tokyo-ghoul-1",
+ *             "imagePreview": "https://cdn.animeflv.net/screenshots/1415/1/th_3.jpg"
+ *           }
+ *         ],
+ *         "moreInfo": [
+ *           {
+ *             "titleJapanese": "東京喰種-トーキョーグール-",
+ *             "source": "Manga",
+ *             "totalEpisodes": 12,
+ *             "status": "Finished Airing",
+ *             "aired": {
+ *               "from": "2014-07-04T00:00:00+00:00",
+ *               "to": "2014-09-19T00:00:00+00:00",
+ *               "string": "Jul 4, 2014 to Sep 19, 2014"
+ *             },
+ *             "duration": "24 min per ep",
+ *             "rank": 702,
+ *             "popularity": 6,
+ *             "members": 1386993,
+ *             "favorites": 35890,
+ *             "premiered": "Summer 2014",
+ *             "broadcast": "Fridays at 00:00 (JST)",
+ *             "producers": {
+ *               "names": [
+ *                 "Marvelous AQL",
+ *                 "TC Entertainment",
+ *                 "Shueisha"
+ *               ]
+ *             },
+ *             "licensors": {
+ *               "names": [
+ *                 "Funimation"
+ *               ]
+ *             },
+ *             "studios": {
+ *               "names": [
+ *                 "Studio Pierrot"
+ *               ]
+ *             },
+ *             "openingThemes": [
+ *               "\"unravel\" by TK from Ling Tosite Sigure (eps 2-11)"
+ *             ],
+ *             "endingThemes": [
+ *               "\"unravel\" by TK from Ling Tosite Sigure (eps 1, 12)",
+ *               "\"Seijatachi (聖者たち)\" by People In The Box (eps 2-11)"
+ *             ]
+ *           }
+ *         ],
+ *         "promoList": [
+ *           {
+ *             "title": "PV Madman ver.",
+ *             "previewImage": "https://i.ytimg.com/vi/vGuQeQsoRgU/mqdefault.jpg",
+ *             "videoURL": "https://www.youtube.com/embed/vGuQeQsoRgU?enablejsapi=1&wmode=opaque&autoplay=1"
+ *           },
+ *           {
+ *             "title": "PV AnimeLab ver.",
+ *             "previewImage": "https://i.ytimg.com/vi/ETHpMMV8rJU/mqdefault.jpg",
+ *             "videoURL": "https://www.youtube.com/embed/ETHpMMV8rJU?enablejsapi=1&wmode=opaque&autoplay=1"
+ *           }
+ *         ],
+ *         "charactersList": [
+ *           {
+ *             "character": {
+ *               "id": 87275,
+ *               "name": "Kaneki, Ken",
+ *               "image": "https://cdn.myanimelist.net/images/characters/9/251339.jpg?s=788e4d76ff697c9ee67b65b68b6e8157",
+ *               "role": "Main"
+ *             }
+ *           },
+ *           {
+ *             "character": {
+ *               "id": 87277,
+ *               "name": "Kirishima, Touka",
+ *               "image": "https://cdn.myanimelist.net/images/characters/16/234699.jpg?s=10ef474344779135236911013b0925fc",
+ *               "role": "Main"
+ *             }
+ *           },
+ *           {
+ *             "character": {
+ *               "id": 113779,
+ *               "name": "Abe, Maiko",
+ *               "image": "https://cdn.myanimelist.net/images/characters/16/259779.jpg?s=67ed4d2dfb07359d050eb3a0ec91ca8d",
+ *               "role": "Supporting"
+ *             }
+ *           },
+ *           {
+ *             "character": {
+ *               "id": 99671,
+ *               "name": "Amon, Koutarou",
+ *               "image": "https://cdn.myanimelist.net/images/characters/13/251453.jpg?s=cf7bdc7cb409357d69720b0aee488ff6",
+ *               "role": "Supporting"
+ *             }
+ *           },
+ *           {
+ *             "character": {
+ *               "id": 111767,
+ *               "name": "Arima, Kishou ",
+ *               "image": "https://cdn.myanimelist.net/images/characters/5/257935.jpg?s=774409608456392dcaca31f53234bb53",
+ *               "role": "Supporting"
+ *             }
+ *           },
+ *           {
+ *             "character": {
+ *               "id": 112687,
+ *               "name": "Banjou, Kazuichi",
+ *               "image": "https://cdn.myanimelist.net/images/characters/8/258499.jpg?s=f4c8bd78f37677f38a47a8e28b8e7056",
+ *               "role": "Supporting"
+ *             }
+ *           },
+ *           {
+ *             "character": {
+ *               "id": 110241,
+ *               "name": "Enji, Koma",
+ *               "image": "https://cdn.myanimelist.net/images/characters/15/257941.jpg?s=f6702db6de1a2f2829577a566d3e43ce",
+ *               "role": "Supporting"
+ *             }
+ *           },
+ *           //.....
+ *         ]
+ *       }
+ *     ]
+ *   }
+ */
 
 router.get('/GetAnimeInfo/:id*/:title' , (req , res) =>{
   let id = `anime${req.params[0]}`;
