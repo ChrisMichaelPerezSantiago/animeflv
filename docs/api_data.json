@@ -1,5 +1,308 @@
 [
   {
+    "type": "get",
+    "url": "/AnimeByState/:state/:sortBy/:page",
+    "title": "Get list of Anime in tv",
+    "version": "1.0.5",
+    "name": "GetAnimeByState",
+    "group": "AnimeByState",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "poster",
+            "description": "<p>Poster (img) on base64</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "banner",
+            "description": "<p>Background image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "synopsis",
+            "description": "<p>Summary information about the story</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "debut",
+            "description": "<p>Current status of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of content</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rating",
+            "description": "<p>Overall rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "genres",
+            "description": "<p>Genres to which he belongs</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "episodes",
+            "description": "<p>List of current episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.nextEpisodeDate",
+            "description": "<p>Date of the next TV broadcast</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "episodes.episode",
+            "description": "<p>Episode number</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.id",
+            "description": "<p>Episode id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.imagePreview",
+            "description": "<p>EpisodeDate image preview</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\n{\n  \"animes\": [\n    {\n      \"id\": \"anime/5712/isekai-quartet-2nd-season\",\n      \"title\": \"Isekai Quartet 2nd Season\",\n      \"poster\": \"/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/\",\n      \"banner\": \"https://animeflv.net/uploads/animes/banners/3273.jpg\",\n      \"synopsis\": \"Segunda tempo de Isekai Quartet\",\n      \"debut\": \"En emision\",\n      \"type\": \"Anime\",\n      \"rating\": \"0.0\",\n      \"genres\": [\n        \"comedia\",\n        \"fantasia\",\n        \"parodia\"\n      ],\n      \"episodes\": [\n        {\n          \"nextEpisodeDate\": \"2020-03-03\"\n        },\n        {\n          \"episode\": 7,\n          \"id\": \"54002/isekai-quartet-2nd-season-7\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/7/th_3.jpg\"\n        },\n        {\n          \"episode\": 6,\n          \"id\": \"53951/isekai-quartet-2nd-season-6\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/6/th_3.jpg\"\n        },\n        {\n          \"episode\": 5,\n          \"id\": \"53899/isekai-quartet-2nd-season-5\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/5/th_3.jpg\"\n        },\n        {\n          \"episode\": 4,\n          \"id\": \"53845/isekai-quartet-2nd-season-4\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/4/th_3.jpg\"\n        },\n        {\n          \"episode\": 3,\n          \"id\": \"53798/isekai-quartet-2nd-season-3\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/3/th_3.jpg\"\n        },\n        {\n          \"episode\": 2,\n          \"id\": \"53742/isekai-quartet-2nd-season-2\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/2/th_3.jpg\"\n        },\n        {\n          \"episode\": 1,\n          \"id\": \"53682/isekai-quartet-2nd-season-1\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/1/th_3.jpg\"\n        }\n      ]\n    },\n    //.....\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "allowedValues": [
+              "1",
+              "2",
+              "3"
+            ],
+            "optional": false,
+            "field": "state",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"default\"",
+              "\"updated\"",
+              "\"added\"",
+              "\"rating\"",
+              "\"title\""
+            ],
+            "optional": false,
+            "field": "sortBy",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Total page unknown</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>{state = 1} In Emission | {state = 2} Finalized | {state = 3} Coming Soon</p>",
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "AnimeByState"
+  },
+  {
+    "type": "get",
+    "url": "/AnimeCharacters/:title",
+    "title": "Get list of characters from a particular anime",
+    "version": "1.0.5",
+    "name": "GetAnimeCharacters",
+    "group": "AnimeCharacters",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "characters",
+            "description": "<p>List of Characters</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "characters.id",
+            "description": "<p>Character id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "characters.name",
+            "description": "<p>Character name</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "characters.role",
+            "description": "<p>Character specific role</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n {\n   \"characters\": [\n     {\n       \"character\": {\n         \"id\": 87275,\n         \"name\": \"Kaneki, Ken\",\n         \"image\": \"https://cdn.myanimelist.net/images/characters/9/251339.jpg?s=788e4d76ff697c9ee67b65b68b6e8157\",\n         \"role\": \"Main\"\n       }\n     },\n     {\n       \"character\": {\n         \"id\": 87277,\n         \"name\": \"Kirishima, Touka\",\n         \"image\": \"https://cdn.myanimelist.net/images/characters/16/234699.jpg?s=10ef474344779135236911013b0925fc\",\n         \"role\": \"Main\"\n       }\n     },\n     {\n       \"character\": {\n         \"id\": 113779,\n         \"name\": \"Abe, Maiko\",\n         \"image\": \"https://cdn.myanimelist.net/images/characters/16/259779.jpg?s=67ed4d2dfb07359d050eb3a0ec91ca8d\",\n         \"role\": \"Supporting\"\n       }\n     },\n     {\n       \"character\": {\n         \"id\": 99671,\n         \"name\": \"Amon, Koutarou\",\n         \"image\": \"https://cdn.myanimelist.net/images/characters/13/251453.jpg?s=cf7bdc7cb409357d69720b0aee488ff6\",\n         \"role\": \"Supporting\"\n       }\n     },\n     {\n       \"character\": {\n         \"id\": 111767,\n         \"name\": \"Arima, Kishou \",\n         \"image\": \"https://cdn.myanimelist.net/images/characters/5/257935.jpg?s=774409608456392dcaca31f53234bb53\",\n         \"role\": \"Supporting\"\n       }\n     },\n     {\n       \"character\": {\n         \"id\": 112687,\n         \"name\": \"Banjou, Kazuichi\",\n         \"image\": \"https://cdn.myanimelist.net/images/characters/8/258499.jpg?s=f4c8bd78f37677f38a47a8e28b8e7056\",\n         \"role\": \"Supporting\"\n       }\n     },\n     {\n       \"character\": {\n         \"id\": 110241,\n         \"name\": \"Enji, Koma\",\n         \"image\": \"https://cdn.myanimelist.net/images/characters/15/257941.jpg?s=f6702db6de1a2f2829577a566d3e43ce\",\n         \"role\": \"Supporting\"\n       }\n     },\n   ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "You should use the `title` property of the anime.",
+          "content": "{\n  \"title\": \"Tokyo Ghoul\",\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "AnimeCharacters"
+  },
+  {
+    "type": "get",
+    "url": "/AnimeTrailers/:title",
+    "title": "Get ist of promotional videos",
+    "version": "1.0.5",
+    "name": "GetAnimeTrailers",
+    "group": "AnimeTrailers",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "trailers",
+            "description": "<p>List of promo</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "trailers.title",
+            "description": "<p>Promo title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "trailers.previewImage",
+            "description": "<p>Preview image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "trailers.videoURL",
+            "description": "<p>Promotional video from youtube.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n {\n   \"trailers\": [\n     {\n       \"title\": \"PV Madman ver.\",\n       \"previewImage\": \"https://i.ytimg.com/vi/vGuQeQsoRgU/mqdefault.jpg\",\n       \"videoURL\": \"https://www.youtube.com/embed/vGuQeQsoRgU?enablejsapi=1&wmode=opaque&autoplay=1\"\n     },\n     {\n       \"title\": \"PV AnimeLab ver.\",\n       \"previewImage\": \"https://i.ytimg.com/vi/ETHpMMV8rJU/mqdefault.jpg\",\n       \"videoURL\": \"https://www.youtube.com/embed/ETHpMMV8rJU?enablejsapi=1&wmode=opaque&autoplay=1\"\n     }\n   ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "You should use the `title` property of the anime.",
+          "content": "{\n  \"title\": \"Tokyo Ghoul\",\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "AnimeTrailers"
+  },
+  {
     "success": {
       "fields": {
         "Success 200": [
@@ -83,6 +386,483 @@
     },
     "filename": "./src/api/routes/index.js",
     "groupTitle": "DownloadLinksByEpsId"
+  },
+  {
+    "type": "get",
+    "url": "/Genres/:genre/:sortBy/:page",
+    "title": "Get list of Anime by genres",
+    "version": "1.0.5",
+    "name": "GetGenres",
+    "group": "Genres",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "poster",
+            "description": "<p>Poster (img) on base64</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "banner",
+            "description": "<p>Background image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "synopsis",
+            "description": "<p>Summary information about the story</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "debut",
+            "description": "<p>Current status of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of content</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rating",
+            "description": "<p>Overall rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "genres",
+            "description": "<p>Genres to which he belongs</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "episodes",
+            "description": "<p>List of current episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.nextEpisodeDate",
+            "description": "<p>Date of the next TV broadcast</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "episodes.episode",
+            "description": "<p>Episode number</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.id",
+            "description": "<p>Episode id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.imagePreview",
+            "description": "<p>EpisodeDate image preview</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " HTTP/1.1 200 OK\n{\n\"animes\": [\n    {\n      \"id\": \"anime/5713/dorohedoro\",\n      \"title\": \"Dorohedoro\",\n      \"poster\": \"/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx72wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wgARCAFyAQQDA\",\n      \"banner\": \"https://animeflv.net/uploads/animes/banners/3274.jpg\",\n      \"synopsis\": \"La trama se centra en Caiman, un chico que no recuerda quien era después de haber sido transformado por un hechicero. Esta transformación le dejó con la cabeza de un reptil y un deseo de descubrir la verdad sobre quién es realmente.\",\n     \"debut\": \"En emision\",\n     \"type\": \"Anime\",\n     \"rating\": \"0.0\",\n     \"genres\": [\n       \"accion\",\n       \"comedia\",\n       \"fantasia\",\n       \"seinen\",\n       \"terror\"\n     ],\n     \"episodes\": [\n       {\n         \"nextEpisodeDate\": \"2020-01-17\"\n       },\n       {\n         \"episode\": 7,\n         \"id\": \"53992/dorohedoro-7\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3274/7/th_3.jpg\"\n       },\n       {\n         \"episode\": 6,\n         \"id\": \"53958/dorohedoro-6\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3274/6/th_3.jpg\"\n       },\n       {\n         \"episode\": 5,\n         \"id\": \"53895/dorohedoro-5\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3274/5/th_3.jpg\"\n       },\n       {\n         \"episode\": 4,\n         \"id\": \"53854/dorohedoro-4\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3274/4/th_3.jpg\"\n       },\n       {\n         \"episode\": 3,\n         \"id\": \"53789/dorohedoro-3\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3274/3/th_3.jpg\"\n       },\n       {\n         \"episode\": 2,\n         \"id\": \"53755/dorohedoro-2\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3274/2/th_3.jpg\"\n       },\n       {\n         \"episode\": 1,\n         \"id\": \"53705/dorohedoro-1\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3274/1/th_3.jpg\"\n       }\n     ]\n   },",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"accion\"",
+              "\"artes-marciales\"",
+              "\"aventura\"",
+              "\"carreras\"",
+              "\"ciencia-ficcion\"",
+              "\"comedia\"",
+              "\"demencia\"",
+              "\"demonios\"",
+              "\"deportes\"",
+              "\"drama\"",
+              "\"ecchi\"",
+              "\"escolares\"",
+              "\"espacial\"",
+              "\"fantasia\"",
+              "\"harem\"",
+              "\"historico\"",
+              "\"infantil\"",
+              "\"josei\"",
+              "\"juegos\"",
+              "\"magia\"",
+              "\"mecha\"",
+              "\"militar\"",
+              "\"misterio\"",
+              "\"musica\"",
+              "\"parodia\"",
+              "\"psicologico\"",
+              "\"recuentos-de-la-vida\"",
+              "\"romance\"",
+              "\"samurai\"",
+              "\"seinen\"",
+              "\"shoujo\"",
+              "\"shounen\"",
+              "\"sobrenatural\"",
+              "\"superpoderes\"",
+              "\"suspenso\"",
+              "\"terror\"",
+              "\"vampiros\"",
+              "\"yaoi\"",
+              "\"yuri\""
+            ],
+            "optional": false,
+            "field": "genre",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"default\"",
+              "\"updated\"",
+              "\"added\"",
+              "\"rating\"",
+              "\"title\""
+            ],
+            "optional": false,
+            "field": "sortBy",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Total page unknown</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "Genres"
+  },
+  {
+    "type": "get",
+    "url": "/GetAnimeInfo/:id/:title",
+    "title": "Get list of promotional videos",
+    "version": "1.0.5",
+    "name": "GetAnimeInfo",
+    "group": "GetAnimeInfo",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "poster",
+            "description": "<p>Poster (img) on base64</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "banner",
+            "description": "<p>Background image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "synopsis",
+            "description": "<p>Summary information about the story</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "debut",
+            "description": "<p>Current status of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of content</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rating",
+            "description": "<p>Overall rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "genres",
+            "description": "<p>Genres to which he belongs</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "episodes",
+            "description": "<p>List of current episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.nextEpisodeDate",
+            "description": "<p>Date of the next TV broadcast</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "episodes.episode",
+            "description": "<p>Episode number</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.id",
+            "description": "<p>Episode id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.imagePreview",
+            "description": "<p>EpisodeDate image preview</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "moreInfo",
+            "description": "<p>Extra Information</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "moreInfo.titleJapanese",
+            "description": "<p>Alternative title in Japanese</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "moreInfo.source",
+            "description": "<p>anime source</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "moreInfo.totalEpisodes",
+            "description": "<p>Total anime episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "moreInfo.status",
+            "description": "<p>Current Transmission Status</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "moreInfo.aired",
+            "description": "<p>Start and end date of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "moreInfo.duration",
+            "description": "<p>Average duration by episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "moreInfo.rank",
+            "description": "<p>Actual ranking position</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "moreInfo.popularity",
+            "description": "<p>Popularity value</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "moreInfo.members",
+            "description": "<p>Number of Members who support the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "moreInfo.premiered",
+            "description": "<p>Release date</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "moreInfo.broadcast",
+            "description": "<p>Broadcast day</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "moreInfo.producers",
+            "description": "<p>Anime Propuctures</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "moreInfo.licensors",
+            "description": "<p>Anime licensors</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "moreInfo.studios",
+            "description": "<p>Anime studios</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "moreInfo.openingThemes",
+            "description": "<p>title of the beginning anime song</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "moreInfo.endingThemes",
+            "description": "<p>song title at the end of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "moreInfo.promoList",
+            "description": "<p>List of promotional videos</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "moreInfo.charactersList",
+            "description": "<p>characters List</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n\n {\n   \"info\": [\n     {\n       \"id\": \"anime/5226/tokyo-ghoul\",\n       \"title\": \"Tokyo Ghoul\",\n       \"poster\": \"UklGRlxiAABXRUJQVlA4IFBiAABwOgGdASoEAXIBPlEgjUSjoiErLPQtoWAKCWIAyBfoz0ff/ml7OXH/cH7o+8frT2t9xXZvl/\",\n       \"banner\": \"https://animeflv.net/uploads/animes/banners/1415.jpg\",\n       \"synopsis\": \"Extraños asesinatos se están sucediendo uno tras otro en Tokyo. Debido a las pruebas encontradas en las escenas, la policía concluye que los ataques son obra de ghouls que se comen a las personas. Kaneki y Hide, dos compañeros de clase, llegan a la conclusión de que si nadie ha visto nunca a esos necrófagos es porque toman la apariencia de seres humanos para ocultarse.\\nPoco sabían entonces de que su teoría sería más cierta de lo que pensaban cuando Kaneki es herido de gravedad por un monstruo y comienza a atraerle cada vez más la carne humana…\",\n       \"debut\": \"Finalizado\",\n       \"type\": \"Anime\",\n       \"rating\": \"4.5\",\n       \"genres\": [\n         \"accion\",\n         \"drama\",\n         \"misterio\",\n         \"psicologico\",\n         \"seinen\",\n         \"sobrenatural\",\n         \"terror\"\n       ],\n       \"episodes\": [\n         {\n           \"nextEpisodeDate\": null\n         },\n         {\n           \"episode\": 12,\n           \"id\": \"28800/tokyo-ghoul-12\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg\"\n         },\n         {\n           \"episode\": 11,\n           \"id\": \"28459/tokyo-ghoul-11\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/11/th_3.jpg\"\n         },\n         {\n           \"episode\": 10,\n           \"id\": \"28001/tokyo-ghoul-10\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/10/th_3.jpg\"\n         },\n         {\n           \"episode\": 9,\n           \"id\": \"27741/tokyo-ghoul-9\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/9/th_3.jpg\"\n         },\n         {\n           \"episode\": 8,\n           \"id\": \"27092/tokyo-ghoul-8\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/8/th_3.jpg\"\n         },\n         {\n           \"episode\": 7,\n           \"id\": \"26689/tokyo-ghoul-7\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/7/th_3.jpg\"\n         },\n         {\n           \"episode\": 6,\n           \"id\": \"26529/tokyo-ghoul-6\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/6/th_3.jpg\"\n         },\n         {\n           \"episode\": 5,\n           \"id\": \"26431/tokyo-ghoul-5\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/5/th_3.jpg\"\n         },\n         {\n           \"episode\": 4,\n           \"id\": \"26373/tokyo-ghoul-4\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/4/th_3.jpg\"\n         },\n         {\n           \"episode\": 3,\n           \"id\": \"26278/tokyo-ghoul-3\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/3/th_3.jpg\"\n         },\n         {\n           \"episode\": 2,\n           \"id\": \"26188/tokyo-ghoul-2\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/2/th_3.jpg\"\n         },\n         {\n           \"episode\": 1,\n           \"id\": \"26103/tokyo-ghoul-1\",\n           \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/1/th_3.jpg\"\n         }\n       ],\n       \"moreInfo\": [\n         {\n           \"titleJapanese\": \"東京喰種-トーキョーグール-\",\n           \"source\": \"Manga\",\n           \"totalEpisodes\": 12,\n           \"status\": \"Finished Airing\",\n           \"aired\": {\n             \"from\": \"2014-07-04T00:00:00+00:00\",\n             \"to\": \"2014-09-19T00:00:00+00:00\",\n             \"string\": \"Jul 4, 2014 to Sep 19, 2014\"\n           },\n           \"duration\": \"24 min per ep\",\n           \"rank\": 702,\n           \"popularity\": 6,\n           \"members\": 1386993,\n           \"favorites\": 35890,\n           \"premiered\": \"Summer 2014\",\n           \"broadcast\": \"Fridays at 00:00 (JST)\",\n           \"producers\": {\n             \"names\": [\n               \"Marvelous AQL\",\n               \"TC Entertainment\",\n               \"Shueisha\"\n             ]\n           },\n           \"licensors\": {\n             \"names\": [\n               \"Funimation\"\n             ]\n           },\n           \"studios\": {\n             \"names\": [\n               \"Studio Pierrot\"\n             ]\n           },\n           \"openingThemes\": [\n             \"\\\"unravel\\\" by TK from Ling Tosite Sigure (eps 2-11)\"\n           ],\n           \"endingThemes\": [\n             \"\\\"unravel\\\" by TK from Ling Tosite Sigure (eps 1, 12)\",\n             \"\\\"Seijatachi (聖者たち)\\\" by People In The Box (eps 2-11)\"\n           ]\n         }\n       ],\n       \"promoList\": [\n         {\n           \"title\": \"PV Madman ver.\",\n           \"previewImage\": \"https://i.ytimg.com/vi/vGuQeQsoRgU/mqdefault.jpg\",\n           \"videoURL\": \"https://www.youtube.com/embed/vGuQeQsoRgU?enablejsapi=1&wmode=opaque&autoplay=1\"\n         },\n         {\n           \"title\": \"PV AnimeLab ver.\",\n           \"previewImage\": \"https://i.ytimg.com/vi/ETHpMMV8rJU/mqdefault.jpg\",\n           \"videoURL\": \"https://www.youtube.com/embed/ETHpMMV8rJU?enablejsapi=1&wmode=opaque&autoplay=1\"\n         }\n       ],\n       \"charactersList\": [\n         {\n           \"character\": {\n             \"id\": 87275,\n             \"name\": \"Kaneki, Ken\",\n             \"image\": \"https://cdn.myanimelist.net/images/characters/9/251339.jpg?s=788e4d76ff697c9ee67b65b68b6e8157\",\n             \"role\": \"Main\"\n           }\n         },\n         {\n           \"character\": {\n             \"id\": 87277,\n             \"name\": \"Kirishima, Touka\",\n             \"image\": \"https://cdn.myanimelist.net/images/characters/16/234699.jpg?s=10ef474344779135236911013b0925fc\",\n             \"role\": \"Main\"\n           }\n         },\n         {\n           \"character\": {\n             \"id\": 113779,\n             \"name\": \"Abe, Maiko\",\n             \"image\": \"https://cdn.myanimelist.net/images/characters/16/259779.jpg?s=67ed4d2dfb07359d050eb3a0ec91ca8d\",\n             \"role\": \"Supporting\"\n           }\n         },\n         {\n           \"character\": {\n             \"id\": 99671,\n             \"name\": \"Amon, Koutarou\",\n             \"image\": \"https://cdn.myanimelist.net/images/characters/13/251453.jpg?s=cf7bdc7cb409357d69720b0aee488ff6\",\n             \"role\": \"Supporting\"\n           }\n         },\n         {\n           \"character\": {\n             \"id\": 111767,\n             \"name\": \"Arima, Kishou \",\n             \"image\": \"https://cdn.myanimelist.net/images/characters/5/257935.jpg?s=774409608456392dcaca31f53234bb53\",\n             \"role\": \"Supporting\"\n           }\n         },\n         {\n           \"character\": {\n             \"id\": 112687,\n             \"name\": \"Banjou, Kazuichi\",\n             \"image\": \"https://cdn.myanimelist.net/images/characters/8/258499.jpg?s=f4c8bd78f37677f38a47a8e28b8e7056\",\n             \"role\": \"Supporting\"\n           }\n         },\n         {\n           \"character\": {\n             \"id\": 110241,\n             \"name\": \"Enji, Koma\",\n             \"image\": \"https://cdn.myanimelist.net/images/characters/15/257941.jpg?s=f6702db6de1a2f2829577a566d3e43ce\",\n             \"role\": \"Supporting\"\n           }\n         },\n         //.....\n       ]\n     }\n   ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "You should use the `title` and the 'id' property of the anime.",
+          "content": "{\n  \"id\": \"anime/5226/tokyo-ghoul\",\n  \"title\": \"Tokyo Ghoul\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "GetAnimeInfo"
   },
   {
     "type": "get",
@@ -382,5 +1162,731 @@
     },
     "filename": "./src/api/routes/index.js",
     "groupTitle": "LatestEpisodesAdded"
+  },
+  {
+    "type": "get",
+    "url": "/Movies/:sortBy/:page",
+    "title": "Get list of Movies",
+    "version": "1.0.5",
+    "name": "GetMovies",
+    "group": "Movies",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "poster",
+            "description": "<p>Poster (img) on base64</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "banner",
+            "description": "<p>Background image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "synopsis",
+            "description": "<p>Summary information about the story</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "debut",
+            "description": "<p>Current status of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of content</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rating",
+            "description": "<p>Overall rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "genres",
+            "description": "<p>Genres to which he belongs</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "episodes",
+            "description": "<p>List of current episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.nextEpisodeDate",
+            "description": "<p>Date of the next TV broadcast</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "episodes.episode",
+            "description": "<p>Episode number</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.id",
+            "description": "<p>Episode id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.imagePreview",
+            "description": "<p>EpisodeDate image preview</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n \"movies\": [\n   {\n     \"id\": \"anime/5698/kyochuu-rettou-movie\",\n     \"title\": \"Kyochuu Rettou Movie\",\n     \"poster\": \"UklGRqiGAABXRUJQVlA4IJyGAADQTgGdASoEAXIBPk0ei0QioaEXu/cYKATEoA0I5qWd9Yu5r4n+V/c72VOQe2731+C/Wv+F97XXL2H5bfR3/Q+7P5b/8T9pPfL+sP\",\n     \"banner\": \"https://animeflv.net/uploads/animes/banners/3259.jpg\",\n     \"synopsis\": \"Después de un accidente de avión durante un viaje escolar, Oribe Mutsumi y sus compañeros de clase quedaron varados en una isla aparentemente desierta. Mutsumi encontró a los otros sobrevivientes y usó sus conocimientos para ayudarlos. Estos esperan a ser rescatados al menos en tres días, lo que no parece ser mucho tiempo. Sin embargo, Mutsu...\",\n     \"debut\": \"Finalizado\",\n     \"type\": \"Película\",\n     \"rating\": \"4.4\",\n     \"genres\": [\n       \"terror\"\n     ],\n     \"episodes\": [\n       {\n         \"nextEpisodeDate\": null\n       },\n       {\n         \"episode\": 1,\n         \"id\": \"53644/kyochuu-rettou-movie-1\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3259/1/th_3.jpg\"\n       }\n     ]\n   },\n    // .....\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"default\"",
+              "\"updated\"",
+              "\"added\"",
+              "\"rating\"",
+              "\"title\""
+            ],
+            "optional": false,
+            "field": "sortBy",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Total page unknown</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "Movies"
+  },
+  {
+    "type": "get",
+    "url": "/Ova/:sortBy/:page",
+    "title": "Get list of Ovas",
+    "version": "1.0.5",
+    "name": "GetOva",
+    "group": "Ova",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "poster",
+            "description": "<p>Poster (img) on base64</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "banner",
+            "description": "<p>Background image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "synopsis",
+            "description": "<p>Summary information about the story</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "debut",
+            "description": "<p>Current status of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of content</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rating",
+            "description": "<p>Overall rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "genres",
+            "description": "<p>Genres to which he belongs</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "episodes",
+            "description": "<p>List of current episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.nextEpisodeDate",
+            "description": "<p>Date of the next TV broadcast</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "episodes.episode",
+            "description": "<p>Episode number</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.id",
+            "description": "<p>Episode id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.imagePreview",
+            "description": "<p>EpisodeDate image preview</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\n{\n  \"ova\": [\n    {\n      \"id\": \"anime/5714/tsugumomo-ova\",\n      \"title\": \"Tsugumomo OVA\",\n      \"poster\": \"UklGRo5iAABXRUJQVlA4IIJiAACQIgGdASoEAXIBPlEgjUSjoiEVmhbwOAUEo+8dvx0ytgVT4Bkq/ADQ0D74YWh9bvFdFnyL4SfWvxPDq2h50b2f/\",\n      \"banner\": \"https://animeflv.net/uploads/animes/banners/3275.jpg\",\n      \"synopsis\": \"Kazuya Kagami nunca va a ningún lado sin su preciada “Sakura Obi” que su madre le regaló. Un día, una hermosa chica vestida con un kimono llamada Kiriha aparece ante él. Naturalmente, ella comienza a vivir en su habitación. ¿Naturalmente? ¡Esto solo es el inicio de la embarazosa y confusa (y por supuesto feliz) nueva vida de Kazuya!\",\n     \"debut\": \"Finalizado\",\n     \"type\": \"OVA\",\n     \"rating\": \"5.0\",\n     \"genres\": [\n       \"accion\",\n       \"comedia\",\n       \"ecchi\",\n       \"escolares\",\n       \"seinen\",\n       \"sobrenatural\"\n     ],\n     \"episodes\": [\n       {\n         \"nextEpisodeDate\": null\n       },\n       {\n         \"episode\": 1,\n         \"id\": \"53753/tsugumomo-ova-1\",\n         \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3275/1/th_3.jpg\"\n       }\n     ]\n   },\n   //.....\n ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"default\"",
+              "\"updated\"",
+              "\"added\"",
+              "\"rating\"",
+              "\"title\""
+            ],
+            "optional": false,
+            "field": "sortBy",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Total page unknown</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "Ova"
+  },
+  {
+    "type": "get",
+    "url": "/Search/:query",
+    "title": "Get anime list by doing a search",
+    "version": "1.0.5",
+    "name": "Search",
+    "group": "Search",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "poster",
+            "description": "<p>Poster (img) on base64</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "banner",
+            "description": "<p>Background image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "synopsis",
+            "description": "<p>Summary information about the story</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "debut",
+            "description": "<p>Current status of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of content</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rating",
+            "description": "<p>Overall rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "genres",
+            "description": "<p>Genres to which he belongs</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "episodes",
+            "description": "<p>List of current episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.nextEpisodeDate",
+            "description": "<p>Date of the next TV broadcast</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "episodes.episode",
+            "description": "<p>Episode number</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.id",
+            "description": "<p>Episode id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.imagePreview",
+            "description": "<p>EpisodeDate image preview</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\n{\n\"search\": [\n  {\n    \"id\": \"anime/5227/tokyo-ghoul-jack\",\n    \"title\": \"Tokyo Ghoul: Jack\",\n    \"poster\": \"UklGRphjAABXRUJQVlA4IIxjAABQIwGdASoEAXIBPlEgjUSjoiEVKX7oOAUEsRPwimXsFebXP77/w/Ne477kfaf4D9ee0Hrq7V8uXor/0f5v8rfmV/t/Wj/Sv9h/5fcZ\",\n    \"banner\": \"https://animeflv.net/uploads/animes/banners/2285.jpg\",\n    \"synopsis\": \"En Tokyo Ghoul: Jack, seguimos un incidente relacionado con un Ghoul devorador de humanos en el Distrito 13 de Tokio. Para descubrir la verdad de lo ocurrido a su amigo, el estudiante de instituto Taishi Fura persigue al Ghoul conocido como Lantern acompañado del joven investigador Kisho Arima. La historia cuenta cómo Arima y Fura se ...\",\n    \"debut\": \"Finalizado\",\n    \"type\": \"OVA\",\n    \"rating\": \"4.5\",\n    \"genres\": [\n      \"accion\",\n      \"drama\",\n      \"escolares\",\n      \"seinen\",\n      \"sobrenatural\",\n      \"terror\"\n    ],\n    \"episodes\": [\n      {\n        \"nextEpisodeDate\": null\n      },\n      {\n        \"episode\": 1,\n        \"id\": \"37923/tokyo-ghoul-jack-1\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/2285/1/th_3.jpg\"\n      }\n    ]\n  },\n  {\n    \"id\": \"anime/5226/tokyo-ghoul\",\n    \"title\": \"Tokyo Ghoul\",\n    \"poster\": \"UklGRlxiAABXRUJQVlA4IFBiAABwOgGdASoEAXIBPlEgjUSjoiErLPQtoWAKCWIAyBfoz0ff/ml7OXH/cH7o+8frT2t9xXZvl/dFf97/Gf5j9vflj/zP/J7Yv1p/6/cQ\",\n    \"banner\": \"https://animeflv.net/uploads/animes/banners/1415.jpg\",\n    \"synopsis\": \"Extraños asesinatos se están sucediendo uno tras otro en Tokyo. Debido a las pruebas encontradas en las escenas, la policía concluye que los ataques son obra de ghouls que se comen a las personas. Kaneki y Hide, dos compañeros de clase, llegan a la conclusión de que si nadie ha visto nunca a esos necrófagos...\",\n    \"debut\": \"Finalizado\",\n    \"type\": \"Anime\",\n    \"rating\": \"4.5\",\n    \"genres\": [\n      \"accion\",\n      \"drama\",\n      \"misterio\",\n      \"psicologico\",\n      \"seinen\",\n      \"sobrenatural\",\n      \"terror\"\n    ],\n    \"episodes\": [\n      {\n        \"nextEpisodeDate\": null\n      },\n      {\n        \"episode\": 12,\n        \"id\": \"28800/tokyo-ghoul-12\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg\"\n      },\n      {\n        \"episode\": 11,\n        \"id\": \"28459/tokyo-ghoul-11\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/11/th_3.jpg\"\n      },\n      {\n        \"episode\": 10,\n        \"id\": \"28001/tokyo-ghoul-10\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/10/th_3.jpg\"\n      },\n      {\n        \"episode\": 9,\n        \"id\": \"27741/tokyo-ghoul-9\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/9/th_3.jpg\"\n      },\n      {\n        \"episode\": 8,\n        \"id\": \"27092/tokyo-ghoul-8\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/8/th_3.jpg\"\n      },\n      {\n        \"episode\": 7,\n        \"id\": \"26689/tokyo-ghoul-7\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/7/th_3.jpg\"\n      },\n      {\n        \"episode\": 6,\n        \"id\": \"26529/tokyo-ghoul-6\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/6/th_3.jpg\"\n      },\n      {\n        \"episode\": 5,\n        \"id\": \"26431/tokyo-ghoul-5\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/5/th_3.jpg\"\n      },\n      {\n        \"episode\": 4,\n        \"id\": \"26373/tokyo-ghoul-4\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/4/th_3.jpg\"\n      },\n      {\n        \"episode\": 3,\n        \"id\": \"26278/tokyo-ghoul-3\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/3/th_3.jpg\"\n      },\n      {\n        \"episode\": 2,\n        \"id\": \"26188/tokyo-ghoul-2\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/2/th_3.jpg\"\n      },\n      {\n        \"episode\": 1,\n        \"id\": \"26103/tokyo-ghoul-1\",\n        \"imagePreview\": \"https://cdn.animeflv.net/screenshots/1415/1/th_3.jpg\"\n      }\n    ]\n  },\n   //.....\n ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "query",
+            "description": "<p>Anime title</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "Search"
+  },
+  {
+    "type": "get",
+    "url": "/Special/:sortBy/:page",
+    "title": "Get list of Special Anime",
+    "version": "1.0.5",
+    "name": "GetSpecial",
+    "group": "Special",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "poster",
+            "description": "<p>Poster (img) on base64</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "banner",
+            "description": "<p>Background image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "synopsis",
+            "description": "<p>Summary information about the story</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "debut",
+            "description": "<p>Current status of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of content</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rating",
+            "description": "<p>Overall rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "genres",
+            "description": "<p>Genres to which he belongs</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "episodes",
+            "description": "<p>List of current episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.nextEpisodeDate",
+            "description": "<p>Date of the next TV broadcast</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "episodes.episode",
+            "description": "<p>Episode number</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.id",
+            "description": "<p>Episode id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.imagePreview",
+            "description": "<p>EpisodeDate image preview</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\n{\n    \"special\": [\n      {\n        \"id\": \"anime/5620/fategrand-order-zettai-majuu-sensen-babylonia-initium-iter\",\n        \"title\": \"Fate/Grand Order: Zettai Majuu Sensen Babylonia - Initium Iter\",\n        \"poster\": \"UklGRgZNAABXRUJQVlA4IPpMAACQ+ACdASoEAXIBPlEijkUjoiEpKFYL4SAKCWNuDsiTKrm8nGcqJ8frlx/82zZ+r/S/7b8ie0rvk6/8yvoz/ufdV8vP+n68/\",\n        \"banner\": \"https://animeflv.net/uploads/animes/banners/3181.jpg\",\n        \"synopsis\": \"Año 2017. La última era en la que existió la magia. Los humanos crearon la sociedad, pero los Magos fueron quienes consiguieron alcanzar la verdad del mundo. La magia se compone de técnicas del pasado que la ciencia no puede explicar, mientras que la ciencia se compone de técnicas del futuro que la magia no puede alcanzar. Estudiosos e investi...\",\n        \"debut\": \"Finalizado\",\n        \"type\": \"Especial\",\n        \"rating\": \"4.6\",\n        \"genres\": [\n          \"accion\",\n          \"fantasia\",\n          \"magia\",\n          \"sobrenatural\"\n        ],\n        \"episodes\": [\n          {\n            \"nextEpisodeDate\": null\n          },\n          {\n            \"episode\": 0,\n            \"id\": \"52745/fategrand-order-zettai-majuu-sensen-babylonia-initium-iter-0\",\n            \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3181/0/th_3.jpg\"\n          }\n        ]\n      },\n      //.....\n    ]",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"default\"",
+              "\"updated\"",
+              "\"added\"",
+              "\"rating\"",
+              "\"title\""
+            ],
+            "optional": false,
+            "field": "sortBy",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Total page unknown</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "Special"
+  },
+  {
+    "type": "get",
+    "url": "/TV/:sortBy/:page",
+    "title": "Get list of Anime in tv",
+    "version": "1.0.5",
+    "name": "GetTV",
+    "group": "TV",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Anime id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Anime title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "poster",
+            "description": "<p>Poster (img) on base64</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "banner",
+            "description": "<p>Background image</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "synopsis",
+            "description": "<p>Summary information about the story</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "debut",
+            "description": "<p>Current status of the anime</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Type of content</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "rating",
+            "description": "<p>Overall rating</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "genres",
+            "description": "<p>Genres to which he belongs</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "episodes",
+            "description": "<p>List of current episodes</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.nextEpisodeDate",
+            "description": "<p>Date of the next TV broadcast</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "episodes.episode",
+            "description": "<p>Episode number</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.id",
+            "description": "<p>Episode id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "episodes.imagePreview",
+            "description": "<p>EpisodeDate image preview</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\n{\n  \"tv\": [\n    {\n      \"id\": \"anime/5712/isekai-quartet-2nd-season\",\n      \"title\": \"Isekai Quartet 2nd Season\",\n      \"poster\": \"/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/\",\n      \"banner\": \"https://animeflv.net/uploads/animes/banners/3273.jpg\",\n      \"synopsis\": \"Segunda tempo de Isekai Quartet\",\n      \"debut\": \"En emision\",\n      \"type\": \"Anime\",\n      \"rating\": \"0.0\",\n      \"genres\": [\n        \"comedia\",\n        \"fantasia\",\n        \"parodia\"\n      ],\n      \"episodes\": [\n        {\n          \"nextEpisodeDate\": \"2020-03-03\"\n        },\n        {\n          \"episode\": 7,\n          \"id\": \"54002/isekai-quartet-2nd-season-7\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/7/th_3.jpg\"\n        },\n        {\n          \"episode\": 6,\n          \"id\": \"53951/isekai-quartet-2nd-season-6\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/6/th_3.jpg\"\n        },\n        {\n          \"episode\": 5,\n          \"id\": \"53899/isekai-quartet-2nd-season-5\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/5/th_3.jpg\"\n        },\n        {\n          \"episode\": 4,\n          \"id\": \"53845/isekai-quartet-2nd-season-4\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/4/th_3.jpg\"\n        },\n        {\n          \"episode\": 3,\n          \"id\": \"53798/isekai-quartet-2nd-season-3\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/3/th_3.jpg\"\n        },\n        {\n          \"episode\": 2,\n          \"id\": \"53742/isekai-quartet-2nd-season-2\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/2/th_3.jpg\"\n        },\n        {\n          \"episode\": 1,\n          \"id\": \"53682/isekai-quartet-2nd-season-1\",\n          \"imagePreview\": \"https://cdn.animeflv.net/screenshots/3273/1/th_3.jpg\"\n        }\n      ]\n    },\n    //.....\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"default\"",
+              "\"updated\"",
+              "\"added\"",
+              "\"rating\"",
+              "\"title\""
+            ],
+            "optional": false,
+            "field": "sortBy",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Total page unknown</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./src/api/routes/index.js",
+    "groupTitle": "TV"
   }
 ]
