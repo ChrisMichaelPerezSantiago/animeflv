@@ -240,6 +240,7 @@ router.get('/GetAnimeServers/:id([^/]+/[^/]+)' , (req , res) =>{
 
 /**
  *  @api {get} /Genres/:genre/:sortBy/:page Get list of Anime by genres
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/Genres/:genre/:sortBy/:page
  *  @apiVersion 1.0.5
  *  @apiName GetGenres
  *  @apiGroup Genres
@@ -345,6 +346,7 @@ router.get('/Genres/:genre/:order/:page' , (req , res) =>{
 
 /**
  *  @api {get} /Movies/:sortBy/:page Get list of Movies
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/Movies/:sortBy/:page
  *  @apiVersion 1.0.5
  *  @apiName GetMovies
  *  @apiGroup Movies
@@ -415,6 +417,7 @@ router.get('/Movies/:order/:page' , (req , res) =>{
 
 /**
  *  @api {get} /Special/:sortBy/:page Get list of Special Anime
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/Special/:sortBy/:page
  *  @apiVersion 1.0.5
  *  @apiName GetSpecial
  *  @apiGroup Special
@@ -487,6 +490,7 @@ router.get('/Special/:order/:page' , (req , res) =>{
 
 /**
  *  @api {get} /Ova/:sortBy/:page Get list of Ovas
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/Ova/:sortBy/:page
  *  @apiVersion 1.0.5
  *  @apiName GetOva
  *  @apiGroup Ova
@@ -563,6 +567,7 @@ router.get('/Ova/:order/:page' , (req , res) =>{
 
 /**
  *  @api {get} /TV/:sortBy/:page Get list of Anime in tv
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/TV/:sortBy/:page
  *  @apiVersion 1.0.5
  *  @apiName GetTV
  *  @apiGroup TV
@@ -665,6 +670,7 @@ router.get('/TV/:order/:page' , (req , res) =>{
 
 /**
  *  @api {get} /AnimeByState/:state/:sortBy/:page Get list of Anime in tv
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/AnimeByState/:state/:sortBy/:page
  *  @apiVersion 1.0.5
  *  @apiName GetAnimeByState
  *  @apiGroup AnimeByState
@@ -771,6 +777,7 @@ router.get('/AnimeByState/:state/:order/:page' , (req , res) =>{
 
 /**
  *  @api {get} /Search/:query Get anime list by doing a search
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/Search/:query
  *  @apiVersion 1.0.5
  *  @apiName Search
  *  @apiGroup Search
@@ -929,6 +936,7 @@ router.get('/Search/:query' , (req , res) =>{
 
 /**
  *  @api {get} /AnimeCharacters/:title Get list of characters from a particular anime
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/AnimeCharacters/:title 
  *  @apiVersion 1.0.5
  *  @apiName GetAnimeCharacters
  *  @apiGroup AnimeCharacters
@@ -1024,6 +1032,7 @@ router.get('/AnimeCharacters/:title' , (req , res) =>{
 
 /**
  *  @api {get} /AnimeTrailers/:title Get ist of promotional videos
+ *  @apiSampleRequest https://animeflv.chrismichael.now.sh/api/v1/AnimeTrailers/:title 
  *  @apiVersion 1.0.5
  *  @apiName GetAnimeTrailers
  *  @apiGroup AnimeTrailers
