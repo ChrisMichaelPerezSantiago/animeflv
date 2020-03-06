@@ -518,53 +518,43 @@ const latestAnimeAdded = async() =>{
 };
 
 const animeEpisodesHandler = async(id) =>{
-  const res = await cloudscraper(`${BASE_URL}/${id}` , {method: 'GET'});
-  const body = await res;
-  const $ = cheerio.load(body);
-  const scripts = $('script');
-  const anime_info_ids = [];
-  const anime_eps_data = [];
-  const animeExtraInfo = [];
-  const genres = [];
-  let listByEps;
-  
-  let animeTitle = $('body div.Wrapper div.Body div div.Ficha.fchlt div.Container h2.Title').text();
-  let poster = `${BASE_URL}` + $('body div div div div div aside div.AnimeCover div.Image figure img').attr('src')
-  const banner = poster.replace('covers' , 'banners').trim();
-  let synopsis = $('body div div div div div main section div.Description p').text().trim();
-  let rating = $('body div div div.Ficha.fchlt div.Container div.vtshr div.Votes span#votes_prmd').text();
-  const debut = $('body div.Wrapper div.Body div div.Container div.BX.Row.BFluid.Sp20 aside.SidebarA.BFixed p.AnmStts').text();
-  const type = $('body div.Wrapper div.Body div div.Ficha.fchlt div.Container span.Type').text()
-  //const JSONBanner = JSON.stringify($('body div.Wrapper div.Body div.Ficha.fchlt').html())
-  //  .split('div')[1];
-  //let bannerId = "";
-  //let banner = "";
-  //if(JSONBanner){
-  //  bannerID = JSONBanner.split('(')[1].split('.jpg')[0]
-  //  banner = `${BASE_URL}${bannerID}.jpg`
-  //}
-  
-  animeExtraInfo.push({
-    title: animeTitle,
-    poster: poster,
-    banner: banner,
-    synopsis: synopsis,
-    rating: rating,
-    debut: debut,
-    type: type,
-  })
-  //let chaptersTitles = await getAnimeChapterTitlesHelper(animeTitle)
-  //  .then(res =>{
-  //    return res;
-  //  })  
-
-  $('main.Main section.WdgtCn nav.Nvgnrs a').each((index , element) =>{
-    const $element = $(element);
-    const genre = $element.attr('href').split('=')[1] || null;
-    genres.push(genre);
-  });
-
   try{
+    const res = await cloudscraper(`${BASE_URL}/${id}` , {method: 'GET'});
+    const body = await res;
+    const $ = cheerio.load(body);
+    const scripts = $('script');
+    const anime_info_ids = [];
+    const anime_eps_data = [];
+    const animeExtraInfo = [];
+    const genres = [];
+    let listByEps;
+    
+    let animeTitle = $('body div.Wrapper div.Body div div.Ficha.fchlt div.Container h2.Title').text();
+    let poster = `${BASE_URL}` + $('body div div div div div aside div.AnimeCover div.Image figure img').attr('src')
+    const banner = poster.replace('covers' , 'banners').trim();
+    let synopsis = $('body div div div div div main section div.Description p').text().trim();
+    let rating = $('body div div div.Ficha.fchlt div.Container div.vtshr div.Votes span#votes_prmd').text();
+    const debut = $('body div.Wrapper div.Body div div.Container div.BX.Row.BFluid.Sp20 aside.SidebarA.BFixed p.AnmStts').text();
+    const type = $('body div.Wrapper div.Body div div.Ficha.fchlt div.Container span.Type').text()
+    
+    
+    animeExtraInfo.push({
+      title: animeTitle,
+      poster: poster,
+      banner: banner,
+      synopsis: synopsis,
+      rating: rating,
+      debut: debut,
+      type: type,
+    })
+    
+    $('main.Main section.WdgtCn nav.Nvgnrs a').each((index , element) =>{
+      const $element = $(element);
+      const genre = $element.attr('href').split('=')[1] || null;
+      genres.push(genre);
+    });
+
+  
     Array.from({length: scripts.length} , (v , k) =>{
       const $script = $(scripts[k]);
       const contents = $script.html();
@@ -595,6 +585,7 @@ const animeEpisodesHandler = async(id) =>{
       let id = data[1];
       let imagePreview = `${BASE_EPISODE_IMG_URL}${AnimeThumbnailsId}/${episode}/th_3.jpg`
       let link = `${id}/${animeId}-${episode}`
+      // @ts-ignore
       animeListEps.push({
         episode: episode,
         id: link,
@@ -604,19 +595,10 @@ const animeEpisodesHandler = async(id) =>{
 
     listByEps = animeListEps;
 
-
-    //chaptersTitles = chaptersTitles.reverse();    
-    //listByEps = animeListEps;
-    //listByEps =  MergeRecursive(listByEps.slice(1) , chaptersTitles)
-    //listByEps.push({
-    //  nextEpisodeDate: nextEpisodeDate
-    //});
-    //console.log(listByEps);
-    
+    return {listByEps , genres , animeExtraInfo};  
   }catch(err){
     console.error(err)
   }
-  return {listByEps , genres , animeExtraInfo};
 };
 
 //getAnimeInfo('anime/5226/tokyo-ghoul' , 'Tokyo Ghoul')
