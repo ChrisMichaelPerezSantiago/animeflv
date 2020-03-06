@@ -11,7 +11,7 @@ const {
 
 
 const animeExtraInfo = async(title) =>{
-  const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
+  const res = await cloudscraper(`${BASE_JIKA_URL}${title}` , {method: 'GET'});
   const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
   const malId = matchAnime[0].mal_id;
 
@@ -58,7 +58,7 @@ const animeExtraInfo = async(title) =>{
 
 
 const downloadLinksByEpsId = async(id) =>{
-  const res = await cloudscraper.get(`${ANIME_VIDEO_URL}${id}`);
+  const res = await cloudscraper(`${ANIME_VIDEO_URL}${id}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   cheerioTableparser($);
@@ -107,7 +107,7 @@ const downloadLinksByEpsId = async(id) =>{
 };
 
 const getAnimeChapterTitlesHelper = async(title) =>{
-  const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
+  const res = await cloudscraper(`${BASE_JIKA_URL}${title}` , {method: 'GET'});
   const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
   const malId = matchAnime[0].mal_id;
 
@@ -164,7 +164,7 @@ const getAnimeInfo = async(id , title) =>{
 };
 
 const getAnimeVideoPromo = async(title) =>{
-  const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
+  const res = await cloudscraper(`${BASE_JIKA_URL}${title}` , {method: 'GET'});
   const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
   const malId = matchAnime[0].mal_id;
 
@@ -187,7 +187,7 @@ const getAnimeVideoPromo = async(title) =>{
 };
 
 const getAnimeCharacters = async(title) =>{
-  const res = await cloudscraper.get(`${BASE_JIKA_URL}${title}`);
+  const res = await cloudscraper(`${BASE_JIKA_URL}${title}` , {method: 'GET'});
   const matchAnime = JSON.parse(res).results.filter(x => x.title === title);
   const malId = matchAnime[0].mal_id;
 
@@ -232,7 +232,7 @@ const getAnimeCharacters = async(title) =>{
 };
 
 const search = async(query) =>{
-  const res = await cloudscraper.get(`${SEARCH_URL}${query}`);
+  const res = await cloudscraper(`${SEARCH_URL}${query}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -267,7 +267,7 @@ const search = async(query) =>{
 
 
 const animeByState = async(state , order , page ) => {
-  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}`);
+  const res = await cloudscraper(`${BROWSE_URL}type%5B%5D=tv&status%5B%5D=${state}&order=${order}&page=${page}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -300,7 +300,7 @@ const animeByState = async(state , order , page ) => {
 };
 
 const tv = async(order , page) => {
-  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=tv&order=${order}&page=${page}`);
+  const res = await cloudscraper(`${BROWSE_URL}type%5B%5D=tv&order=${order}&page=${page}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -333,7 +333,7 @@ const tv = async(order , page) => {
 };
 
 const ova = async(order , page ) => {
-  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=ova&order=${order}&page=${page}`);
+  const res = await cloudscraper(`${BROWSE_URL}type%5B%5D=ova&order=${order}&page=${page}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -366,7 +366,7 @@ const ova = async(order , page ) => {
 };
 
 const special = async(order , page) => {
-  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=special&order=${order}&page=${page}`);
+  const res = await cloudscraper(`${BROWSE_URL}type%5B%5D=special&order=${order}&page=${page}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -399,7 +399,7 @@ const special = async(order , page) => {
 };
 
 const movies = async(order , page) => {
-  const res = await cloudscraper.get(`${BROWSE_URL}type%5B%5D=movie&order=${order}&page=${page}`);
+  const res = await cloudscraper(`${BROWSE_URL}type%5B%5D=movie&order=${order}&page=${page}`, {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -432,7 +432,7 @@ const movies = async(order , page) => {
 };
 
 const animeByGenres = async(genre , order , page) => {
-  const res = await cloudscraper.get(`${BROWSE_URL}genre%5B%5D=${genre}&order=${order}&page=${page}`);
+  const res = await cloudscraper(`${BROWSE_URL}genre%5B%5D=${genre}&order=${order}&page=${page}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -465,7 +465,7 @@ const animeByGenres = async(genre , order , page) => {
 };
 
 const latestEpisodesAdded = async() =>{
-  const res = await cloudscraper.get(`${BASE_URL}`);
+  const res = await cloudscraper(`${BASE_URL}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -487,7 +487,7 @@ const latestEpisodesAdded = async() =>{
 };
 
 const latestAnimeAdded = async() =>{
-  const res = await cloudscraper.get(`${BASE_URL}`);
+  const res = await cloudscraper(`${BASE_URL}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const promises = [];
@@ -518,7 +518,7 @@ const latestAnimeAdded = async() =>{
 };
 
 const animeEpisodesHandler = async(id) =>{
-  const res = await cloudscraper.get(`${BASE_URL}/${id}`);
+  const res = await cloudscraper(`${BASE_URL}/${id}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const scripts = $('script');
@@ -625,7 +625,7 @@ const animeEpisodesHandler = async(id) =>{
 //})
 
 const getAnimeServers = async(id) =>{
-  const res = await cloudscraper.get(`${ANIME_VIDEO_URL}${id}`);
+  const res = await cloudscraper(`${ANIME_VIDEO_URL}${id}` , {method: 'GET'});
   const body = await res;
   const $ = cheerio.load(body);
   const scripts = $('script');
