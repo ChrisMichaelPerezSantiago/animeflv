@@ -35,6 +35,21 @@
 - [x] `downloadLinksByEpsId([epsId])` function implemented.
 
 
+
+## ⚠️ Goodbye Message |  It remains in effect on 5/9/2020 ⚠️
+
+Hello Partners,
+
+Unfortunately I will be giving up on maintaining the library as I accept a job offer and I will start working this week and time will not allow me to do the maintenance.
+
+I understand that this news for many who use this library would be somewhat sad, but as I said, I have no choice. For me now the most important thing and my focus would be on the job.
+
+I very much appreciate those who supported the API, but this is not the end. For those who still want to continue using the API, I recommend that as soon as possible you fork the repo and locally maintain it, since I will stop maintaining it as soon as I start working this week.
+
+If you have any questions about the code and how to begin to understand it, you can let me know, and I will help you. So that you can continue to maintain it without problem.
+
+I hope you understand!
+
 ## 📖 API Documentation
 The documentation in general has been removed from the `README.md` but has been migrated to a link. 
 From now you can access all the API documentation from the following url [docs](https://animeflv-docs.now.sh/)
