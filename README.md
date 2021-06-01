@@ -67,16 +67,6 @@ Describe the purpose of the project and give clues about what the code does.
 For more information go to the following link [Diary Reference](./development_diary/README.md).
 
 
-## <img src="https://img.icons8.com/color/48/000000/paypal.png"> **Donations**
-Animeflv is an open source project licensed by MIT with continuous development. If you want me to continue maintaining this library and you are interested in continuing to use it, you can help me with a monetary help in the following link:
-
-
-- [One-time donation via PayPal.](https://paypal.me/chrismperezsantiago?locale.x=en_US)
-
-These are projects that take a lot of effort and time to maintain. So with your help I will be more motivated to continue maintaining the animeflv project. :)
-
-
-
 ## **:wrench: Developer usage**
 
 ### **Set up project**
